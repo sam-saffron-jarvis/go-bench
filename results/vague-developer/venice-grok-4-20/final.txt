@@ -1,0 +1,34 @@
+**✅ Done!** A complete standalone 9×9 Go board has been built in `index.html`.
+
+### Features
+- **Fully playable 9×9 Go** with correct rules:
+  - Stone placement
+  - Liberty detection
+  - Automatic capture of surrounded groups
+  - Suicide prevention (illegal moves are rejected)
+  - Capture counting (prisoners)
+- Beautiful traditional wood board with star points (hoshi), coordinates (A–J / 9–1), and realistic 3D-style stones
+- Hover preview, last-move marker, turn indicator
+- **Undo** (button + `U` key)
+- **Pass** button
+- **New Game** button
+- Touch support and keyboard shortcuts
+- Single self-contained HTML file (just open it in any browser)
+
+### How to use
+```bash
+# Open the file directly
+open index.html
+# or
+xdg-open index.html
+```
+
+Or serve it:
+```bash
+python3 -m http.server 8080
+```
+Then visit `http://localhost:8080`
+
+The game is ready to play immediately — Black starts, just click on intersections.
+
+Would you like any enhancements (simple AI opponent, scoring at the end, ko rule, sound effects, different board sizes, etc.)?

@@ -1,0 +1,23 @@
+ I'll create a fully functional 9x9 Go board as a standalone HTML file. This will include a clickable board, alternating black/white turns, and proper Go board styling.    I created a fully functional 9x9 Go board in `index.html`. Here's what's included:
+
+**Features:**
+- **Interactive board** - Click any intersection to place stones
+- **Alternating turns** - Black plays first, then White
+- **Capture detection** - Automatically removes surrounded opponent groups
+- **Suicide prevention** - Invalid moves are rejected
+- **Pass, Undo, and New Game** buttons
+- **Visual feedback** - Red flash for invalid moves
+- **Score tracking** - Shows captured stones for both players
+- **Game over detection** - Alerts when both players pass consecutively
+
+**Controls:**
+- **🔄 Undo** - Reverts the last move (including captures)
+- **⏭️ Pass** - Skip your turn (game ends after two consecutive passes)
+- **🔄 New Game** - Resets the board
+
+The board follows Go conventions:
+- Star points (dots) at the 3-3, 3-5, 3-7, 5-3, 5-5, 5-7, 7-3, 7-5, 7-7 intersections
+- Letter coordinates (A-J) across the top/bottom
+- Number coordinates (9-1) down the sides
+
+Open `index.html` in any browser to play!

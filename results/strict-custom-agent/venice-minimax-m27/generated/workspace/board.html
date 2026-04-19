@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9x9 Go Board</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d4b8 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #3d2914;
+            margin-bottom: 10px;
+            font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+        }
+
+        .game-info {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #3d2914;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stone-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #3d2914;
+        }
+
+        .stone-indicator.black {
+            background: #1a1a1a;
+        }
+
+        .stone-indicator.white {
+            background: #f5f5f5;
+        }
+
+        .current-turn {
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .board-container {
+            background: #dcb35c;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 
+                0 4px 20px rgba(0,0,0,0.3),
+                inset 0 2px 4px rgba(255,255,255,0.3);
+            border: 3px solid #8b5a2b;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 0;
+            background: #dcb35c;
+            position: relative;
+        }
+
+        .intersection {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            background: #dcb35c;
+        }
+
+        .intersection::before {
+            content: '';
+            position: absolute;
+            background: #3d2914;
+        }
+
+        .intersection::before {
+            width: 100%;
+            height: 1px;
+            top: 50%;
+            left: 0;
+        }
+
+        .intersection::after {
+            content: '';
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            background: #3d2914;
+        }
+
+        /* Top border */
+        .intersection.row-0::before {
+            top: 50%;
+        }
+
+        /* Bottom border */
+        .intersection.row-8::before {
+            top: 50%;
+        }
+
+        /* Left border */
+        .intersection.col-0::after {
+            left: 50%;
+        }
+
+        /* Right border */
+        .intersection.col-8::after {
+            left: 50%;
+        }
+
+        /* Star points (hoshi) */
+        .intersection.star-point .stone::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #3d2914;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .stone {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.1s ease;
+        }
+
+        .intersection:hover .stone.empty {
+            transform: scale(0.9);
+            opacity: 0.5;
+        }
+
+        .stone.black {
+            background: radial-gradient(circle at 30% 30%, #4a4a4a, #1a1a1a);
+            box-shadow: 
+                2px 2px 4px rgba(0,0,0,0.4),
+                inset -2px -2px 4px rgba(0,0,0,0.3),
+                inset 2px 2px 4px rgba(255,255,255,0.1);
+        }
+
+        .stone.white {
+            background: radial-gradient(circle at 30% 30%, #ffffff, #d0d0d0);
+            box-shadow: 
+                2px 2px 4px rgba(0,0,0,0.3),
+                inset -2px -2px 4px rgba(0,0,0,0.1),
+                inset 2px 2px 4px rgba(255,255,255,0.8);
+        }
+
+        .reset-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 1rem;
+            background: #5c4033;
+            color: #f5f5f5;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .reset-btn:hover {
+            background: #7a5a45;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .reset-btn:active {
+            transform: translateY(0);
+        }
+
+        .captures {
+            font-size: 0.9rem;
+            color: #5c4033;
+        }
+    </style>
+</head>
+<body>
+    <h1>9×9 Go Board</h1>
+    
+    <div class="game-info">
+        <div class="info-item">
+            <span>Current Turn:</span>
+            <div class="stone-indicator black" id="turn-indicator"></div>
+            <span id="turn-text" class="current-turn">Black</span>
+        </div>
+        <div class="info-item captures">
+            <span>Captures:</span>
+            <span>Black: <span id="black-captures">0</span></span>
+            <span>White: <span id="white-captures">0</span></span>
+        </div>
+    </div>
+
+    <div class="board-container">
+        <div class="board" id="board"></div>
+    </div>
+
+    <button class="reset-btn" id="reset">Reset Board</button>
+
+    <script>
+        (function() {
+            const SIZE = 9;
+            const STAR_POINTS = [[2, 2], [2, 6], [6, 2], [6, 6], [4, 4]];
+
+            let board = [];
+            let currentPlayer = 'black';
+            let captured = { black: 0, white: 0 };
+
+            function createEmptyBoard() {
+                const b = [];
+                for (let y = 0; y < SIZE; y++) {
+                    b[y] = [];
+                    for (let x = 0; x < SIZE; x++) {
+                        b[y][x] = null;
+                    }
+                }
+                return b;
+            }
+
+            function getGroup(x, y, boardState) {
+                const color = boardState[y][x];
+                if (!color) return [];
+                
+                const group = [];
+                const visited = new Set();
+                const stack = [[x, y]];
+                
+                while (stack.length > 0) {
+                    const [cx, cy] = stack.pop();
+                    const key = `${cx},${cy}`;
+                    
+                    if (visited.has(key)) continue;
+                    if (cx < 0 || cx >= SIZE || cy < 0 || cy >= SIZE) continue;
+                    if (boardState[cy][cx] !== color) continue;
+                    
+                    visited.add(key);
+                    group.push([cx, cy]);
+                    
+                    stack.push([cx + 1, cy]);
+                    stack.push([cx - 1, cy]);
+                    stack.push([cx, cy + 1]);
+                    stack.push([cx, cy - 1]);
+                }
+                
+                return group;
+            }
+
+            function getLiberties(x, y, boardState) {
+                const group = getGroup(x, y, boardState);
+                const liberties = new Set();
+                
+                for (const [gx, gy] of group) {
+                    const neighbors = [
+                        [gx + 1, gy],
+                        [gx - 1, gy],
+                        [gx, gy + 1],
+                        [gx, gy - 1]
+                    ];
+                    
+                    for (const [nx, ny] of neighbors) {
+                        if (nx < 0 || nx >= SIZE || ny < 0 || ny >= SIZE) continue;
+                        if (boardState[ny][nx] === null) {
+                            liberties.add(`${nx},${ny}`);
+                        }
+                    }
+                }
+                
+                return liberties.size;
+            }
+
+            function getAllLiberties(x, y, boardState) {
+                const group = getGroup(x, y, boardState);
+                const liberties = new Set();
+                
+                for (const [gx, gy] of group) {
+                    const neighbors = [
+                        [gx + 1, gy],
+                        [gx - 1, gy],
+                        [gx, gy + 1],
+                        [gx, gy - 1]
+                    ];
+                    
+                    for (const [nx, ny] of neighbors) {
+                        if (nx < 0 || nx >= SIZE || ny < 0 || ny >= SIZE) continue;
+                        if (boardState[ny][nx] === null) {
+                            liberties.add(`${nx},${ny}`);
+                        }
+                    }
+                }
+                
+                return liberties;
+            }
+
+            function findCaptures(boardState, lastX, lastY, lastColor) {
+                const opponent = lastColor === 'black' ? 'white' : 'black';
+                const capturedStones = [];
+                
+                const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+                const checked = new Set();
+                
+                for (const [dx, dy] of directions) {
+                    const nx = lastX + dx;
+                    const ny = lastY + dy;
+                    
+                    if (nx < 0 || nx >= SIZE || ny < 0 || ny >= SIZE) continue;
+                    
+                    const key = `${nx},${ny}`;
+                    if (checked.has(key)) continue;
+                    checked.add(key);
+                    
+                    if (boardState[ny][nx] === opponent) {
+                        const liberties = getLiberties(nx, ny, boardState);
+                        if (liberties === 0) {
+                            const group = getGroup(nx, ny, boardState);
+                            capturedStones.push(...group);
+                        }
+                    }
+                }
+                
+                return capturedStones;
+            }
+
+            function isValidMove(x, y, color) {
+                if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) return false;
+                if (board[y][x] !== null) return false;
+                
+                const testBoard = board.map(row => [...row]);
+                testBoard[y][x] = color;
+                
+                const captures = findCaptures(testBoard, x, y, color);
+                
+                for (const [cx, cy] of captures) {
+                    testBoard[cy][cx] = null;
+                }
+                
+                const ownLiberties = getLiberties(x, y, testBoard);
+                
+                if (ownLiberties === 0) {
+                    if (captures.length === 0) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+
+            function playMove(x, y) {
+                if (!isValidMove(x, y, currentPlayer)) {
+                    return false;
+                }
+                
+                board[y][x] = currentPlayer;
+                
+                const opponent = currentPlayer === 'black' ? 'white' : 'black';
+                const captures = findCaptures(board, x, y, currentPlayer);
+                
+                for (const [cx, cy] of captures) {
+                    board[cy][cx] = null;
+                    if (currentPlayer === 'black') {
+                        captured.black++;
+                    } else {
+                        captured.white++;
+                    }
+                }
+                
+                currentPlayer = opponent;
+                
+                render();
+                return true;
+            }
+
+            function resetGame() {
+                board = createEmptyBoard();
+                currentPlayer = 'black';
+                captured = { black: 0, white: 0 };
+                render();
+            }
+
+            function render() {
+                const boardEl = document.getElementById('board');
+                boardEl.innerHTML = '';
+                
+                for (let y = 0; y < SIZE; y++) {
+                    for (let x = 0; x < SIZE; x++) {
+                        const intersection = document.createElement('div');
+                        intersection.className = 'intersection';
+                        intersection.classList.add(`row-${y}`);
+                        intersection.classList.add(`col-${x}`);
+                        intersection.setAttribute('data-cell', `${x},${y}`);
+                        
+                        const isStarPoint = STAR_POINTS.some(([spx, spy]) => spx === x && spy === y);
+                        if (isStarPoint && !board[y][x]) {
+                            intersection.classList.add('star-point');
+                        }
+                        
+                        const stone = document.createElement('div');
+                        stone.className = 'stone';
+                        
+                        if (board[y][x]) {
+                            stone.classList.add(board[y][x]);
+                        } else {
+                            stone.classList.add('empty');
+                        }
+                        
+                        intersection.appendChild(stone);
+                        
+                        intersection.addEventListener('click', () => {
+                            playMove(x, y);
+                        });
+                        
+                        boardEl.appendChild(intersection);
+                    }
+                }
+                
+                document.getElementById('turn-indicator').className = `stone-indicator ${currentPlayer}`;
+                document.getElementById('turn-text').textContent = currentPlayer.charAt(0).toUpperCase() + currentPlayer.slice(1);
+                document.getElementById('black-captures').textContent = captured.black;
+                document.getElementById('white-captures').textContent = captured.white;
+            }
+
+            function getState() {
+                return {
+                    size: SIZE,
+                    currentPlayer: currentPlayer,
+                    board: board.map(row => [...row]),
+                    captured: { ...captured }
+                };
+            }
+
+            window.__goGame__ = {
+                getState: getState
+            };
+
+            document.getElementById('reset').addEventListener('click', resetGame);
+
+            board = createEmptyBoard();
+            render();
+        })();
+    </script>
+</body>
+</html>

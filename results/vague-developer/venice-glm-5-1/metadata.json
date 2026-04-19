@@ -1,0 +1,106 @@
+{
+  "bench": "vague-developer",
+  "slug": "venice-glm-5-1",
+  "display": "Venice GLM 5.1",
+  "provider": "venice:zai-org-glm-5-1",
+  "requested": null,
+  "note": null,
+  "timestamp_utc": "2026-04-19T09:14:29.366398+00:00",
+  "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--json",
+    "--yolo",
+    "--provider",
+    "venice:zai-org-glm-5-1",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    ".",
+    "build a standalone 9x9 fully functioning go board in index.html"
+  ],
+  "command_text": "term-llm ask --no-session --json --yolo --provider venice:zai-org-glm-5-1 --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+  "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 50.224,
+    "stats": {
+      "cache_write_tokens": 0,
+      "cached_input_tokens": 30912,
+      "duration_ms": 50199,
+      "input_tokens": 4012,
+      "llm_calls": 5,
+      "llm_ms": 50181,
+      "output_tokens": 6262,
+      "seq": 171,
+      "tool_calls": 4,
+      "tool_ms": 18,
+      "ts": "2026-04-19T09:13:57.049652678Z",
+      "type": "stats"
+    },
+    "event_count": 173,
+    "event_counts": {
+      "session.started": 1,
+      "tool.started": 4,
+      "usage": 5,
+      "tool.completed": 4,
+      "text.delta": 157,
+      "stats": 1,
+      "done": 1
+    },
+    "tool_counts": {
+      "shell": 2,
+      "read_file": 1,
+      "write_file": 1
+    },
+    "tool_outcomes": {
+      "shell:success": 2,
+      "read_file:success": 1,
+      "write_file:success": 1
+    },
+    "json_parse_errors": [],
+    "session_started": {
+      "agent": "developer",
+      "mcp": "",
+      "model": "zai-org-glm-5-1",
+      "provider": "Venice (zai-org-glm-5-1)",
+      "resuming": false,
+      "search": true,
+      "seq": 0,
+      "session_id": "20260419-191306-b908702170d36711",
+      "tools": "read_file,write_file,edit_file,glob,grep,shell",
+      "ts": "2026-04-19T09:13:06.850337864Z",
+      "type": "session.started",
+      "yolo": true
+    },
+    "done": {
+      "seq": 172,
+      "tokens": 322,
+      "ts": "2026-04-19T09:13:57.049659011Z",
+      "type": "done"
+    }
+  },
+  "verification": {
+    "passed": false,
+    "exit_code": 1,
+    "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+  },
+  "artifacts": {
+    "events_jsonl": "events.jsonl",
+    "stderr_log": null,
+    "final_text": "final.txt",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": "screenshot.png"
+  },
+  "output": {
+    "expected_file": "index.html",
+    "exists": true
+  }
+}

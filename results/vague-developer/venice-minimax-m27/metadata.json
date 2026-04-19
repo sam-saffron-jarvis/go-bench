@@ -1,0 +1,106 @@
+{
+  "bench": "vague-developer",
+  "slug": "venice-minimax-m27",
+  "display": "Venice Minimax M27",
+  "provider": "venice:minimax-m27",
+  "requested": null,
+  "note": null,
+  "timestamp_utc": "2026-04-19T09:17:20.246933+00:00",
+  "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--json",
+    "--yolo",
+    "--provider",
+    "venice:minimax-m27",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    ".",
+    "build a standalone 9x9 fully functioning go board in index.html"
+  ],
+  "command_text": "term-llm ask --no-session --json --yolo --provider venice:minimax-m27 --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+  "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 103.602,
+    "stats": {
+      "cache_write_tokens": 0,
+      "cached_input_tokens": 51490,
+      "duration_ms": 103576,
+      "input_tokens": 17618,
+      "llm_calls": 8,
+      "llm_ms": 103519,
+      "output_tokens": 5765,
+      "seq": 34,
+      "tool_calls": 7,
+      "tool_ms": 57,
+      "ts": "2026-04-19T09:17:20.102657395Z",
+      "type": "stats"
+    },
+    "event_count": 36,
+    "event_counts": {
+      "session.started": 1,
+      "tool.started": 7,
+      "usage": 8,
+      "tool.completed": 7,
+      "text.delta": 11,
+      "stats": 1,
+      "done": 1
+    },
+    "tool_counts": {
+      "glob": 1,
+      "shell": 5,
+      "write_file": 1
+    },
+    "tool_outcomes": {
+      "glob:success": 1,
+      "shell:success": 5,
+      "write_file:success": 1
+    },
+    "json_parse_errors": [],
+    "session_started": {
+      "agent": "developer",
+      "mcp": "",
+      "model": "minimax-m27",
+      "provider": "Venice (minimax-m27)",
+      "resuming": false,
+      "search": true,
+      "seq": 0,
+      "session_id": "20260419-191536-a38ab9fe9a8e9e19",
+      "tools": "read_file,write_file,edit_file,glob,grep,shell",
+      "ts": "2026-04-19T09:15:36.525675455Z",
+      "type": "session.started",
+      "yolo": true
+    },
+    "done": {
+      "seq": 35,
+      "tokens": 256,
+      "ts": "2026-04-19T09:17:20.102664449Z",
+      "type": "done"
+    }
+  },
+  "verification": {
+    "passed": false,
+    "exit_code": 1,
+    "output": "FAIL: /root/source/go-bench/.runs/vague-developer/venice-minimax-m27/index.html does not exist"
+  },
+  "artifacts": {
+    "events_jsonl": "events.jsonl",
+    "stderr_log": null,
+    "final_text": "final.txt",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": null
+  },
+  "output": {
+    "expected_file": "index.html",
+    "exists": false
+  }
+}

@@ -1,0 +1,62 @@
+{"agent":"developer","mcp":"","model":"qwen3-coder-480b-a35b-instruct","provider":"Venice (qwen3-coder-480b-a35b-instruct)","resuming":false,"search":true,"seq":0,"session_id":"20260419-205006-03830cb975ed910c","tools":"read_file,write_file,edit_file,glob,grep,shell","ts":"2026-04-19T10:50:06.622774913Z","type":"session.started","yolo":true}
+{"attempt":1,"max":5,"seq":1,"ts":"2026-04-19T10:50:07.535486855Z","type":"retry","wait_seconds":1.132032844}
+{"attempt":2,"max":5,"seq":2,"ts":"2026-04-19T10:50:09.020250327Z","type":"retry","wait_seconds":1.38994713}
+{"seq":3,"text":"I","ts":"2026-04-19T10:50:11.392324501Z","type":"text.delta"}
+{"seq":4,"text":"'ll","ts":"2026-04-19T10:50:11.412453593Z","type":"text.delta"}
+{"seq":5,"text":" create","ts":"2026-04-19T10:50:11.438441648Z","type":"text.delta"}
+{"seq":6,"text":" a","ts":"2026-04-19T10:50:11.465328511Z","type":"text.delta"}
+{"seq":7,"text":" standalone","ts":"2026-04-19T10:50:11.490438217Z","type":"text.delta"}
+{"seq":8,"text":" ","ts":"2026-04-19T10:50:11.515277559Z","type":"text.delta"}
+{"seq":9,"text":"9","ts":"2026-04-19T10:50:11.537799433Z","type":"text.delta"}
+{"seq":10,"text":"x","ts":"2026-04-19T10:50:11.563728098Z","type":"text.delta"}
+{"seq":11,"text":"9","ts":"2026-04-19T10:50:11.585495136Z","type":"text.delta"}
+{"seq":12,"text":" Go","ts":"2026-04-19T10:50:11.61172132Z","type":"text.delta"}
+{"seq":13,"text":" board","ts":"2026-04-19T10:50:11.635372163Z","type":"text.delta"}
+{"seq":14,"text":" in","ts":"2026-04-19T10:50:11.659347105Z","type":"text.delta"}
+{"seq":15,"text":" an","ts":"2026-04-19T10:50:11.685295062Z","type":"text.delta"}
+{"seq":16,"text":" HTML","ts":"2026-04-19T10:50:11.709845957Z","type":"text.delta"}
+{"seq":17,"text":" file","ts":"2026-04-19T10:50:11.734799583Z","type":"text.delta"}
+{"seq":18,"text":" with","ts":"2026-04-19T10:50:11.759195987Z","type":"text.delta"}
+{"seq":19,"text":" full","ts":"2026-04-19T10:50:11.787996722Z","type":"text.delta"}
+{"seq":20,"text":" functionality","ts":"2026-04-19T10:50:11.809094252Z","type":"text.delta"}
+{"seq":21,"text":" including","ts":"2026-04-19T10:50:11.832700736Z","type":"text.delta"}
+{"seq":22,"text":" stone","ts":"2026-04-19T10:50:11.860576126Z","type":"text.delta"}
+{"seq":23,"text":" placement","ts":"2026-04-19T10:50:11.883563264Z","type":"text.delta"}
+{"seq":24,"text":",","ts":"2026-04-19T10:50:11.908507293Z","type":"text.delta"}
+{"seq":25,"text":" capture","ts":"2026-04-19T10:50:11.932751862Z","type":"text.delta"}
+{"seq":26,"text":" logic","ts":"2026-04-19T10:50:11.956810945Z","type":"text.delta"}
+{"seq":27,"text":",","ts":"2026-04-19T10:50:11.982267476Z","type":"text.delta"}
+{"seq":28,"text":" and","ts":"2026-04-19T10:50:12.005531047Z","type":"text.delta"}
+{"seq":29,"text":" turn","ts":"2026-04-19T10:50:12.032691119Z","type":"text.delta"}
+{"seq":30,"text":" management","ts":"2026-04-19T10:50:12.057353009Z","type":"text.delta"}
+{"seq":31,"text":".\n\n","ts":"2026-04-19T10:50:12.079258057Z","type":"text.delta"}
+{"seq":32,"text":"Let","ts":"2026-04-19T10:50:12.106688324Z","type":"text.delta"}
+{"seq":33,"text":" me","ts":"2026-04-19T10:50:12.129877714Z","type":"text.delta"}
+{"seq":34,"text":" first","ts":"2026-04-19T10:50:12.155456444Z","type":"text.delta"}
+{"seq":35,"text":" check","ts":"2026-04-19T10:50:12.180957687Z","type":"text.delta"}
+{"seq":36,"text":" if","ts":"2026-04-19T10:50:12.212111454Z","type":"text.delta"}
+{"seq":37,"text":" there","ts":"2026-04-19T10:50:12.229432543Z","type":"text.delta"}
+{"seq":38,"text":" are","ts":"2026-04-19T10:50:12.248894784Z","type":"text.delta"}
+{"seq":39,"text":" any","ts":"2026-04-19T10:50:12.276465417Z","type":"text.delta"}
+{"seq":40,"text":" existing","ts":"2026-04-19T10:50:12.293696649Z","type":"text.delta"}
+{"seq":41,"text":" Go","ts":"2026-04-19T10:50:12.318303333Z","type":"text.delta"}
+{"seq":42,"text":"-related","ts":"2026-04-19T10:50:12.338748728Z","type":"text.delta"}
+{"seq":43,"text":" files","ts":"2026-04-19T10:50:12.364864948Z","type":"text.delta"}
+{"seq":44,"text":" in","ts":"2026-04-19T10:50:12.382722857Z","type":"text.delta"}
+{"seq":45,"text":" the","ts":"2026-04-19T10:50:12.403546294Z","type":"text.delta"}
+{"seq":46,"text":" project","ts":"2026-04-19T10:50:12.495732561Z","type":"text.delta"}
+{"seq":47,"text":" that","ts":"2026-04-19T10:50:12.517268808Z","type":"text.delta"}
+{"seq":48,"text":" I","ts":"2026-04-19T10:50:12.538413178Z","type":"text.delta"}
+{"seq":49,"text":" should","ts":"2026-04-19T10:50:12.562680039Z","type":"text.delta"}
+{"seq":50,"text":" consider","ts":"2026-04-19T10:50:12.591626011Z","type":"text.delta"}
+{"seq":51,"text":":\n\n","ts":"2026-04-19T10:50:12.694554598Z","type":"text.delta"}
+{"args":{"pattern":"**/*.go"},"call_id":"call_6fb83c14693ad08a","info":"(**/*.go)","name":"glob","seq":52,"ts":"2026-04-19T10:50:13.194818803Z","type":"tool.started"}
+{"cache_write_tokens":0,"cached_input_tokens":0,"input_tokens":4897,"output_tokens":73,"seq":53,"ts":"2026-04-19T10:50:13.194989944Z","type":"usage"}
+{"call_id":"call_6fb83c14693ad08a","info":"(**/*.go)","name":"glob","seq":54,"success":true,"ts":"2026-04-19T10:50:13.19499616Z","type":"tool.completed"}
+{"attempt":1,"max":5,"seq":55,"ts":"2026-04-19T10:50:13.82056179Z","type":"retry","wait_seconds":1.294421542}
+{"attempt":2,"max":5,"seq":56,"ts":"2026-04-19T10:50:15.49823764Z","type":"retry","wait_seconds":1.681184529}
+{"attempt":3,"max":5,"seq":57,"ts":"2026-04-19T10:50:18.503537541Z","type":"retry","wait_seconds":2.445235559}
+{"attempt":4,"max":5,"seq":58,"ts":"2026-04-19T10:50:21.319685063Z","type":"retry","wait_seconds":3.719804842}
+{"message":"Venice API error (status 429): {\"error\":\"The model is currently overloaded. Please try again later.\"}","seq":59,"ts":"2026-04-19T10:50:25.528124447Z","type":"error"}
+{"cache_write_tokens":0,"cached_input_tokens":0,"duration_ms":18905,"input_tokens":4897,"llm_calls":1,"llm_ms":18905,"output_tokens":73,"seq":60,"tool_calls":1,"tool_ms":0,"ts":"2026-04-19T10:50:25.528133726Z","type":"stats"}
+{"seq":61,"tokens":73,"ts":"2026-04-19T10:50:25.528138838Z","type":"done"}

@@ -1,0 +1,108 @@
+{
+  "bench": "strict-custom-agent",
+  "slug": "venice-qwen-3-6-plus",
+  "display": "Venice Qwen 3.6 Plus",
+  "provider": "venice:qwen-3-6-plus",
+  "requested": null,
+  "note": null,
+  "timestamp_utc": "2026-04-19T09:18:25.327279+00:00",
+  "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--json",
+    "--yolo",
+    "--provider",
+    "venice:qwen-3-6-plus",
+    "--max-turns",
+    "30",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    "./workspace",
+    "-f",
+    "./SPEC.md",
+    "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+  ],
+  "command_text": "term-llm ask --no-session --json --yolo --provider venice:qwen-3-6-plus --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+  "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 58.036,
+    "stats": {
+      "cache_write_tokens": 0,
+      "cached_input_tokens": 0,
+      "duration_ms": 58013,
+      "input_tokens": 19349,
+      "llm_calls": 3,
+      "llm_ms": 56499,
+      "output_tokens": 2686,
+      "seq": 9,
+      "tool_calls": 2,
+      "tool_ms": 1514,
+      "ts": "2026-04-19T09:18:22.330659349Z",
+      "type": "stats"
+    },
+    "event_count": 11,
+    "event_counts": {
+      "session.started": 1,
+      "tool.started": 2,
+      "usage": 3,
+      "tool.completed": 2,
+      "text.delta": 1,
+      "stats": 1,
+      "done": 1
+    },
+    "tool_counts": {
+      "write_file": 1,
+      "verify_board": 1
+    },
+    "tool_outcomes": {
+      "write_file:success": 1,
+      "verify_board:success": 1
+    },
+    "json_parse_errors": [],
+    "session_started": {
+      "agent": "go-board-bench",
+      "mcp": "",
+      "model": "qwen-3-6-plus",
+      "provider": "Venice (qwen-3-6-plus)",
+      "resuming": false,
+      "search": false,
+      "seq": 0,
+      "session_id": "20260419-191724-fcc8cf5fd9ea3569",
+      "tools": "read_file,write_file,edit_file,glob,grep",
+      "ts": "2026-04-19T09:17:24.317228016Z",
+      "type": "session.started",
+      "yolo": true
+    },
+    "done": {
+      "seq": 10,
+      "tokens": 20,
+      "ts": "2026-04-19T09:18:22.330666971Z",
+      "type": "done"
+    }
+  },
+  "verification": {
+    "passed": true,
+    "exit_code": 0,
+    "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/venice-qwen-3-6-plus/workspace/board.html satisfied all acceptance tests"
+  },
+  "artifacts": {
+    "events_jsonl": "events.jsonl",
+    "stderr_log": null,
+    "final_text": "final.txt",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": "screenshot.png"
+  },
+  "output": {
+    "expected_file": "workspace/board.html",
+    "exists": true
+  }
+}

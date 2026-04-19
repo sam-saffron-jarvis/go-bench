@@ -1,0 +1,108 @@
+{
+  "bench": "vague-developer",
+  "slug": "venice-grok-4-20",
+  "display": "Venice Grok 4.20",
+  "provider": "venice:grok-4-20",
+  "requested": null,
+  "note": null,
+  "timestamp_utc": "2026-04-19T10:09:13.122029+00:00",
+  "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--json",
+    "--yolo",
+    "--provider",
+    "venice:grok-4-20",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    ".",
+    "build a standalone 9x9 fully functioning go board in index.html"
+  ],
+  "command_text": "term-llm ask --no-session --json --yolo --provider venice:grok-4-20 --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+  "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 69.202,
+    "stats": {
+      "cache_write_tokens": 0,
+      "cached_input_tokens": 42560,
+      "duration_ms": 69178,
+      "input_tokens": 15692,
+      "llm_calls": 6,
+      "llm_ms": 67147,
+      "output_tokens": 12872,
+      "seq": 284,
+      "tool_calls": 7,
+      "tool_ms": 2025,
+      "ts": "2026-04-19T10:08:39.991618281Z",
+      "type": "stats"
+    },
+    "event_count": 286,
+    "event_counts": {
+      "session.started": 1,
+      "tool.started": 7,
+      "usage": 6,
+      "tool.completed": 7,
+      "text.delta": 263,
+      "stats": 1,
+      "done": 1
+    },
+    "tool_counts": {
+      "write_file": 1,
+      "shell": 3,
+      "read_file": 2,
+      "grep": 1
+    },
+    "tool_outcomes": {
+      "write_file:success": 1,
+      "shell:success": 3,
+      "read_file:success": 2,
+      "grep:success": 1
+    },
+    "json_parse_errors": [],
+    "session_started": {
+      "agent": "developer",
+      "mcp": "",
+      "model": "grok-4-20",
+      "provider": "Venice (grok-4-20)",
+      "resuming": false,
+      "search": true,
+      "seq": 0,
+      "session_id": "20260419-200730-324934cc9359e196",
+      "tools": "read_file,write_file,edit_file,glob,grep,shell",
+      "ts": "2026-04-19T10:07:30.813376136Z",
+      "type": "session.started",
+      "yolo": true
+    },
+    "done": {
+      "seq": 285,
+      "tokens": 580,
+      "ts": "2026-04-19T10:08:39.991626848Z",
+      "type": "done"
+    }
+  },
+  "verification": {
+    "passed": false,
+    "exit_code": 1,
+    "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+  },
+  "artifacts": {
+    "events_jsonl": "events.jsonl",
+    "stderr_log": null,
+    "final_text": "final.txt",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": "screenshot.png"
+  },
+  "output": {
+    "expected_file": "index.html",
+    "exists": true
+  }
+}

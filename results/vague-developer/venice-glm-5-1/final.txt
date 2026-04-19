@@ -1,0 +1,26 @@
+Now I'll create a fully functioning 9x9 Go board in `index.html`. This needs to include:
+- A proper board with grid lines and star points
+- Alternating black/white stone placement
+- Ko rule enforcement
+- Capture logic (removing stones with no liberties)
+- Pass, resign, and new game functionality
+- Score counting (territory + captures)
+- Visual highlighting of last move
+- Hover previewsLet me verify it loads properly:The standalone 9×9 Go board has been created in `index.html`. Here's what's included:
+
+### Features
+- **Full Go rules**: Alternating black/white play, capture logic (groups with zero liberties are removed), suicide prevention, and ko rule enforcement
+- **Board rendering**: Canvas-based board with wood-grain texture, grid lines, star points (hoshi), coordinate labels (A-J, 1-9, skipping I per Go convention)
+- **Stone visuals**: Gradient-shaded stones with shadows, hover preview showing where your stone would go
+- **Last move marker**: Circle indicator on the most recent move
+- **Game controls**: Pass, Resign, Undo, Score (estimation), and New Game buttons
+- **Keyboard shortcuts**: P=pass, U=undo, N=new game
+- **Scoring**: Japanese rules with 6.5 komi — territory + captures; the Score button shows estimated territory at any time, and two consecutive passes end the game with final scoring
+- **Touch support**: Works on mobile/tablet
+- **Responsive**: Canvas scales to fit smaller screens
+
+### Rules Implemented
+1. **Captures**: Stones with no liberties are removed; opponent captures count toward score
+2. **No suicide**: Can't place a stone that would leave your own group with zero liberties (unless it captures opponent stones first)
+3. **Ko rule**: Prevents immediate recapture of a single stone in a ko fight
+4. **Game end**: Two consecutive passes or resignation; final score calculated with territory counting

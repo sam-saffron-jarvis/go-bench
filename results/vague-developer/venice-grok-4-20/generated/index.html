@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9x9 Go</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@400;500&amp;display=swap');
+        
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2c2520);
+        }
+        
+        .board-container {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+            border: 12px solid #3f2a1e;
+            border-radius: 8px;
+            background: #5c4033;
+            padding: 20px;
+        }
+        
+        canvas {
+            image-rendering: crisp-edges;
+            touch-action: none;
+        }
+        
+        .stone-black {
+            background: radial-gradient(circle at 35% 35%, #555, #111 60%, #000);
+            box-shadow: 3px 4px 8px rgba(0,0,0,0.6),
+                        inset -4px -4px 8px rgba(255,255,255,0.1),
+                        inset 4px 4px 6px rgba(0,0,0,0.8);
+        }
+        
+        .stone-white {
+            background: radial-gradient(circle at 35% 35%, #fff, #f0f0f0 40%, #ddd);
+            box-shadow: 3px 4px 8px rgba(0,0,0,0.5),
+                        inset -6px -6px 12px rgba(255,255,255,0.9),
+                        inset 4px 4px 8px rgba(80,80,80,0.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center text-white font-sans">
+    <div class="max-w-[980px] mx-auto p-8">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-5xl font-bold tracking-tighter" style="font-family: 'Playfair Display', serif;">囲碁</h1>
+                <p class="text-amber-200 text-xl -mt-2">9×9 GO</p>
+            </div>
+            <div class="flex items-center gap-8">
+                <!-- Black side -->
+                <div class="flex items-center gap-4">
+                    <div class="text-right">
+                        <div class="text-sm text-zinc-400">BLACK</div>
+                        <div id="black-captured" class="text-3xl font-mono font-bold text-white">0</div>
+                    </div>
+                    <div class="w-14 h-14 rounded-2xl stone-black flex items-center justify-center text-2xl shadow-inner">⚫</div>
+                </div>
+                
+                <div class="h-12 w-px bg-amber-900"></div>
+                
+                <!-- White side -->
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl stone-white flex items-center justify-center text-2xl shadow-inner border border-amber-950">⚪</div>
+                    <div>
+                        <div class="text-sm text-zinc-400">WHITE</div>
+                        <div id="white-captured" class="text-3xl font-mono font-bold text-white">0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div onclick="newGame()" 
+                 class="px-6 py-3 bg-amber-800 hover:bg-amber-700 transition-colors rounded-2xl flex items-center gap-2 cursor-pointer active:scale-95">
+                <span class="text-xl">♻</span>
+                <span class="font-medium">New Game</span>
+            </div>
+        </div>
+
+        <div class="flex gap-10">
+            <!-- Left panel: Turn indicator -->
+            <div class="w-40 flex flex-col items-center justify-center gap-6">
+                <div id="turn-indicator" 
+                     class="w-28 h-28 rounded-3xl flex flex-col items-center justify-center border-4 border-amber-800 shadow-inner transition-all">
+                    <div id="turn-stone" 
+                         class="w-16 h-16 rounded-2xl stone-black mb-3 flex items-center justify-center text-4xl">⚫</div>
+                    <div id="turn-text" class="font-bold text-amber-100 tracking-widest text-sm">BLACK'S TURN</div>
+                </div>
+                
+                <div class="text-center text-xs text-amber-300/70 leading-relaxed max-w-[120px]">
+                    Click intersections to place stones.<br>
+                    Standard rules with capture.
+                </div>
+                
+                <div onclick="undoMove()" 
+                     class="flex items-center gap-2 px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 rounded-2xl cursor-pointer transition-all active:scale-95 text-sm font-medium">
+                    <span>↩</span>
+                    <span>Undo</span>
+                </div>
+            </div>
+
+            <!-- The Board -->
+            <div class="board-container">
+                <canvas id="go-board" width="560" height="560" 
+                        class="bg-[#d4b38a] rounded"></canvas>
+            </div>
+
+            <!-- Right panel: Controls and info -->
+            <div class="w-40 flex flex-col justify-between py-6">
+                <div class="space-y-8">
+                    <div>
+                        <div class="text-amber-400 text-xs tracking-[1px] mb-2 font-medium">LAST MOVE</div>
+                        <div id="last-move-display" 
+                             class="font-mono text-4xl font-bold text-amber-200 h-12 flex items-center">
+                            —
+                        </div>
+                    </div>
+                    
+                    <div class="bg-zinc-900/50 rounded-3xl p-5 text-xs">
+                        <div class="flex justify-between mb-4">
+                            <div class="text-emerald-400">9×9</div>
+                            <div class="text-zinc-500">Beginner board</div>
+                        </div>
+                        <div onclick="passTurn()" 
+                             class="w-full py-4 text-center border border-amber-700 hover:border-amber-400 rounded-2xl cursor-pointer transition-colors font-medium active:bg-amber-950">
+                            PASS
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-[10px] text-center text-amber-900/60 leading-tight">
+                    Standalone HTML Go Board<br>
+                    Captures • Liberties • Suicide prevention
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer info -->
+        <div class="mt-8 text-center text-amber-900/40 text-xs flex items-center justify-center gap-5">
+            <div>Black starts • Click to play</div>
+            <div class="w-1.5 h-1.5 bg-amber-900 rounded-full"></div>
+            <div>Hover shows preview</div>
+        </div>
+    </div>
+
+    <script>
+        const SIZE = 9;
+        const CELL_SIZE = 50;
+        const PADDING = 55;
+        const CANVAS_SIZE = PADDING * 2 + CELL_SIZE * (SIZE - 1);
+        
+        let board = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
+        let currentPlayer = 1; // 1 = black, 2 = white
+        let history = [];
+        let lastMove = null;
+        let capturedBlack = 0;
+        let capturedWhite = 0;
+        let hoverPos = null;
+        let isMouseDown = false;
+        
+        const canvas = document.getElementById('go-board');
+        const ctx = canvas.getContext('2d');
+        canvas.width = CANVAS_SIZE;
+        canvas.height = CANVAS_SIZE;
+        
+        const blackCapturedEl = document.getElementById('black-captured');
+        const whiteCapturedEl = document.getElementById('white-captured');
+        const turnStoneEl = document.getElementById('turn-stone');
+        const turnTextEl = document.getElementById('turn-text');
+        const lastMoveEl = document.getElementById('last-move-display');
+        
+        function isValid(x, y) {
+            return x >= 0 && x < SIZE && y >= 0 && y < SIZE;
+        }
+        
+        function copyBoard(b) {
+            return b.map(row => [...row]);
+        }
+        
+        function getStoneColor(player) {
+            return player === 1 ? '#1a1a1a' : '#f8f1e3';
+        }
+        
+        function countLiberties(x, y) {
+            const color = board[y][x];
+            if (color === 0) return 0;
+            
+            const visited = new Set();
+            const liberties = new Set();
+            const stack = [[x, y]];
+            visited.add(`${x},${y}`);
+            
+            while (stack.length > 0) {
+                const [cx, cy] = stack.pop();
+                
+                const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+                for (let [dx, dy] of directions) {
+                    const nx = cx + dx;
+                    const ny = cy + dy;
+                    
+                    if (!isValid(nx, ny)) continue;
+                    
+                    if (board[ny][nx] === 0) {
+                        liberties.add(`${nx},${ny}`);
+                    } else if (board[ny][nx] === color && !visited.has(`${nx},${ny}`)) {
+                        visited.add(`${nx},${ny}`);
+                        stack.push([nx, ny]);
+                    }
+                }
+            }
+            return liberties.size;
+        }
+        
+        function removeGroup(x, y) {
+            const color = board[y][x];
+            if (color === 0) return 0;
+            
+            let count = 0;
+            const visited = new Set();
+            const stack = [[x, y]];
+            visited.add(`${x},${y}`);
+            board[y][x] = 0;
+            count++;
+            
+            while (stack.length > 0) {
+                const [cx, cy] = stack.pop();
+                
+                const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+                for (let [dx, dy] of directions) {
+                    const nx = cx + dx;
+                    const ny = cy + dy;
+                    
+                    if (isValid(nx, ny) && board[ny][nx] === color && !visited.has(`${nx},${ny}`)) {
+                        visited.add(`${nx},${ny}`);
+                        board[ny][nx] = 0;
+                        stack.push([nx, ny]);
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+        
+        function makeMove(x, y) {
+            if (!isValid(x, y) || board[y][x] !== 0) return false;
+            
+            const prevState = {
+                board: copyBoard(board),
+                capturedBlack: capturedBlack,
+                capturedWhite: capturedWhite,
+                currentPlayer: currentPlayer,
+                lastMove: lastMove ? { ...lastMove } : null
+            };
+            
+            // Place stone
+            board[y][x] = currentPlayer;
+            const opponent = currentPlayer === 1 ? 2 : 1;
+            let capturedCount = 0;
+            
+            // Check for captured opponent groups
+            const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+            const checked = new Set();
+            
+            for (let [dx, dy] of directions) {
+                const nx = x + dx;
+                const ny = y + dy;
+                
+                if (!isValid(nx, ny)) continue;
+                if (board[ny][nx] !== opponent) continue;
+                
+                const key = `${nx},${ny}`;
+                if (checked.has(key)) continue;
+                
+                if (countLiberties(nx, ny) === 0) {
+                    const removed = removeGroup(nx, ny);
+                    capturedCount += removed;
+                    // Mark all removed positions as checked (though already 0 now)
+                }
+                checked.add(key);
+            }
+            
+            // Check for suicide
+            if (countLiberties(x, y) === 0) {
+                // Revert
+                board = prevState.board;
+                capturedBlack = prevState.capturedBlack;
+                capturedWhite = prevState.capturedWhite;
+                return false;
+            }
+            
+            // Update captures
+            if (currentPlayer === 1) {
+                capturedWhite += capturedCount;
+            } else {
+                capturedBlack += capturedCount;
+            }
+            
+            // Save to history
+            history.push(prevState);
+            
+            // Update state
+            lastMove = { x, y };
+            currentPlayer = opponent;
+            
+            updateUI();
+            return true;
+        }
+        
+        function updateUI() {
+            blackCapturedEl.textContent = capturedBlack;
+            whiteCapturedEl.textContent = capturedWhite;
+            
+            // Update turn indicator
+            if (currentPlayer === 1) {
+                turnStoneEl.className = 'w-16 h-16 rounded-2xl stone-black mb-3 flex items-center justify-center text-4xl';
+                turnStoneEl.innerHTML = '⚫';
+                turnTextEl.textContent = "BLACK'S TURN";
+                turnTextEl.style.color = '#ddd';
+            } else {
+                turnStoneEl.className = 'w-16 h-16 rounded-2xl stone-white mb-3 flex items-center justify-center text-4xl border border-zinc-700';
+                turnStoneEl.innerHTML = '⚪';
+                turnTextEl.textContent = "WHITE'S TURN";
+                turnTextEl.style.color = '#ddd';
+            }
+            
+            // Last move
+            if (lastMove) {
+                const letters = 'ABCDEFGHJ';
+                const col = letters[lastMove.x];
+                const row = SIZE - lastMove.y;
+                lastMoveEl.textContent = `${col}${row}`;
+                lastMoveEl.style.color = currentPlayer === 1 ? '#ddd' : '#111';
+            } else {
+                lastMoveEl.textContent = '—';
+            }
+            
+            draw();
+        }
+        
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Board background
+            ctx.fillStyle = '#d4b38a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Outer border
+            ctx.strokeStyle = '#3a2a1f';
+            ctx.lineWidth = 18;
+            ctx.strokeRect(PADDING - 9, PADDING - 9, 
+                          CELL_SIZE * (SIZE - 1) + 18, 
+                          CELL_SIZE * (SIZE - 1) + 18);
+            
+            // Inner wood texture simulation (subtle lines)
+            ctx.strokeStyle = '#b88f5e';
+            ctx.lineWidth = 4;
+            for (let i = 1; i < 6; i++) {
+                const offset = i * 8;
+                ctx.strokeRect(PADDING - offset, PADDING - offset, 
+                              CELL_SIZE * (SIZE - 1) + offset * 2, 
+                              CELL_SIZE * (SIZE - 1) + offset * 2);
+            }
+            
+            // Grid lines
+            ctx.strokeStyle = '#2c2118';
+            ctx.lineWidth = 2.5;
+            
+            for (let i = 0; i < SIZE; i++) {
+                const pos = PADDING + i * CELL_SIZE;
+                
+                // Horizontal
+                ctx.beginPath();
+                ctx.moveTo(PADDING, pos);
+                ctx.lineTo(PADDING + CELL_SIZE * (SIZE - 1), pos);
+                ctx.stroke();
+                
+                // Vertical
+                ctx.beginPath();
+                ctx.moveTo(pos, PADDING);
+                ctx.lineTo(pos, PADDING + CELL_SIZE * (SIZE - 1));
+                ctx.stroke();
+            }
+            
+            // Star points (hoshi)
+            const starPositions = [2, 4, 6];
+            ctx.fillStyle = '#2c2118';
+            for (let sx of starPositions) {
+                for (let sy of starPositions) {
+                    const x = PADDING + sx * CELL_SIZE;
+                    const y = PADDING + sy * CELL_SIZE;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            
+            // Draw stones
+            const radius = CELL_SIZE * 0.46;
+            
+            for (let y = 0; y < SIZE; y++) {
+                for (let x = 0; x < SIZE; x++) {
+                    if (board[y][x] === 0) continue;
+                    
+                    const cx = PADDING + x * CELL_SIZE;
+                    const cy = PADDING + y * CELL_SIZE;
+                    const isBlack = board[y][x] === 1;
+                    
+                    // Shadow
+                    ctx.save();
+                    ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+                    ctx.shadowBlur = 8;
+                    ctx.shadowOffsetX = 3;
+                    ctx.shadowOffsetY = 5;
+                    
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = isBlack ? '#111111' : '#f8f1e3';
+                    ctx.fill();
+                    ctx.restore();
+                    
+                    // Main stone
+                    ctx.save();
+                    const grad = ctx.createRadialGradient(
+                        cx - radius * 0.35, 
+                        cy - radius * 0.35, 
+                        radius * 0.1,
+                        cx, cy, radius * 1.1
+                    );
+                    
+                    if (isBlack) {
+                        grad.addColorStop(0, '#444444');
+                        grad.addColorStop(1, '#0a0a0a');
+                        ctx.fillStyle = grad;
+                    } else {
+                        grad.addColorStop(0, '#ffffff');
+                        grad.addColorStop(1, '#d4c4a8');
+                        ctx.fillStyle = grad;
+                    }
+                    
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Highlight ring for white
+                    if (!isBlack) {
+                        ctx.strokeStyle = 'rgba(40,40,40,0.25)';
+                        ctx.lineWidth = 3;
+                        ctx.beginPath();
+                        ctx.arc(cx, cy, radius * 0.85, 0, Math.PI * 2);
+                        ctx.stroke();
+                    } else {
+                        // Inner black detail
+                        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                        ctx.lineWidth = 4;
+                        ctx.beginPath();
+                        ctx.arc(cx, cy, radius * 0.7, 0, Math.PI * 1.6);
+                        ctx.stroke();
+                    }
+                    
+                    ctx.restore();
+                }
+            }
+            
+            // Draw last move indicator
+            if (lastMove) {
+                const cx = PADDING + lastMove.x * CELL_SIZE;
+                const cy = PADDING + lastMove.y * CELL_SIZE;
+                ctx.strokeStyle = currentPlayer === 1 ? '#f8d5a0' : '#3a2a1f';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius * 0.35, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+            
+            // Draw hover preview
+            if (hoverPos && board[hoverPos.y][hoverPos.x] === 0) {
+                const cx = PADDING + hoverPos.x * CELL_SIZE;
+                const cy = PADDING + hoverPos.y * CELL_SIZE;
+                const isBlack = currentPlayer === 1;
+                
+                ctx.save();
+                ctx.globalAlpha = 0.65;
+                
+                ctx.shadowColor = 'rgba(0,0,0,0.4)';
+                ctx.shadowBlur = 12;
+                ctx.shadowOffsetX = 2;
+                ctx.shadowOffsetY = 4;
+                
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+                ctx.fillStyle = isBlack ? '#111111' : '#f8f1e3';
+                ctx.fill();
+                ctx.restore();
+            }
+            
+            // Coordinates
+            ctx.fillStyle = '#3a2a1f';
+            ctx.font = '500 15px Inter, system-ui, sans-serif';
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+            
+            // File labels (A-J) at bottom
+            const files = 'ABCDEFGHJ';
+            for (let i = 0; i < SIZE; i++) {
+                const x = PADDING + i * CELL_SIZE;
+                const y = PADDING + (SIZE - 1) * CELL_SIZE + 34;
+                ctx.fillText(files[i], x, y);
+            }
+            
+            // Rank labels (9-1) on left
+            ctx.textAlign = 'right';
+            for (let i = 0; i < SIZE; i++) {
+                const y = PADDING + i * CELL_SIZE;
+                const x = PADDING - 22;
+                ctx.fillText(String(SIZE - i), x, y);
+            }
+            
+            // Right side ranks too
+            ctx.textAlign = 'left';
+            for (let i = 0; i < SIZE; i++) {
+                const y = PADDING + i * CELL_SIZE;
+                const x = PADDING + (SIZE - 1) * CELL_SIZE + 24;
+                ctx.fillText(String(SIZE - i), x, y);
+            }
+        }
+        
+        function getBoardPosition(clientX, clientY) {
+            const rect = canvas.getBoundingClientRect();
+            const mx = clientX - rect.left;
+            const my = clientY - rect.top;
+            
+            const boardX = Math.round((mx - PADDING) / CELL_SIZE);
+            const boardY = Math.round((my - PADDING) / CELL_SIZE);
+            
+            if (boardX >= 0 && boardX < SIZE && boardY >= 0 && boardY < SIZE) {
+                return { x: boardX, y: boardY };
+            }
+            return null;
+        }
+        
+        function handleCanvasClick(e) {
+            const pos = getBoardPosition(e.clientX, e.clientY);
+            if (!pos) return;
+            
+            if (makeMove(pos.x, pos.y)) {
+                draw();
+                updateUI();
+            }
+        }
+        
+        function handleMouseMove(e) {
+            const pos = getBoardPosition(e.clientX, e.clientY);
+            if (!pos || (hoverPos && hoverPos.x === pos.x && hoverPos.y === pos.y)) {
+                return;
+            }
+            
+            hoverPos = board[pos.y][pos.x] === 0 ? pos : null;
+            draw();
+        }
+        
+        function handleMouseLeave() {
+            hoverPos = null;
+            draw();
+        }
+        
+        function undoMove() {
+            if (history.length === 0) return;
+            
+            const prevState = history.pop();
+            board = prevState.board;
+            capturedBlack = prevState.capturedBlack;
+            capturedWhite = prevState.capturedWhite;
+            currentPlayer = prevState.currentPlayer;
+            lastMove = prevState.lastMove;
+            
+            updateUI();
+            draw();
+        }
+        
+        function passTurn() {
+            // Simple pass: just switch player (no ko tracking or scoring for standalone)
+            const prevState = {
+                board: copyBoard(board),
+                capturedBlack: capturedBlack,
+                capturedWhite: capturedWhite,
+                currentPlayer: currentPlayer,
+                lastMove: lastMove ? { ...lastMove } : null
+            };
+            history.push(prevState);
+            
+            currentPlayer = currentPlayer === 1 ? 2 : 1;
+            lastMove = null; // pass doesn't mark last move stone
+            updateUI();
+            draw();
+            
+            // Simple notification
+            const notif = document.createElement('div');
+            notif.style.cssText = 'position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#3a2a1f; color:#f1d8b0; padding:12px 28px; border-radius:9999px; font-size:13px; box-shadow:0 10px 15px -3px rgb(0 0 0 / 0.3); z-index:100;';
+            notif.textContent = currentPlayer === 1 ? "Black passed" : "White passed";
+            document.body.appendChild(notif);
+            setTimeout(() => notif.remove(), 1400);
+        }
+        
+        function newGame() {
+            board = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
+            currentPlayer = 1;
+            history = [];
+            lastMove = null;
+            capturedBlack = 0;
+            capturedWhite = 0;
+            hoverPos = null;
+            
+            updateUI();
+            draw();
+        }
+        
+        function initTailwind() {
+            // Tailwind script already loaded via CDN
+        }
+        
+        // Event listeners
+        function setupEvents() {
+            canvas.addEventListener('click', handleCanvasClick);
+            canvas.addEventListener('mousemove', handleMouseMove);
+            canvas.addEventListener('mouseleave', handleMouseLeave);
+            
+            // Touch support
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const pos = getBoardPosition(touch.clientX, touch.clientY);
+                if (pos) {
+                    if (makeMove(pos.x, pos.y)) {
+                        updateUI();
+                    }
+                }
+            });
+            
+            // Keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'u' || e.key === 'U') {
+                    undoMove();
+                }
+                if (e.key === 'n' || e.key === 'N') {
+                    newGame();
+                }
+                if (e.key === 'p' || e.key === 'P') {
+                    passTurn();
+                }
+            });
+        }
+        
+        // Initialize everything
+        function init() {
+            // Ensure canvas size is correct
+            canvas.width = CANVAS_SIZE;
+            canvas.height = CANVAS_SIZE;
+            
+            setupEvents();
+            newGame(); // initializes and draws first board
+            draw();
+            
+            console.log('%c9x9 Go board initialized ✓\nClick the board to play. Undo with U key.', 'color:#d4b38a; font-family:monospace');
+        }
+        
+        window.onload = init;
+    </script>
+</body>
+</html>

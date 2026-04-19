@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>9×9 Go</title>
+<style>
+  :root {
+    --board-bg: #dcb35c;
+    --line: #2b1a06;
+    --panel: #2a2a2a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: #1a1a1a;
+    color: #eee;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 16px;
+  }
+  h1 { margin: 0; font-weight: 400; letter-spacing: 2px; }
+  .status {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: var(--panel);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .player {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .player.active { background: #444; }
+  .stone-icon {
+    width: 18px; height: 18px; border-radius: 50%;
+    display: inline-block;
+  }
+  .stone-icon.black { background: radial-gradient(circle at 30% 30%, #555, #000); }
+  .stone-icon.white { background: radial-gradient(circle at 30% 30%, #fff, #bbb); }
+  canvas {
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    cursor: crosshair;
+    touch-action: none;
+  }
+  .controls {
+    display: flex;
+    gap: 10px;
+  }
+  button {
+    background: #3a3a3a;
+    color: #eee;
+    border: 1px solid #555;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.15s;
+  }
+  button:hover { background: #4a4a4a; }
+  button:active { background: #2a2a2a; }
+  .message {
+    min-height: 20px;
+    font-size: 13px;
+    color: #ffb347;
+  }
+</style>
+</head>
+<body>
+  <h1>9 × 9 GO</h1>
+  <div class="status">
+    <div class="player" id="p-black">
+      <span class="stone-icon black"></span>
+      <span>Black</span>
+      <span>Captures: <b id="cap-black">0</b></span>
+    </div>
+    <div class="player" id="p-white">
+      <span class="stone-icon white"></span>
+      <span>White</span>
+      <span>Captures: <b id="cap-white">0</b></span>
+    </div>
+  </div>
+  <canvas id="board" width="500" height="500"></canvas>
+  <div class="message" id="message"></div>
+  <div class="controls">
+    <button id="pass">Pass</button>
+    <button id="undo">Undo</button>
+    <button id="reset">New Game</button>
+    <button id="score">Score</button>
+  </div>
+
+<script>
+(() => {
+  const SIZE = 9;
+  const CANVAS = document.getElementById('board');
+  const ctx = CANVAS.getContext('2d');
+  const CSS_SIZE = 500;
+  const MARGIN = 30;
+  const CELL = (CSS_SIZE - MARGIN * 2) / (SIZE - 1);
+  const STAR_POINTS = [[2,2],[2,6],[6,2],[6,6],[4,4]];
+
+  // HiDPI
+  const dpr = window.devicePixelRatio || 1;
+  CANVAS.width = CSS_SIZE * dpr;
+  CANVAS.height = CSS_SIZE * dpr;
+  CANVAS.style.width = CSS_SIZE + 'px';
+  CANVAS.style.height = CSS_SIZE + 'px';
+  ctx.scale(dpr, dpr);
+
+  const EMPTY = 0, BLACK = 1, WHITE = 2;
+
+  let board, turn, captures, history, lastMove, koPoint, passes, gameOver, hover;
+
+  function newGame() {
+    board = Array.from({length: SIZE}, () => Array(SIZE).fill(EMPTY));
+    turn = BLACK;
+    captures = {1: 0, 2: 0};
+    history = [];
+    lastMove = null;
+    koPoint = null;
+    passes = 0;
+    gameOver = false;
+    hover = null;
+    setMessage('');
+    draw();
+    updateStatus();
+  }
+
+  function cloneBoard(b) { return b.map(r => r.slice()); }
+
+  function neighbors(x, y) {
+    const out = [];
+    if (x > 0) out.push([x-1, y]);
+    if (x < SIZE-1) out.push([x+1, y]);
+    if (y > 0) out.push([x, y-1]);
+    if (y < SIZE-1) out.push([x, y+1]);
+    return out;
+  }
+
+  // Find the group containing (x,y) and its liberties
+  function getGroup(b, x, y) {
+    const color = b[y][x];
+    const stones = [];
+    const liberties = new Set();
+    const seen = Array.from({length: SIZE}, () => Array(SIZE).fill(false));
+    const stack = [[x,y]];
+    seen[y][x] = true;
+    while (stack.length) {
+      const [cx, cy] = stack.pop();
+      stones.push([cx, cy]);
+      for (const [nx, ny] of neighbors(cx, cy)) {
+        if (seen[ny][nx]) continue;
+        if (b[ny][nx] === EMPTY) {
+          liberties.add(nx + ',' + ny);
+        } else if (b[ny][nx] === color) {
+          seen[ny][nx] = true;
+          stack.push([nx, ny]);
+        }
+      }
+    }
+    return { stones, liberties };
+  }
+
+  function tryPlay(x, y, color) {
+    if (board[y][x] !== EMPTY) return { ok: false, reason: 'Point occupied' };
+    if (koPoint && koPoint[0] === x && koPoint[1] === y && koPoint[2] === color) {
+      return { ok: false, reason: 'Ko: cannot recapture immediately' };
+    }
+
+    const b = cloneBoard(board);
+    b[y][x] = color;
+    const opp = color === BLACK ? WHITE : BLACK;
+    let captured = [];
+
+    for (const [nx, ny] of neighbors(x, y)) {
+      if (b[ny][nx] === opp) {
+        const g = getGroup(b, nx, ny);
+        if (g.liberties.size === 0) {
+          for (const [sx, sy] of g.stones) {
+            b[sy][sx] = EMPTY;
+            captured.push([sx, sy]);
+          }
+        }
+      }
+    }
+
+    // Suicide check
+    const own = getGroup(b, x, y);
+    if (own.liberties.size === 0) {
+      return { ok: false, reason: 'Suicide is not allowed' };
+    }
+
+    // Ko: if exactly one stone captured and the placed stone is now in a
+    // group of one with one liberty, mark the captured point as ko.
+    let newKo = null;
+    if (captured.length === 1 && own.stones.length === 1 && own.liberties.size === 1) {
+      newKo = [captured[0][0], captured[0][1], opp];
+    }
+
+    return { ok: true, board: b, captured, ko: newKo };
+  }
+
+  function play(x, y) {
+    if (gameOver) return;
+    const res = tryPlay(x, y, turn);
+    if (!res.ok) {
+      setMessage(res.reason);
+      return;
+    }
+    history.push({
+      board: cloneBoard(board),
+      turn, captures: {...captures},
+      lastMove, koPoint, passes, gameOver
+    });
+    board = res.board;
+    captures[turn] += res.captured.length;
+    lastMove = [x, y];
+    koPoint = res.ko;
+    passes = 0;
+    turn = turn === BLACK ? WHITE : BLACK;
+    setMessage('');
+    draw();
+    updateStatus();
+  }
+
+  function pass() {
+    if (gameOver) return;
+    history.push({
+      board: cloneBoard(board),
+      turn, captures: {...captures},
+      lastMove, koPoint, passes, gameOver
+    });
+    passes++;
+    lastMove = null;
+    koPoint = null;
+    turn = turn === BLACK ? WHITE : BLACK;
+    if (passes >= 2) {
+      gameOver = true;
+      showScore();
+    } else {
+      setMessage((turn === BLACK ? 'White' : 'Black') + ' passed.');
+    }
+    draw();
+    updateStatus();
+  }
+
+  function undo() {
+    if (!history.length) return;
+    const s = history.pop();
+    board = s.board;
+    turn = s.turn;
+    captures = s.captures;
+    lastMove = s.lastMove;
+    koPoint = s.koPoint;
+    passes = s.passes;
+    gameOver = s.gameOver;
+    setMessage('');
+    draw();
+    updateStatus();
+  }
+
+  // Area scoring: count stones + territory (empty regions surrounded by only one color)
+  function computeScore() {
+    const b = board;
+    const score = {1: 0, 2: 0};
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        if (b[y][x] !== EMPTY) score[b[y][x]]++;
+      }
+    }
+    const seen = Array.from({length: SIZE}, () => Array(SIZE).fill(false));
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        if (b[y][x] !== EMPTY || seen[y][x]) continue;
+        const region = [];
+        const borders = new Set();
+        const stack = [[x,y]];
+        seen[y][x] = true;
+        while (stack.length) {
+          const [cx, cy] = stack.pop();
+          region.push([cx, cy]);
+          for (const [nx, ny] of neighbors(cx, cy)) {
+            if (b[ny][nx] === EMPTY) {
+              if (!seen[ny][nx]) { seen[ny][nx] = true; stack.push([nx, ny]); }
+            } else {
+              borders.add(b[ny][nx]);
+            }
+          }
+        }
+        if (borders.size === 1) {
+          const owner = borders.values().next().value;
+          score[owner] += region.length;
+        }
+      }
+    }
+    // Komi 6.5 to White on 9x9 is common
+    const komi = 6.5;
+    return { black: score[BLACK], white: score[WHITE] + komi, komi };
+  }
+
+  function showScore() {
+    const s = computeScore();
+    const diff = s.black - s.white;
+    let winner;
+    if (diff > 0) winner = 'Black wins by ' + diff.toFixed(1);
+    else if (diff < 0) winner = 'White wins by ' + (-diff).toFixed(1);
+    else winner = 'Tie';
+    setMessage(`Black: ${s.black}  |  White: ${s.white} (incl. ${s.komi} komi)  —  ${winner}`);
+  }
+
+  // Drawing
+  function boardToPx(i) { return MARGIN + i * CELL; }
+
+  function pxToBoard(px, py) {
+    const x = Math.round((px - MARGIN) / CELL);
+    const y = Math.round((py - MARGIN) / CELL);
+    if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) return null;
+    // Also check we're reasonably close
+    const dx = px - boardToPx(x);
+    const dy = py - boardToPx(y);
+    if (Math.hypot(dx, dy) > CELL * 0.5) return null;
+    return [x, y];
+  }
+
+  function drawStone(x, y, color, ghost=false) {
+    const cx = boardToPx(x), cy = boardToPx(y);
+    const r = CELL * 0.46;
+    ctx.save();
+    if (ghost) ctx.globalAlpha = 0.45;
+    // Shadow
+    if (!ghost) {
+      ctx.beginPath();
+      ctx.arc(cx + 1.5, cy + 2.5, r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,0,0,0.35)';
+      ctx.fill();
+    }
+    const grad = ctx.createRadialGradient(
+      cx - r*0.35, cy - r*0.35, r*0.1,
+      cx, cy, r
+    );
+    if (color === BLACK) {
+      grad.addColorStop(0, '#666');
+      grad.addColorStop(1, '#000');
+    } else {
+      grad.addColorStop(0, '#fff');
+      grad.addColorStop(1, '#b8b8b8');
+    }
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0,0,0,0.4)';
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function draw() {
+    // Board
+    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--board-bg') || '#dcb35c';
+    ctx.fillRect(0, 0, CSS_SIZE, CSS_SIZE);
+
+    // Subtle wood texture
+    const g = ctx.createRadialGradient(CSS_SIZE/2, CSS_SIZE/2, 50, CSS_SIZE/2, CSS_SIZE/2, CSS_SIZE);
+    g.addColorStop(0, 'rgba(255,220,150,0.15)');
+    g.addColorStop(1, 'rgba(0,0,0,0.15)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, CSS_SIZE, CSS_SIZE);
+
+    // Lines
+    ctx.strokeStyle = '#2b1a06';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let i = 0; i < SIZE; i++) {
+      const p = boardToPx(i);
+      ctx.moveTo(MARGIN, p);
+      ctx.lineTo(CSS_SIZE - MARGIN, p);
+      ctx.moveTo(p, MARGIN);
+      ctx.lineTo(p, CSS_SIZE - MARGIN);
+    }
+    ctx.stroke();
+
+    // Star points
+    ctx.fillStyle = '#2b1a06';
+    for (const [sx, sy] of STAR_POINTS) {
+      ctx.beginPath();
+      ctx.arc(boardToPx(sx), boardToPx(sy), 3, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Coordinate labels
+    ctx.fillStyle = 'rgba(0,0,0,0.55)';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const letters = 'ABCDEFGHJ'; // skip I
+    for (let i = 0; i < SIZE; i++) {
+      ctx.fillText(letters[i], boardToPx(i), MARGIN/2);
+      ctx.fillText(letters[i], boardToPx(i), CSS_SIZE - MARGIN/2);
+      ctx.fillText(String(SIZE - i), MARGIN/2, boardToPx(i));
+      ctx.fillText(String(SIZE - i), CSS_SIZE - MARGIN/2, boardToPx(i));
+    }
+
+    // Ko marker
+    if (koPoint) {
+      const [kx, ky] = koPoint;
+      ctx.strokeStyle = 'rgba(200,0,0,0.6)';
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(boardToPx(kx) - 6, boardToPx(ky) - 6, 12, 12);
+    }
+
+    // Stones
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        if (board[y][x] !== EMPTY) drawStone(x, y, board[y][x]);
+      }
+    }
+
+    // Last move marker
+    if (lastMove) {
+      const [lx, ly] = lastMove;
+      const c = board[ly][lx];
+      ctx.beginPath();
+      ctx.arc(boardToPx(lx), boardToPx(ly), CELL * 0.18, 0, Math.PI * 2);
+      ctx.strokeStyle = c === BLACK ? '#fff' : '#000';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    // Hover ghost
+    if (hover && !gameOver && board[hover[1]][hover[0]] === EMPTY) {
+      drawStone(hover[0], hover[1], turn, true);
+    }
+  }
+
+  function updateStatus() {
+    document.getElementById('cap-black').textContent = captures[BLACK];
+    document.getElementById('cap-white').textContent = captures[WHITE];
+    document.getElementById('p-black').classList.toggle('active', turn === BLACK && !gameOver);
+    document.getElementById('p-white').classList.toggle('active', turn === WHITE && !gameOver);
+  }
+
+  function setMessage(m) {
+    document.getElementById('message').textContent = m;
+  }
+
+  // Events
+  function canvasPoint(e) {
+    const rect = CANVAS.getBoundingClientRect();
+    const px = (e.clientX - rect.left) * (CSS_SIZE / rect.width);
+    const py = (e.clientY - rect.top) * (CSS_SIZE / rect.height);
+    return pxToBoard(px, py);
+  }
+
+  CANVAS.addEventListener('mousemove', (e) => {
+    const p = canvasPoint(e);
+    if ((p && (!hover || p[0] !== hover[0] || p[1] !== hover[1])) ||
+        (!p && hover)) {
+      hover = p;
+      draw();
+    }
+  });
+  CANVAS.addEventListener('mouseleave', () => { hover = null; draw(); });
+  CANVAS.addEventListener('click', (e) => {
+    const p = canvasPoint(e);
+    if (p) play(p[0], p[1]);
+  });
+
+  document.getElementById('pass').addEventListener('click', pass);
+  document.getElementById('undo').addEventListener('click', undo);
+  document.getElementById('reset').addEventListener('click', newGame);
+  document.getElementById('score').addEventListener('click', showScore);
+
+  newGame();
+})();
+</script>
+</body>
+</html>

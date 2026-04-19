@@ -1,0 +1,30 @@
+I'll build a fully functional 9x9 Go board as a single standalone HTML file with all the rules implemented.
+
+Let me verify the file was created correctly:
+
+Done! Here's what I built:
+
+**`index.html`** — A fully standalone 9x9 Go board with:
+
+**Game Rules:**
+- **Alternating play** — Black goes first, then White
+- **Capture logic** — Groups with no liberties are removed from the board
+- **Ko rule** — Prevents immediate recapture of a single stone
+- **Suicide prevention** — Can't place a stone with no liberties unless it captures
+- **Pass detection** — Two consecutive passes end the game
+- **Scoring** — Territory counting with 6.5 komi for White
+
+**UI Features:**
+- Beautiful dark-themed board with wood-textured green surface
+- Radial gradient stones with shadows for realistic look
+- Hover preview showing where your stone will go
+- Last move marker
+- Territory visualization after game ends
+- Capture counters for both players
+- Active player indicator
+
+**Controls:**
+- **Click** on intersections to place stones
+- **Pass** button (or press `P`)
+- **Undo** button (or `Ctrl+Z`)
+- **New Game** button (or `Ctrl+N`)

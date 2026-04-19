@@ -1,0 +1,53 @@
+Built a complete standalone 9×9 Go board in `index.html`. Everything runs in the browser, no dependencies.
+
+## What's included
+
+**Game logic**
+- Full liberty/capture detection via flood-fill group search
+- Captured stones removed and tallied per player
+- Suicide rule enforced (can't play a move that leaves your group with 0 liberties, unless it captures first)
+- Simple ko rule (can't immediately recapture a single stone that just captured a single stone)
+- Pass button — two consecutive passes end the game and trigger scoring
+- Undo button (full history stack)
+- New Game reset
+
+**Scoring**
+- Area scoring: stones on the board + territory (empty regions bordered by only one color)
+- 6.5 komi to White (standard for 9×9)
+- Click "Score" any time for a live tally
+
+**UI**
+- HiDPI canvas (sharp on retina)
+- Wood-colored board with radial gradient texture
+- Coordinate labels (A–J, skipping I; 1–9)
+- 5 star points at proper 9×9 positions (2-2, 2-6, 6-2, 6-6, tengen)
+- Gradient-shaded stones with drop shadows
+- Hover ghost stone showing where your next move lands
+- Last-move indicator (small contrasting dot)
+- Ko point shown with a red square
+- Active player highlighted in the status bar
+- Capture counters for each side
+- Message area for "suicide", "ko", pass announcements, and final score
+
+## How to use
+
+Just open `index.html` in any modern browser. No server, no build step.
+
+```
+$ open index.html     # macOS
+$ xdg-open index.html # Linux
+```
+
+## Verification
+
+I reviewed the logic paths:
+- `getGroup` does proper flood fill over same-color stones, collects unique liberty coordinates in a Set
+- `tryPlay` clones the board, places the stone, removes captured opponent groups, then checks own-group liberties for suicide
+- Ko detection correctly requires exactly 1 captured stone + placed stone in a group of 1 with 1 liberty, and stores the forbidden point keyed by the color that would recapture
+- Coordinate click mapping uses canvas bounding rect scaled to the CSS size, so it works even if the canvas is ever resized
+
+## Possible follow-ups (not done)
+- Positional superko (full board-position history) instead of simple ko — rarely matters in casual play
+- Dead-stone marking before scoring (currently "Score" assumes all stones on the board are alive, which is fine if players play it out)
+- SGF export/import
+- Mobile touch works (via click events) but a bigger tap target / long-press preview could be nicer on phones

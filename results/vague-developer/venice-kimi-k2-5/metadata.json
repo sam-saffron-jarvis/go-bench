@@ -1,0 +1,102 @@
+{
+  "bench": "vague-developer",
+  "slug": "venice-kimi-k2-5",
+  "display": "Venice Kimi K2.5",
+  "provider": "venice:kimi-k2-5",
+  "requested": "venice:kimi-2.7",
+  "note": "The live Venice model list on 2026-04-19 does not include kimi-2.7. term-llm returns a 404 and suggests kimi-k2-5 or kimi-k2-thinking.",
+  "timestamp_utc": "2026-04-19T09:12:41.284545+00:00",
+  "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--json",
+    "--yolo",
+    "--provider",
+    "venice:kimi-k2-5",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    ".",
+    "build a standalone 9x9 fully functioning go board in index.html"
+  ],
+  "command_text": "term-llm ask --no-session --json --yolo --provider venice:kimi-k2-5 --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+  "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 45.759,
+    "stats": {
+      "cache_write_tokens": 0,
+      "cached_input_tokens": 4160,
+      "duration_ms": 45734,
+      "input_tokens": 8300,
+      "llm_calls": 2,
+      "llm_ms": 45728,
+      "output_tokens": 4613,
+      "seq": 178,
+      "tool_calls": 1,
+      "tool_ms": 5,
+      "ts": "2026-04-19T09:12:09.021433784Z",
+      "type": "stats"
+    },
+    "event_count": 180,
+    "event_counts": {
+      "session.started": 1,
+      "text.delta": 173,
+      "tool.started": 1,
+      "usage": 2,
+      "tool.completed": 1,
+      "stats": 1,
+      "done": 1
+    },
+    "tool_counts": {
+      "write_file": 1
+    },
+    "tool_outcomes": {
+      "write_file:success": 1
+    },
+    "json_parse_errors": [],
+    "session_started": {
+      "agent": "developer",
+      "mcp": "",
+      "model": "kimi-k2-5",
+      "provider": "Venice (kimi-k2-5)",
+      "resuming": false,
+      "search": true,
+      "seq": 0,
+      "session_id": "20260419-191123-a12f4055825eade4",
+      "tools": "read_file,write_file,edit_file,glob,grep,shell",
+      "ts": "2026-04-19T09:11:23.287280236Z",
+      "type": "session.started",
+      "yolo": true
+    },
+    "done": {
+      "seq": 179,
+      "tokens": 398,
+      "ts": "2026-04-19T09:12:09.021443002Z",
+      "type": "done"
+    }
+  },
+  "verification": {
+    "passed": false,
+    "exit_code": 1,
+    "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+  },
+  "artifacts": {
+    "events_jsonl": "events.jsonl",
+    "stderr_log": null,
+    "final_text": "final.txt",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": "screenshot.png"
+  },
+  "output": {
+    "expected_file": "index.html",
+    "exists": true
+  }
+}

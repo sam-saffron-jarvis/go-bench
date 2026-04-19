@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9×9 Go Board</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    display: flex; flex-direction: column; align-items: center;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #2c3e50; color: #ecf0f1; min-height: 100vh; padding: 20px;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: 8px; letter-spacing: 1px; }
+  #info {
+    display: flex; gap: 24px; margin-bottom: 12px;
+    font-size: 1.1rem; align-items: center;
+  }
+  #turn { font-weight: 700; }
+  #turn .black-turn { color: #f1c40f; }
+  #turn .white-turn { color: #ecf0f1; }
+  #captures span { margin-right: 12px; }
+  #board-container {
+    background: #dcb35c; border-radius: 6px; padding: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.45);
+  }
+  #board {
+    display: grid;
+    grid-template-columns: repeat(9, 44px);
+    grid-template-rows: repeat(9, 44px);
+    gap: 0;
+  }
+  .cell {
+    width: 44px; height: 44px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .cell .h-line {
+    position: absolute; top: 50%; left: 0; right: 0;
+    height: 2px; background: #5a3e1b; transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .cell .v-line {
+    position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 2px; background: #5a3e1b; transform: translateX(-50%);
+    pointer-events: none;
+  }
+  /* Edge cells: clip lines */
+  .cell[data-edge-top] .h-line { top: 50%; }
+  .cell[data-edge-bottom] .h-line { bottom: 50%; top: auto; }
+  .cell[data-edge-left] .v-line { left: 50%; }
+  .cell[data-edge-right] .v-line { right: 50%; left: auto; }
+
+  .cell .h-line.clip-left { left: 50%; }
+  .cell .h-line.clip-right { right: 50%; }
+  .cell .v-line.clip-top { top: 50%; }
+  .cell .v-line.clip-bottom { bottom: 50%; }
+
+  .star-point::after {
+    content: ''; position: absolute; width: 8px; height: 8px;
+    background: #5a3e1b; border-radius: 50%; top: 50%; left: 50%;
+    transform: translate(-50%,-50%); pointer-events: none; z-index: 1;
+  }
+  .stone {
+    width: 36px; height: 36px; border-radius: 50%; z-index: 2;
+    pointer-events: none; position: absolute;
+  }
+  .stone.black {
+    background: radial-gradient(circle at 35% 35%, #555, #111);
+    box-shadow: 1px 2px 4px rgba(0,0,0,.6);
+  }
+  .stone.white {
+    background: radial-gradient(circle at 35% 35%, #fff, #ccc);
+    box-shadow: 1px 2px 4px rgba(0,0,0,.3);
+  }
+  #reset {
+    margin-top: 18px; padding: 10px 32px; font-size: 1rem;
+    border: 2px solid #ecf0f1; background: transparent;
+    color: #ecf0f1; border-radius: 6px; cursor: pointer;
+    transition: background .2s, color .2s;
+  }
+  #reset:hover { background: #ecf0f1; color: #2c3e50; }
+</style>
+</head>
+<body>
+<h1>9×9 Go</h1>
+<div id="info">
+  <div id="turn">Turn: <span class="black-turn">Black</span></div>
+  <div id="captures">
+    <span>Black captured: <b id="cap-black">0</b></span>
+    <span>White captured: <b id="cap-white">0</b></span>
+  </div>
+</div>
+<div id="board-container">
+  <div id="board"></div>
+</div>
+<button id="reset">Reset</button>
+
+<script>
+(function() {
+  const SIZE = 9;
+  const STAR_POINTS = [[2,2],[2,6],[6,2],[6,6],[4,4]];
+
+  let board;      // board[y][x] = "black" | "white" | null
+  let currentPlayer;
+  let captured;   // { black: N, white: N }
+
+  // Initialize / reset
+  function reset() {
+    board = Array.from({length: SIZE}, () => Array(SIZE).fill(null));
+    currentPlayer = "black";
+    captured = { black: 0, white: 0 };
+    render();
+  }
+
+  // Build the grid cells once
+  function buildBoard() {
+    const boardEl = document.getElementById('board');
+    boardEl.innerHTML = '';
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.setAttribute('data-cell', x + ',' + y);
+
+        // Horizontal line
+        const hl = document.createElement('div');
+        hl.className = 'h-line';
+        if (x === 0) hl.classList.add('clip-left');
+        if (x === 8) hl.classList.add('clip-right');
+        cell.appendChild(hl);
+
+        // Vertical line
+        const vl = document.createElement('div');
+        vl.className = 'v-line';
+        if (y === 0) vl.classList.add('clip-top');
+        if (y === 8) vl.classList.add('clip-bottom');
+        cell.appendChild(vl);
+
+        // Star point
+        if (STAR_POINTS.some(p => p[0] === y && p[1] === x)) {
+          cell.classList.add('star-point');
+        }
+
+        cell.addEventListener('click', () => play(x, y));
+        boardEl.appendChild(cell);
+      }
+    }
+  }
+
+  // Render stones and UI
+  function render() {
+    // Remove old stones
+    document.querySelectorAll('.stone').forEach(s => s.remove());
+
+    const boardEl = document.getElementById('board');
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        const cell = boardEl.querySelector('[data-cell="' + x + ',' + y + '"]');
+        if (board[y][x]) {
+          const stone = document.createElement('div');
+          stone.className = 'stone ' + board[y][x];
+          cell.appendChild(stone);
+        }
+      }
+    }
+
+    // Turn indicator
+    const turnSpan = document.querySelector('#turn span');
+    turnSpan.className = currentPlayer === 'black' ? 'black-turn' : 'white-turn';
+    turnSpan.textContent = currentPlayer === 'black' ? 'Black' : 'White';
+
+    // Captures
+    document.getElementById('cap-black').textContent = captured.black;
+    document.getElementById('cap-white').textContent = captured.white;
+  }
+
+  // Neighbors
+  function neighbors(x, y) {
+    const n = [];
+    if (x > 0) n.push([x-1, y]);
+    if (x < SIZE-1) n.push([x+1, y]);
+    if (y > 0) n.push([x, y-1]);
+    if (y < SIZE-1) n.push([x, y+1]);
+    return n;
+  }
+
+  // Find group and liberties
+  function getGroup(x, y) {
+    const color = board[y][x];
+    if (!color) return { stones: [], liberties: 0 };
+    const visited = new Set();
+    const stones = [];
+    const liberties = new Set();
+    const stack = [[x, y]];
+    while (stack.length) {
+      const [cx, cy] = stack.pop();
+      const key = cx + ',' + cy;
+      if (visited.has(key)) continue;
+      visited.add(key);
+      stones.push([cx, cy]);
+      for (const [nx, ny] of neighbors(cx, cy)) {
+        const nkey = nx + ',' + ny;
+        if (visited.has(nkey)) continue;
+        if (board[ny][nx] === null) {
+          liberties.add(nkey);
+        } else if (board[ny][nx] === color) {
+          stack.push([nx, ny]);
+        }
+      }
+    }
+    return { stones, liberties: liberties.size };
+  }
+
+  // Try to play a move
+  function play(x, y) {
+    if (board[y][x] !== null) return; // occupied
+
+    const opponent = currentPlayer === 'black' ? 'white' : "black";
+    const player = currentPlayer;
+
+    // Place stone tentatively
+    board[y][x] = player;
+
+    // Check for captures of opponent groups
+    let capturedStones = [];
+    const checkedGroups = new Set();
+    for (const [nx, ny] of neighbors(x, y)) {
+      if (board[ny][nx] === opponent) {
+        const gkey = nx + ',' + ny;
+        if (checkedGroups.has(gkey)) continue;
+        const group = getGroup(nx, ny);
+        for (const [sx, sy] of group.stones) checkedGroups.add(sx + ',' + sy);
+        if (group.liberties === 0) {
+          capturedStones.push(...group.stones);
+        }
+      }
+    }
+
+    // If no captures, check for suicide
+    if (capturedStones.length === 0) {
+      const myGroup = getGroup(x, y);
+      if (myGroup.liberties === 0) {
+        // Suicide: illegal, undo
+        board[y][x] = null;
+        return;
+      }
+    }
+
+    // Remove captured stones
+    let capturedCount = capturedStones.length;
+    for (const [sx, sy] of capturedStones) {
+      board[sy][sx] = null;
+    }
+
+    // Update captured count
+    captured[player] += capturedCount;
+
+    // Switch player
+    currentPlayer = opponent;
+
+    render();
+  }
+
+  // Expose state for tests
+  window.__goGame__ = {
+    getState: function() {
+      const b = [];
+      for (let y = 0; y < SIZE; y++) {
+        const row = [];
+        for (let x = 0; x < SIZE; x++) {
+          row.push(board[y][x]);
+        }
+        b.push(row);
+      }
+      return {
+        size: SIZE,
+        currentPlayer: currentPlayer,
+        board: b,
+        captured: { black: captured.black, white: captured.white }
+      };
+    }
+  };
+
+  document.getElementById('reset').addEventListener('click', reset);
+
+  buildBoard();
+  reset();
+})();
+</script>
+</body>
+</html>

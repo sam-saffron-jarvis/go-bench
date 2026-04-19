@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9x9 Go Board</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    color: #e0e0e0;
+    letter-spacing: 2px;
+  }
+  #info {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+  }
+  #info span {
+    background: #16213e;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #0f3460;
+  }
+  #turn-indicator {
+    font-weight: bold;
+  }
+  #board-container {
+    background: #dcb35c;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  #board {
+    display: grid;
+    grid-template-columns: repeat(9, 50px);
+    grid-template-rows: repeat(9, 50px);
+    gap: 0;
+    position: relative;
+  }
+  .cell {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .cell::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #333;
+    z-index: 0;
+  }
+  .cell::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #333;
+    z-index: 0;
+  }
+  /* Adjust edges */
+  .cell.edge-top::after { top: 50%; }
+  .cell.edge-bottom::after { bottom: 50%; }
+  .cell.edge-left::before { left: 50%; }
+  .cell.edge-right::before { right: 50%; }
+
+  .stone {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    pointer-events: none;
+  }
+  .stone.black {
+    background: radial-gradient(circle at 35% 35%, #555, #111);
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+  .stone.white {
+    background: radial-gradient(circle at 35% 35%, #fff, #ccc);
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+  /* Star points */
+  .star-point::before, .star-point::after { z-index: 0; }
+  .star-marker {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #333;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  #reset {
+    margin-top: 16px;
+    padding: 10px 28px;
+    font-size: 1rem;
+    background: #e94560;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  #reset:hover { background: #c73652; }
+</style>
+</head>
+<body>
+<h1>Go — 9×9</h1>
+<div id="info">
+  <span id="turn-indicator">Turn: Black</span>
+  <span>Black captured: <strong id="cap-black">0</strong></span>
+  <span>White captured: <strong id="cap-white">0</strong></span>
+</div>
+<div id="board-container">
+  <div id="board"></div>
+</div>
+<button id="reset">Reset</button>
+
+<script>
+(function() {
+  const SIZE = 9;
+  let board, currentPlayer, captured;
+
+  function init() {
+    board = Array.from({ length: SIZE }, () => Array(SIZE).fill(null));
+    currentPlayer = 'black';
+    captured = { black: 0, white: 0 };
+    render();
+    updateInfo();
+  }
+
+  function render() {
+    const boardEl = document.getElementById('board');
+    boardEl.innerHTML = '';
+    const starPoints = [[2,2],[2,6],[4,4],[6,2],[6,6]];
+
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.setAttribute('data-cell', x + ',' + y);
+
+        if (y === 0) cell.classList.add('edge-top');
+        if (y === SIZE - 1) cell.classList.add('edge-bottom');
+        if (x === 0) cell.classList.add('edge-left');
+        if (x === SIZE - 1) cell.classList.add('edge-right');
+
+        if (starPoints.some(p => p[0] === x && p[1] === y)) {
+          const marker = document.createElement('div');
+          marker.className = 'star-marker';
+          cell.appendChild(marker);
+        }
+
+        if (board[y][x]) {
+          const stone = document.createElement('div');
+          stone.className = 'stone ' + board[y][x];
+          cell.appendChild(stone);
+        }
+
+        cell.addEventListener('click', () => handleClick(x, y));
+        boardEl.appendChild(cell);
+      }
+    }
+  }
+
+  function updateInfo() {
+    document.getElementById('turn-indicator').textContent = 'Turn: ' + capitalize(currentPlayer);
+    document.getElementById('cap-black').textContent = captured.black;
+    document.getElementById('cap-white').textContent = captured.white;
+  }
+
+  function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  function getNeighbors(x, y) {
+    const n = [];
+    if (x > 0) n.push([x - 1, y]);
+    if (x < SIZE - 1) n.push([x + 1, y]);
+    if (y > 0) n.push([x, y - 1]);
+    if (y < SIZE - 1) n.push([x, y + 1]);
+    return n;
+  }
+
+  function getGroup(x, y, b) {
+    const color = b[y][x];
+    if (!color) return { stones: [], liberties: 0 };
+    const visited = new Set();
+    const stones = [];
+    const liberties = new Set();
+    const stack = [[x, y]];
+    while (stack.length) {
+      const [cx, cy] = stack.pop();
+      const key = cx + ',' + cy;
+      if (visited.has(key)) continue;
+      visited.add(key);
+      if (b[cy][cx] === color) {
+        stones.push([cx, cy]);
+        for (const [nx, ny] of getNeighbors(cx, cy)) {
+          const nkey = nx + ',' + ny;
+          if (!visited.has(nkey)) {
+            if (b[ny][nx] === null) {
+              liberties.add(nkey);
+            } else if (b[ny][nx] === color) {
+              stack.push([nx, ny]);
+            }
+          }
+        }
+      }
+    }
+    return { stones, liberties: liberties.size };
+  }
+
+  function handleClick(x, y) {
+    if (board[y][x] !== null) return;
+
+    // Place stone temporarily
+    board[y][x] = currentPlayer;
+    const opponent = currentPlayer === 'black' ? 'white' : 'black';
+
+    // Check for captures of opponent groups
+    let capturedStones = [];
+    for (const [nx, ny] of getNeighbors(x, y)) {
+      if (board[ny][nx] === opponent) {
+        const group = getGroup(nx, ny, board);
+        if (group.liberties === 0) {
+          capturedStones = capturedStones.concat(group.stones);
+        }
+      }
+    }
+
+    // Remove captured stones
+    for (const [cx, cy] of capturedStones) {
+      board[cy][cx] = null;
+    }
+
+    // Check suicide: if no captures and own group has no liberties, illegal
+    if (capturedStones.length === 0) {
+      const ownGroup = getGroup(x, y, board);
+      if (ownGroup.liberties === 0) {
+        // Undo the move
+        board[y][x] = null;
+        return;
+      }
+    }
+
+    // Update captured count
+    if (currentPlayer === 'black') {
+      captured.black += capturedStones.length;
+    } else {
+      captured.white += capturedStones.length;
+    }
+
+    // Switch turn
+    currentPlayer = opponent;
+    render();
+    updateInfo();
+  }
+
+  document.getElementById('reset').addEventListener('click', init);
+
+  init();
+
+  // Expose global API
+  window.__goGame__ = {
+    getState: function() {
+      return {
+        size: SIZE,
+        currentPlayer: currentPlayer,
+        board: board.map(row => row.slice()),
+        captured: { black: captured.black, white: captured.white }
+      };
+    }
+  };
+})();
+</script>
+</body>
+</html>

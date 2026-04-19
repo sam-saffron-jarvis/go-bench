@@ -1,0 +1,1 @@
+term-llm ask --no-session --json --yolo --provider venice:qwen3-coder-480b-a35b-instruct --agent ./agent --read-dir . --write-dir . "build a standalone 9x9 fully functioning go board in index.html"

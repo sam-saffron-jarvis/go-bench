@@ -1,0 +1,1624 @@
+[
+  {
+    "bench": "strict-custom-agent",
+    "slug": "claude-bin-sonnet",
+    "display": "Claude Code Sonnet",
+    "provider": "claude-bin:sonnet",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T07:59:21.442690+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--text",
+      "--stats",
+      "--yolo",
+      "--provider",
+      "claude-bin:sonnet",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --text --stats --yolo --provider claude-bin:sonnet --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 47.86,
+      "stats": {
+        "raw": "Stats: 47.8s (llm 46.3s + tool 1.5s) | 9 in (cache: 34k read) \u2192 3.1k out (last: 13k\u21925) | 2 tools | 3 llm calls",
+        "elapsed_seconds": 47.8,
+        "input_tokens": 9,
+        "output_tokens": 3100,
+        "last_input_tokens": 13000,
+        "last_output_tokens": 5,
+        "tool_calls": 2,
+        "llm_calls": 3,
+        "cache_read_tokens": 34000,
+        "llm_seconds": 46.3,
+        "tool_seconds": 1.5
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/claude-bin-sonnet/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "run_log": "run.log",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "claude-bin-haiku",
+    "display": "Claude Code Haiku",
+    "provider": "claude-bin:haiku",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T07:59:53.701189+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--text",
+      "--stats",
+      "--yolo",
+      "--provider",
+      "claude-bin:haiku",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --text --stats --yolo --provider claude-bin:haiku --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 29.161,
+      "stats": {
+        "raw": "Stats: 29.1s (llm 27.6s + tool 1.5s) | 30 in (cache: 36k read) \u2192 4.2k out (last: 15k\u219245) | 2 tools | 3 llm calls",
+        "elapsed_seconds": 29.1,
+        "input_tokens": 30,
+        "output_tokens": 4200,
+        "last_input_tokens": 15000,
+        "last_output_tokens": 45,
+        "tool_calls": 2,
+        "llm_calls": 3,
+        "cache_read_tokens": 36000,
+        "llm_seconds": 27.6,
+        "tool_seconds": 1.5
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/claude-bin-haiku/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "run_log": "run.log",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "ollama-gemma4-26b",
+    "display": "Ollama Gemma 4 26B",
+    "provider": "ollama:gemma4:26b",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T07:57:30.304275+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--text",
+      "--stats",
+      "--yolo",
+      "--provider",
+      "ollama:gemma4:26b",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --text --stats --yolo --provider ollama:gemma4:26b --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 256.552,
+      "stats": {
+        "raw": "Stats: 256.5s (llm 246.0s + tool 10.6s) | 468k in \u2192 27k out (last: 33k\u21926, peak: 36k) | 22 tools | 23 llm calls",
+        "elapsed_seconds": 256.5,
+        "input_tokens": 468000,
+        "output_tokens": 27000,
+        "last_input_tokens": 33000,
+        "last_output_tokens": 6,
+        "tool_calls": 22,
+        "llm_calls": 23,
+        "peak_tokens": 36000,
+        "llm_seconds": 246.0,
+        "tool_seconds": 10.6
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: page emitted runtime errors\nConsole errors:\nFailed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    "artifacts": {
+      "run_log": "run.log",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "venice-kimi-k2-5",
+    "display": "Venice Kimi K2.5",
+    "provider": "venice:kimi-k2-5",
+    "requested": "venice:kimi-2.7",
+    "note": "The live Venice model list on 2026-04-19 does not include kimi-2.7. term-llm returns a 404 and suggests kimi-k2-5 or kimi-k2-thinking.",
+    "timestamp_utc": "2026-04-19T08:00:54.890399+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--text",
+      "--stats",
+      "--yolo",
+      "--provider",
+      "venice:kimi-k2-5",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --text --stats --yolo --provider venice:kimi-k2-5 --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 58.214,
+      "stats": {
+        "raw": "Stats: 58.2s (llm 56.7s + tool 1.5s) | 12k in (cache: 8.1k read) \u2192 4.1k out (last: 8.1k\u219222, peak: 8.1k) | 2 tools | 3 llm calls",
+        "elapsed_seconds": 58.2,
+        "input_tokens": 12000,
+        "output_tokens": 4100,
+        "last_input_tokens": 8100,
+        "last_output_tokens": 22,
+        "tool_calls": 2,
+        "llm_calls": 3,
+        "cache_read_tokens": 8100,
+        "peak_tokens": 8100,
+        "llm_seconds": 56.7,
+        "tool_seconds": 1.5
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/venice-kimi-k2-5/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "run_log": "run.log",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "venice-glm-5-1",
+    "display": "Venice GLM 5.1",
+    "provider": "venice:zai-org-glm-5-1",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T09:13:06.784032+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "venice:zai-org-glm-5-1",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider venice:zai-org-glm-5-1 --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 17.48,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 11136,
+        "duration_ms": 17455,
+        "input_tokens": 6870,
+        "llm_calls": 3,
+        "llm_ms": 15956,
+        "output_tokens": 2695,
+        "seq": 9,
+        "tool_calls": 2,
+        "tool_ms": 1499,
+        "ts": "2026-04-19T09:13:03.830918942Z",
+        "type": "stats"
+      },
+      "event_count": 11,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 2,
+        "usage": 3,
+        "tool.completed": 2,
+        "text.delta": 1,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "write_file": 1,
+        "verify_board": 1
+      },
+      "tool_outcomes": {
+        "write_file:success": 1,
+        "verify_board:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "go-board-bench",
+        "mcp": "",
+        "model": "zai-org-glm-5-1",
+        "provider": "Venice (zai-org-glm-5-1)",
+        "resuming": false,
+        "search": false,
+        "seq": 0,
+        "session_id": "20260419-191246-d153a4b4076790f2",
+        "tools": "read_file,write_file,edit_file,glob,grep",
+        "ts": "2026-04-19T09:12:46.375460798Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 10,
+        "tokens": 17,
+        "ts": "2026-04-19T09:13:03.83093351Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/venice-glm-5-1/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "venice-minimax-m27",
+    "display": "Venice Minimax M27",
+    "provider": "venice:minimax-m27",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T09:15:36.454513+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "venice:minimax-m27",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider venice:minimax-m27 --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 59.575,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 7611,
+        "duration_ms": 59548,
+        "input_tokens": 12203,
+        "llm_calls": 3,
+        "llm_ms": 58011,
+        "output_tokens": 3556,
+        "seq": 9,
+        "tool_calls": 2,
+        "tool_ms": 1537,
+        "ts": "2026-04-19T09:15:33.417811548Z",
+        "type": "stats"
+      },
+      "event_count": 11,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 2,
+        "usage": 3,
+        "tool.completed": 2,
+        "text.delta": 1,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "write_file": 1,
+        "verify_board": 1
+      },
+      "tool_outcomes": {
+        "write_file:success": 1,
+        "verify_board:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "go-board-bench",
+        "mcp": "",
+        "model": "minimax-m27",
+        "provider": "Venice (minimax-m27)",
+        "resuming": false,
+        "search": false,
+        "seq": 0,
+        "session_id": "20260419-191433-08a76276ff9140f1",
+        "tools": "read_file,write_file,edit_file,glob,grep",
+        "ts": "2026-04-19T09:14:33.868862177Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 10,
+        "tokens": 28,
+        "ts": "2026-04-19T09:15:33.417815125Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/venice-minimax-m27/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "venice-qwen-3-6-plus",
+    "display": "Venice Qwen 3.6 Plus",
+    "provider": "venice:qwen-3-6-plus",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T09:18:25.327279+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "venice:qwen-3-6-plus",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider venice:qwen-3-6-plus --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 58.036,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 0,
+        "duration_ms": 58013,
+        "input_tokens": 19349,
+        "llm_calls": 3,
+        "llm_ms": 56499,
+        "output_tokens": 2686,
+        "seq": 9,
+        "tool_calls": 2,
+        "tool_ms": 1514,
+        "ts": "2026-04-19T09:18:22.330659349Z",
+        "type": "stats"
+      },
+      "event_count": 11,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 2,
+        "usage": 3,
+        "tool.completed": 2,
+        "text.delta": 1,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "write_file": 1,
+        "verify_board": 1
+      },
+      "tool_outcomes": {
+        "write_file:success": 1,
+        "verify_board:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "go-board-bench",
+        "mcp": "",
+        "model": "qwen-3-6-plus",
+        "provider": "Venice (qwen-3-6-plus)",
+        "resuming": false,
+        "search": false,
+        "seq": 0,
+        "session_id": "20260419-191724-fcc8cf5fd9ea3569",
+        "tools": "read_file,write_file,edit_file,glob,grep",
+        "ts": "2026-04-19T09:17:24.317228016Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 10,
+        "tokens": 20,
+        "ts": "2026-04-19T09:18:22.330666971Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/venice-qwen-3-6-plus/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "venice-qwen3-coder-480b",
+    "display": "Venice Qwen3 Coder 480B",
+    "provider": "venice:qwen3-coder-480b-a35b-instruct",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T10:00:25.083023+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "venice:qwen3-coder-480b-a35b-instruct",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider venice:qwen3-coder-480b-a35b-instruct --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 13.474,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 0,
+        "duration_ms": 13449,
+        "input_tokens": 0,
+        "llm_calls": 0,
+        "llm_ms": 13449,
+        "output_tokens": 0,
+        "seq": 6,
+        "tool_calls": 0,
+        "tool_ms": 0,
+        "ts": "2026-04-19T10:00:24.944551203Z",
+        "type": "stats"
+      },
+      "event_count": 8,
+      "event_counts": {
+        "session.started": 1,
+        "retry": 4,
+        "error": 1,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {},
+      "tool_outcomes": {},
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "go-board-bench",
+        "mcp": "",
+        "model": "qwen3-coder-480b-a35b-instruct",
+        "provider": "Venice (qwen3-coder-480b-a35b-instruct)",
+        "resuming": false,
+        "search": false,
+        "seq": 0,
+        "session_id": "20260419-200011-8ae50c39cbf9d7e5",
+        "tools": "read_file,write_file,edit_file,glob,grep",
+        "ts": "2026-04-19T10:00:11.495512772Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 7,
+        "tokens": 0,
+        "ts": "2026-04-19T10:00:24.944558383Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: /root/source/go-bench/.runs/strict-custom-agent/venice-qwen3-coder-480b/workspace/board.html does not exist"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": "stderr.log",
+      "final_text": null,
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": null
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": false
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "venice-claude-opus-4-7",
+    "display": "Venice Claude Opus 4.7",
+    "provider": "venice:claude-opus-4-7",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T07:32:51.088518+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--text",
+      "--stats",
+      "--yolo",
+      "--provider",
+      "venice:claude-opus-4-7",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --text --stats --yolo --provider venice:claude-opus-4-7 --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 51.158,
+      "stats": {
+        "raw": "Stats: 51.1s (llm 48.1s + tool 3.0s) | 24k in (cache: 30k read) \u2192 4.6k out (last: 12k\u21927) | 4 tools | 5 llm calls",
+        "elapsed_seconds": 51.1,
+        "input_tokens": 24000,
+        "output_tokens": 4600,
+        "last_input_tokens": 12000,
+        "last_output_tokens": 7,
+        "tool_calls": 4,
+        "llm_calls": 5,
+        "cache_read_tokens": 30000,
+        "llm_seconds": 48.1,
+        "tool_seconds": 3.0
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/venice-claude-opus-4-7/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "run_log": "run.log",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "venice-grok-4-20",
+    "display": "Venice Grok 4.20",
+    "provider": "venice:grok-4-20",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T07:33:43.507378+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--text",
+      "--stats",
+      "--yolo",
+      "--provider",
+      "venice:grok-4-20",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --text --stats --yolo --provider venice:grok-4-20 --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 103.643,
+      "stats": {
+        "raw": "Stats: 103.6s (llm 69.0s + tool 34.6s) | 25k in (cache: 86k read) \u2192 13k out (last: 21k\u219223, peak: 21k) | 7 tools | 8 llm calls",
+        "elapsed_seconds": 103.6,
+        "input_tokens": 25000,
+        "output_tokens": 13000,
+        "last_input_tokens": 21000,
+        "last_output_tokens": 23,
+        "tool_calls": 7,
+        "llm_calls": 8,
+        "cache_read_tokens": 86000,
+        "peak_tokens": 21000,
+        "llm_seconds": 69.0,
+        "tool_seconds": 34.6
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/venice-grok-4-20/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "run_log": "run.log",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "claude-bin-haiku",
+    "display": "Claude Code Haiku",
+    "provider": "claude-bin:haiku",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T07:24:57.681437+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "@developer",
+      "--no-session",
+      "--text",
+      "--stats",
+      "--yolo",
+      "--provider",
+      "claude-bin:haiku",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask @developer --no-session --text --stats --yolo --provider claude-bin:haiku --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 29.918,
+      "stats": {
+        "raw": "Stats: 29.9s (llm 29.9s + tool 0.0s) | 20 in (cache: 11k read) \u2192 4.4k out (last: 11k\u2192670) | 1 tools | 2 llm calls",
+        "elapsed_seconds": 29.9,
+        "input_tokens": 20,
+        "output_tokens": 4400,
+        "last_input_tokens": 11000,
+        "last_output_tokens": 670,
+        "tool_calls": 1,
+        "llm_calls": 2,
+        "cache_read_tokens": 11000,
+        "llm_seconds": 29.9,
+        "tool_seconds": 0.0
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    "artifacts": {
+      "run_log": "run.log",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "venice-kimi-k2-5",
+    "display": "Venice Kimi K2.5",
+    "provider": "venice:kimi-k2-5",
+    "requested": "venice:kimi-2.7",
+    "note": "The live Venice model list on 2026-04-19 does not include kimi-2.7. term-llm returns a 404 and suggests kimi-k2-5 or kimi-k2-thinking.",
+    "timestamp_utc": "2026-04-19T09:12:41.284545+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "venice:kimi-k2-5",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider venice:kimi-k2-5 --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 45.759,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 4160,
+        "duration_ms": 45734,
+        "input_tokens": 8300,
+        "llm_calls": 2,
+        "llm_ms": 45728,
+        "output_tokens": 4613,
+        "seq": 178,
+        "tool_calls": 1,
+        "tool_ms": 5,
+        "ts": "2026-04-19T09:12:09.021433784Z",
+        "type": "stats"
+      },
+      "event_count": 180,
+      "event_counts": {
+        "session.started": 1,
+        "text.delta": 173,
+        "tool.started": 1,
+        "usage": 2,
+        "tool.completed": 1,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "write_file": 1
+      },
+      "tool_outcomes": {
+        "write_file:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "kimi-k2-5",
+        "provider": "Venice (kimi-k2-5)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260419-191123-a12f4055825eade4",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-19T09:11:23.287280236Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 179,
+        "tokens": 398,
+        "ts": "2026-04-19T09:12:09.021443002Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "venice-glm-5-1",
+    "display": "Venice GLM 5.1",
+    "provider": "venice:zai-org-glm-5-1",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T09:14:29.366398+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "venice:zai-org-glm-5-1",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider venice:zai-org-glm-5-1 --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 50.224,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 30912,
+        "duration_ms": 50199,
+        "input_tokens": 4012,
+        "llm_calls": 5,
+        "llm_ms": 50181,
+        "output_tokens": 6262,
+        "seq": 171,
+        "tool_calls": 4,
+        "tool_ms": 18,
+        "ts": "2026-04-19T09:13:57.049652678Z",
+        "type": "stats"
+      },
+      "event_count": 173,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 4,
+        "usage": 5,
+        "tool.completed": 4,
+        "text.delta": 157,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "shell": 2,
+        "read_file": 1,
+        "write_file": 1
+      },
+      "tool_outcomes": {
+        "shell:success": 2,
+        "read_file:success": 1,
+        "write_file:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "zai-org-glm-5-1",
+        "provider": "Venice (zai-org-glm-5-1)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260419-191306-b908702170d36711",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-19T09:13:06.850337864Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 172,
+        "tokens": 322,
+        "ts": "2026-04-19T09:13:57.049659011Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "venice-minimax-m27",
+    "display": "Venice Minimax M27",
+    "provider": "venice:minimax-m27",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T09:17:20.246933+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "venice:minimax-m27",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider venice:minimax-m27 --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 103.602,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 51490,
+        "duration_ms": 103576,
+        "input_tokens": 17618,
+        "llm_calls": 8,
+        "llm_ms": 103519,
+        "output_tokens": 5765,
+        "seq": 34,
+        "tool_calls": 7,
+        "tool_ms": 57,
+        "ts": "2026-04-19T09:17:20.102657395Z",
+        "type": "stats"
+      },
+      "event_count": 36,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 7,
+        "usage": 8,
+        "tool.completed": 7,
+        "text.delta": 11,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "glob": 1,
+        "shell": 5,
+        "write_file": 1
+      },
+      "tool_outcomes": {
+        "glob:success": 1,
+        "shell:success": 5,
+        "write_file:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "minimax-m27",
+        "provider": "Venice (minimax-m27)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260419-191536-a38ab9fe9a8e9e19",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-19T09:15:36.525675455Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 35,
+        "tokens": 256,
+        "ts": "2026-04-19T09:17:20.102664449Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: /root/source/go-bench/.runs/vague-developer/venice-minimax-m27/index.html does not exist"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": null
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": false
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "venice-qwen-3-6-plus",
+    "display": "Venice Qwen 3.6 Plus",
+    "provider": "venice:qwen-3-6-plus",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T09:20:59.690878+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "venice:qwen-3-6-plus",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider venice:qwen-3-6-plus --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 122.057,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 0,
+        "duration_ms": 122033,
+        "input_tokens": 26235,
+        "llm_calls": 3,
+        "llm_ms": 122015,
+        "output_tokens": 6273,
+        "seq": 92,
+        "tool_calls": 2,
+        "tool_ms": 18,
+        "ts": "2026-04-19T09:20:27.428164605Z",
+        "type": "stats"
+      },
+      "event_count": 94,
+      "event_counts": {
+        "session.started": 1,
+        "text.delta": 84,
+        "tool.started": 2,
+        "usage": 3,
+        "tool.completed": 2,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "write_file": 1,
+        "shell": 1
+      },
+      "tool_outcomes": {
+        "write_file:success": 1,
+        "shell:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "qwen-3-6-plus",
+        "provider": "Venice (qwen-3-6-plus)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260419-191825-f771632a965dc165",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-19T09:18:25.394255795Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 93,
+        "tokens": 264,
+        "ts": "2026-04-19T09:20:27.428168312Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "venice-qwen3-coder-480b",
+    "display": "Venice Qwen3 Coder 480B",
+    "provider": "venice:qwen3-coder-480b-a35b-instruct",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T10:50:25.664901+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "venice:qwen3-coder-480b-a35b-instruct",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider venice:qwen3-coder-480b-a35b-instruct --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_seconds": 18.93,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 0,
+        "duration_ms": 18905,
+        "input_tokens": 4897,
+        "llm_calls": 1,
+        "llm_ms": 18905,
+        "output_tokens": 73,
+        "seq": 60,
+        "tool_calls": 1,
+        "tool_ms": 0,
+        "ts": "2026-04-19T10:50:25.528133726Z",
+        "type": "stats"
+      },
+      "event_count": 62,
+      "event_counts": {
+        "session.started": 1,
+        "retry": 6,
+        "text.delta": 49,
+        "tool.started": 1,
+        "usage": 1,
+        "tool.completed": 1,
+        "error": 1,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "glob": 1
+      },
+      "tool_outcomes": {
+        "glob:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "qwen3-coder-480b-a35b-instruct",
+        "provider": "Venice (qwen3-coder-480b-a35b-instruct)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260419-205006-03830cb975ed910c",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-19T10:50:06.622774913Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 61,
+        "tokens": 73,
+        "ts": "2026-04-19T10:50:25.528138838Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: /root/source/go-bench/.runs/vague-developer/venice-qwen3-coder-480b/index.html does not exist"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": "stderr.log",
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": null
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": false
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "venice-claude-opus-4-7",
+    "display": "Venice Claude Opus 4.7",
+    "provider": "venice:claude-opus-4-7",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T10:07:26.643782+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "venice:claude-opus-4-7",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider venice:claude-opus-4-7 --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 80.834,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 6909,
+        "duration_ms": 80810,
+        "input_tokens": 14508,
+        "llm_calls": 2,
+        "llm_ms": 80805,
+        "output_tokens": 7592,
+        "seq": 51,
+        "tool_calls": 1,
+        "tool_ms": 5,
+        "ts": "2026-04-19T10:06:54.347754266Z",
+        "type": "stats"
+      },
+      "event_count": 53,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 1,
+        "usage": 2,
+        "tool.completed": 1,
+        "text.delta": 46,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "write_file": 1
+      },
+      "tool_outcomes": {
+        "write_file:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "claude-opus-4-7",
+        "provider": "Venice (claude-opus-4-7)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260419-200533-1a6769ffa364b252",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-19T10:05:33.53707765Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 52,
+        "tokens": 887,
+        "ts": "2026-04-19T10:06:54.347759728Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "venice-grok-4-20",
+    "display": "Venice Grok 4.20",
+    "provider": "venice:grok-4-20",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T10:09:13.122029+00:00",
+    "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "venice:grok-4-20",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider venice:grok-4-20 --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 69.202,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 42560,
+        "duration_ms": 69178,
+        "input_tokens": 15692,
+        "llm_calls": 6,
+        "llm_ms": 67147,
+        "output_tokens": 12872,
+        "seq": 284,
+        "tool_calls": 7,
+        "tool_ms": 2025,
+        "ts": "2026-04-19T10:08:39.991618281Z",
+        "type": "stats"
+      },
+      "event_count": 286,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 7,
+        "usage": 6,
+        "tool.completed": 7,
+        "text.delta": 263,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "write_file": 1,
+        "shell": 3,
+        "read_file": 2,
+        "grep": 1
+      },
+      "tool_outcomes": {
+        "write_file:success": 1,
+        "shell:success": 3,
+        "read_file:success": 2,
+        "grep:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "grok-4-20",
+        "provider": "Venice (grok-4-20)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260419-200730-324934cc9359e196",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-19T10:07:30.813376136Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 285,
+        "tokens": 580,
+        "ts": "2026-04-19T10:08:39.991626848Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": true
+    }
+  }
+]

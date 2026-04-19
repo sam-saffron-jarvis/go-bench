@@ -1,0 +1,104 @@
+{
+  "bench": "vague-developer",
+  "slug": "venice-qwen3-coder-480b",
+  "display": "Venice Qwen3 Coder 480B",
+  "provider": "venice:qwen3-coder-480b-a35b-instruct",
+  "requested": null,
+  "note": null,
+  "timestamp_utc": "2026-04-19T10:50:25.664901+00:00",
+  "term_llm_version": "term-llm version v0.0.169 (commit: 46e891e, built: 2026-04-19T08:53:02Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--json",
+    "--yolo",
+    "--provider",
+    "venice:qwen3-coder-480b-a35b-instruct",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    ".",
+    "build a standalone 9x9 fully functioning go board in index.html"
+  ],
+  "command_text": "term-llm ask --no-session --json --yolo --provider venice:qwen3-coder-480b-a35b-instruct --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+  "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 1,
+    "timed_out": false,
+    "elapsed_seconds": 18.93,
+    "stats": {
+      "cache_write_tokens": 0,
+      "cached_input_tokens": 0,
+      "duration_ms": 18905,
+      "input_tokens": 4897,
+      "llm_calls": 1,
+      "llm_ms": 18905,
+      "output_tokens": 73,
+      "seq": 60,
+      "tool_calls": 1,
+      "tool_ms": 0,
+      "ts": "2026-04-19T10:50:25.528133726Z",
+      "type": "stats"
+    },
+    "event_count": 62,
+    "event_counts": {
+      "session.started": 1,
+      "retry": 6,
+      "text.delta": 49,
+      "tool.started": 1,
+      "usage": 1,
+      "tool.completed": 1,
+      "error": 1,
+      "stats": 1,
+      "done": 1
+    },
+    "tool_counts": {
+      "glob": 1
+    },
+    "tool_outcomes": {
+      "glob:success": 1
+    },
+    "json_parse_errors": [],
+    "session_started": {
+      "agent": "developer",
+      "mcp": "",
+      "model": "qwen3-coder-480b-a35b-instruct",
+      "provider": "Venice (qwen3-coder-480b-a35b-instruct)",
+      "resuming": false,
+      "search": true,
+      "seq": 0,
+      "session_id": "20260419-205006-03830cb975ed910c",
+      "tools": "read_file,write_file,edit_file,glob,grep,shell",
+      "ts": "2026-04-19T10:50:06.622774913Z",
+      "type": "session.started",
+      "yolo": true
+    },
+    "done": {
+      "seq": 61,
+      "tokens": 73,
+      "ts": "2026-04-19T10:50:25.528138838Z",
+      "type": "done"
+    }
+  },
+  "verification": {
+    "passed": false,
+    "exit_code": 1,
+    "output": "FAIL: /root/source/go-bench/.runs/vague-developer/venice-qwen3-coder-480b/index.html does not exist"
+  },
+  "artifacts": {
+    "events_jsonl": "events.jsonl",
+    "stderr_log": "stderr.log",
+    "final_text": "final.txt",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": null
+  },
+  "output": {
+    "expected_file": "index.html",
+    "exists": false
+  }
+}
