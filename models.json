@@ -80,6 +80,18 @@
     "family": "venice"
   },
   {
+    "slug": "venice-minimax-m27",
+    "provider": "venice:minimax-m27",
+    "display": "Venice Minimax M27",
+    "family": "venice"
+  },
+  {
+    "slug": "venice-qwen-3-6-plus",
+    "provider": "venice:qwen-3-6-plus",
+    "display": "Venice Qwen 3.6 Plus",
+    "family": "venice"
+  },
+  {
     "slug": "venice-qwen3-coder-480b",
     "provider": "venice:qwen3-coder-480b-a35b-instruct",
     "display": "Venice Qwen3 Coder 480B",

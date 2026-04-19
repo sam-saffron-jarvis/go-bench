@@ -1,14 +1,11 @@
 # go-bench
 
-A small benchmark repo for asking term-llm-powered agents to build a playable 9x9 Go board.
+Benchmark repo for testing whether term-llm-powered agents can build a working 9x9 Go board.
 
-The point is not abstract benchmark theatre. It is to answer a concrete question:
+It has two modes:
 
-> If you give a model tools, a filesystem, and a browser-based verifier, can it iteratively build a real artifact?
-
-And then the meaner sibling:
-
-> If you give it only a vague developer-style prompt, how much does performance collapse?
+- a strict bench with an in-loop verifier tool
+- a vague bench with a pinned developer agent and only post-run verification
 
 ## Benches
 
@@ -20,8 +17,6 @@ A custom local agent with a custom `verify_board` tool.
 - prompt includes a spec file
 - the verifier is available **during** the run
 - the model can iterate until the verifier passes
-
-This is the "can the model use tool-driven trial and error correctly" bench.
 
 ### 2. `vague-developer`
 
@@ -35,8 +30,6 @@ term-llm ask --agent ./agent -p <provider:model> --json --yolo \
 ```
 
 The verifier is **not** exposed as a tool during the run. We run it only afterwards.
-
-This is the "how well does the model do with vague instructions and no explicit acceptance-test loop" bench.
 
 ## Tooling
 
@@ -61,7 +54,7 @@ The current list includes:
 - Claude Code: Sonnet, Haiku, Opus
 - ChatGPT: GPT-5.4, GPT-5.4 xhigh, GPT-5.4 Mini, GPT-5.4 Mini xhigh
 - Ollama: Gemma 4 26B, Qwen 3.6 variants
-- Venice: GLM 5.1, Kimi K2.5, Qwen3 Coder 480B, Claude Opus 4.7, Grok 4.20
+- Venice: GLM 5.1, Minimax M27, Qwen 3.6 Plus, Kimi K2.5, Qwen3 Coder 480B, Claude Opus 4.7, Grok 4.20
 
 ### Kimi note
 
