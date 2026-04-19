@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9x9 Go Board</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            height: 100vh;
+        }
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .info {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .status {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .stats {
+            font-size: 0.9em;
+            color: #555;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(9, 40px);
+            grid-template-rows: repeat(9, 40px);
+            background-color: #deb887;
+            padding: 20px;
+            border: 2px solid #8b4513;
+            position: relative;
+        }
+        .cell {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+        }
+        .cell::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #000;
+            top: 50%;
+            left: 0;
+            z-index: 1;
+        }
+        .cell::after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background-color: #000;
+            left: 50%;
+            top: 0;
+            z-index: 1;
+        }
+        .stone {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .stone.black {
+            background-color: #000;
+        }
+        .stone.white {
+            background-color: #fff;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #a0522d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-container">
+    <div class="info">
+        <div id="status" class="status">Black's Turn</div>
+        <div id="stats" class="stats">Black Captures: 0 | White Captures: 0</div>
+    </div>
+    <div id="board" class="board"></div>
+    <button id="reset">Reset Game</button>
+</div>
+
+<script>
+    const SIZE = 9;
+    let board = Array(SIZE).fill(null).map(() => Array(SIZE).fill(null));
+    let currentPlayer = 'black';
+    let captured = { black: 0, white: 0 };
+
+    const boardEl = document.getElementById('board');
+    const statusEl = document.getElementById('status');
+    const statsEl = document.getElementById('stats');
+    const resetBtn = document.getElementById('reset');
+
+    function initBoard() {
+        boardEl.innerHTML = '';
+        for (let y = 0; y < SIZE; y++) {
+            for (let x = 0; x < SIZE; x++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                cell.dataset.x = x;
+                cell.dataset.y = y;
+                cell.dataset.cell = `${x},${y}`;
+                cell.onclick = () => handleMove(x, y);
+                boardEl.appendChild(cell);
+            }
+        }
+        updateUI();
+    }
+
+    function getNeighbors(x, y) {
+        const neighbors = [];
+        const dirs = [[0, 1], [0, -1], [1, 0], [-1, 0]];
+        dirs.forEach(([dx, dy]) => {
+            const nx = x + dx, ny = y + dy;
+            if (nx >= 0 && nx < SIZE && ny >= 0 && ny < SIZE) {
+                neighbors.push([nx, ny]);
+            }
+        });
+        return neighbors;
+    }
+
+    function getGroup(x, y) {
+        const color = board[y][x];
+        if (!color) return [];
+        const group = [];
+        const visited = new Set();
+        const queue = [[x, y]];
+        visited.add(`${x},${y}`);
+
+        while (queue.length > 0) {
+            const [cx, cy] = queue.shift();
+            group.push([cx, cy]);
+
+            getNeighbors(cx, cy).forEach(([nx, ny]) => {
+                const key = `${nx},${ny}`;
+                if (board[ny][nx] === color && !visited.has(key)) {
+                    visited.add(key);
+                    queue.push([nx, ny]);
+                }
+            });
+        }
+        return group;
+    }
+
+    function getLibertiesOfGroup(group) {
+        const liberties = new Set();
+        group.forEach(([x, y]) => {
+            getNeighbors(x, y).forEach(([nx, ny]) => {
+                if (board[ny][nx] === null) {
+                    liberties.add(`${nx},${ny}`);
+                }
+            });
+        });
+        return Array.from(liberties).map(s => s.split(',').map(Number));
+    }
+
+    function handleMove(x, y) {
+        if (board[y][x] !== null) return;
+
+        const opponent = currentPlayer === 'black' ? 'white' : 'black';
+        const originalBoard = JSON.parse(JSON.stringify(board));
+        const originalCaptured = { ...captured };
+
+        // 1. Place stone
+        board[y][x] = currentPlayer;
+
+        // 2. Check for captures of opponent groups
+        const capturedStones = [];
+        const neighbors = getNeighbors(x, y);
+        neighbors.forEach(([nx, ny]) => {
+            if (board[ny][nx] === opponent) {
+                const group = getGroup(nx, ny);
+                if (getLibertiesOfGroup(group).length === 0) {
+                    group.forEach(p => {
+                        if (!capturedStones.some(s => s[0] === p[0] && s[1] === p[1])) {
+                            capturedStones.push(p);
+                        }
+                    });
+                }
+            }
+        });
+
+        // 3. Remove captured stones
+        capturedStones.forEach(([cx, cy]) => {
+            board[cy][cx] = null;
+            captured[currentPlayer]++;
+        });
+
+        // 4. Check for suicide
+        const myGroup = getGroup(x, y);
+        if (getLibertiesOfGroup(myGroup).length === 0) {
+            board = originalBoard;
+            captured = originalCaptured;
+            return;
+        }
+
+        // 5. If valid, switch turn
+        currentPlayer = opponent;
+        updateUI();
+    }
+
+    function updateUI() {
+        const cells = document.querySelectorAll('.cell');
+        cells.forEach(cell => {
+            const x = parseInt(cell.dataset.x);
+            const y = parseInt(cell.dataset.y);
+            const stone = cell.querySelector('.stone');
+            if (stone) stone.remove();
+
+            if (board[y][x]) {
+                const newStone = document.createElement('div');
+                newStone.className = `stone ${board[y][x]}`;
+                cell.appendChild(newStone);
+            }
+        });
+
+        statusEl.innerText = `${currentPlayer.charAt(0).toUpperCase() + currentPlayer.slice(1)}'s Turn`;
+        statusEl.style.color = currentPlayer === 'black' ? '#000' : '#555';
+        statsEl.innerText = `Black Captures: ${captured.black} | White Captures: ${captured.white}`;
+    }
+
+    resetBtn.onclick = () => {
+        board = Array(SIZE).fill(null).map(() => Array(SIZE).fill(null));
+        currentPlayer = 'black';
+        captured = { black: 0, white: 0 };
+        updateUI();
+    };
+
+    window.__goGame__ = {
+        getState: () => ({
+            size: SIZE,
+            currentPlayer: currentPlayer,
+            board: board.map(row => [...row]),
+            captured: { ...captured }
+        })
+    };
+
+    initBoard();
+</script>
+</body>
+</html>

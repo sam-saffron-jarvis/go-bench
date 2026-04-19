@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9x9 Go Board</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .info-panel {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .current-player {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .current-player.black {
+            background: #333;
+            color: white;
+        }
+
+        .current-player.white {
+            background: #ddd;
+            color: #333;
+        }
+
+        .captured-count {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .board-container {
+            display: inline-block;
+            padding: 10px;
+            background: #d4a574;
+            border-radius: 4px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(9, 40px);
+            grid-template-rows: repeat(9, 40px);
+            gap: 1px;
+            background: #d4a574;
+            padding: 8px;
+            border-radius: 2px;
+        }
+
+        .cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #d4a574;
+            border: 1px solid #8b7355;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.1s;
+        }
+
+        .cell:hover {
+            background: #c9985f;
+        }
+
+        .stone {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .stone.black {
+            background: radial-gradient(circle at 30% 30%, #555, #000);
+            color: white;
+        }
+
+        .stone.white {
+            background: radial-gradient(circle at 30% 30%, #fff, #e0e0e0);
+            border: 1px solid #999;
+            color: #333;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #667eea;
+            color: white;
+        }
+
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button#reset {
+            background: #ff6b6b;
+        }
+
+        button#reset:hover {
+            background: #ff5252;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>9x9 Go Board</h1>
+        
+        <div class="info-panel">
+            <div class="info-item">
+                <span class="info-label">Current Turn</span>
+                <span class="current-player black" id="currentPlayer">Black</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Black Captured</span>
+                <span class="captured-count" id="capturedBlack">0</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">White Captured</span>
+                <span class="captured-count" id="capturedWhite">0</span>
+            </div>
+        </div>
+
+        <div class="board-container">
+            <div class="board" id="board"></div>
+        </div>
+
+        <div class="button-group">
+            <button id="reset">Reset Board</button>
+        </div>
+    </div>
+
+    <script>
+        class GoGame {
+            constructor(size = 9) {
+                this.size = size;
+                this.board = Array(size).fill(null).map(() => Array(size).fill(null));
+                this.currentPlayer = 'black';
+                this.captured = { black: 0, white: 0 };
+            }
+
+            getState() {
+                return {
+                    size: this.size,
+                    currentPlayer: this.currentPlayer,
+                    board: JSON.parse(JSON.stringify(this.board)),
+                    captured: { ...this.captured }
+                };
+            }
+
+            isValidMove(x, y) {
+                if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
+                    return false;
+                }
+                return this.board[y][x] === null;
+            }
+
+            getAdjacentCells(x, y) {
+                const adjacent = [];
+                const directions = [[0, 1], [0, -1], [1, 0], [-1, 0]];
+                for (const [dx, dy] of directions) {
+                    const nx = x + dx;
+                    const ny = y + dy;
+                    if (nx >= 0 && nx < this.size && ny >= 0 && ny < this.size) {
+                        adjacent.push([nx, ny]);
+                    }
+                }
+                return adjacent;
+            }
+
+            getGroupAndLiberties(x, y) {
+                const color = this.board[y][x];
+                if (color === null) return { group: [], liberties: 0 };
+
+                const group = new Set();
+                const queue = [[x, y]];
+                const visited = new Set([`${x},${y}`]);
+                const libertySet = new Set();
+
+                while (queue.length > 0) {
+                    const [cx, cy] = queue.shift();
+                    group.add(`${cx},${cy}`);
+
+                    for (const [nx, ny] of this.getAdjacentCells(cx, cy)) {
+                        const key = `${nx},${ny}`;
+                        if (visited.has(key)) continue;
+                        visited.add(key);
+
+                        if (this.board[ny][nx] === color) {
+                            queue.push([nx, ny]);
+                        } else if (this.board[ny][nx] === null) {
+                            libertySet.add(key);
+                        }
+                    }
+                }
+
+                return { group, liberties: libertySet.size };
+            }
+
+            removeGroup(group) {
+                let count = 0;
+                for (const key of group) {
+                    const [x, y] = key.split(',').map(Number);
+                    this.board[y][x] = null;
+                    count++;
+                }
+                return count;
+            }
+
+            captureOpposingStones(x, y) {
+                const player = this.currentPlayer;
+                const opponent = player === 'black' ? 'white' : 'black';
+                let captureCount = 0;
+
+                for (const [nx, ny] of this.getAdjacentCells(x, y)) {
+                    if (this.board[ny][nx] === opponent) {
+                        const { group, liberties } = this.getGroupAndLiberties(nx, ny);
+                        if (liberties === 0) {
+                            captureCount += this.removeGroup(group);
+                        }
+                    }
+                }
+
+                return captureCount;
+            }
+
+            isSuicideMove(x, y) {
+                if (this.board[y][x] !== null) return false;
+
+                // Temporarily place the stone
+                const player = this.currentPlayer;
+                this.board[y][x] = player;
+
+                // Check if the move captures any opposing stones
+                let captureCount = 0;
+                const opponent = player === 'black' ? 'white' : 'black';
+                for (const [nx, ny] of this.getAdjacentCells(x, y)) {
+                    if (this.board[ny][nx] === opponent) {
+                        const { liberties } = this.getGroupAndLiberties(nx, ny);
+                        if (liberties === 0) {
+                            captureCount++;
+                        }
+                    }
+                }
+
+                // If the move captures stones, it's not suicide
+                if (captureCount > 0) {
+                    this.board[y][x] = null;
+                    return false;
+                }
+
+                // Check if the placed stone has liberties
+                const { liberties } = this.getGroupAndLiberties(x, y);
+                this.board[y][x] = null;
+
+                return liberties === 0;
+            }
+
+            playMove(x, y) {
+                if (!this.isValidMove(x, y)) {
+                    return false;
+                }
+
+                if (this.isSuicideMove(x, y)) {
+                    return false;
+                }
+
+                // Place the stone
+                this.board[y][x] = this.currentPlayer;
+
+                // Capture opposing stones
+                const captureCount = this.captureOpposingStones(x, y);
+                this.captured[this.currentPlayer] += captureCount;
+
+                // Switch player
+                this.currentPlayer = this.currentPlayer === 'black' ? 'white' : 'black';
+
+                return true;
+            }
+
+            reset() {
+                this.board = Array(this.size).fill(null).map(() => Array(this.size).fill(null));
+                this.currentPlayer = 'black';
+                this.captured = { black: 0, white: 0 };
+            }
+        }
+
+        // Initialize game
+        const game = new GoGame(9);
+        window.__goGame__ = {
+            getState: () => game.getState()
+        };
+
+        // DOM elements
+        const boardElement = document.getElementById('board');
+        const resetButton = document.getElementById('reset');
+        const currentPlayerDisplay = document.getElementById('currentPlayer');
+        const capturedBlackDisplay = document.getElementById('capturedBlack');
+        const capturedWhiteDisplay = document.getElementById('capturedWhite');
+
+        // Render the board
+        function renderBoard() {
+            boardElement.innerHTML = '';
+            for (let y = 0; y < 9; y++) {
+                for (let x = 0; x < 9; x++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.setAttribute('data-cell', `${x},${y}`);
+
+                    const stone = game.board[y][x];
+                    if (stone) {
+                        const stoneEl = document.createElement('div');
+                        stoneEl.className = `stone ${stone}`;
+                        cell.appendChild(stoneEl);
+                    }
+
+                    cell.addEventListener('click', () => handleCellClick(x, y));
+                    boardElement.appendChild(cell);
+                }
+            }
+
+            // Update info display
+            currentPlayerDisplay.textContent = game.currentPlayer === 'black' ? 'Black' : 'White';
+            currentPlayerDisplay.className = `current-player ${game.currentPlayer}`;
+            capturedBlackDisplay.textContent = game.captured.black;
+            capturedWhiteDisplay.textContent = game.captured.white;
+        }
+
+        function handleCellClick(x, y) {
+            game.playMove(x, y);
+            renderBoard();
+        }
+
+        resetButton.addEventListener('click', () => {
+            game.reset();
+            renderBoard();
+        });
+
+        // Initial render
+        renderBoard();
+    </script>
+</body>
+</html>

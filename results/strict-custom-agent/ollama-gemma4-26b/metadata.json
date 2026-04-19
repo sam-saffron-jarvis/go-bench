@@ -1,0 +1,67 @@
+{
+  "bench": "strict-custom-agent",
+  "slug": "ollama-gemma4-26b",
+  "display": "Ollama Gemma 4 26B",
+  "provider": "ollama:gemma4:26b",
+  "requested": null,
+  "note": null,
+  "timestamp_utc": "2026-04-19T07:57:30.304275+00:00",
+  "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--text",
+    "--stats",
+    "--yolo",
+    "--provider",
+    "ollama:gemma4:26b",
+    "--max-turns",
+    "30",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    "./workspace",
+    "-f",
+    "./SPEC.md",
+    "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+  ],
+  "command_text": "term-llm ask --no-session --text --stats --yolo --provider ollama:gemma4:26b --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+  "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 256.552,
+    "stats": {
+      "raw": "Stats: 256.5s (llm 246.0s + tool 10.6s) | 468k in \u2192 27k out (last: 33k\u21926, peak: 36k) | 22 tools | 23 llm calls",
+      "elapsed_seconds": 256.5,
+      "input_tokens": 468000,
+      "output_tokens": 27000,
+      "last_input_tokens": 33000,
+      "last_output_tokens": 6,
+      "tool_calls": 22,
+      "llm_calls": 23,
+      "peak_tokens": 36000,
+      "llm_seconds": 246.0,
+      "tool_seconds": 10.6
+    }
+  },
+  "verification": {
+    "passed": false,
+    "exit_code": 1,
+    "output": "FAIL: page emitted runtime errors\nConsole errors:\nFailed to load resource: the server responded with a status of 404 (Not Found)"
+  },
+  "artifacts": {
+    "run_log": "run.log",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": "screenshot.png"
+  },
+  "output": {
+    "expected_file": "workspace/board.html",
+    "exists": true
+  }
+}

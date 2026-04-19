@@ -1,0 +1,70 @@
+[
+  {
+    "slug": "claude-bin-sonnet",
+    "provider": "claude-bin:sonnet",
+    "display": "Claude Code Sonnet",
+    "family": "claude-bin"
+  },
+  {
+    "slug": "claude-bin-haiku",
+    "provider": "claude-bin:haiku",
+    "display": "Claude Code Haiku",
+    "family": "claude-bin"
+  },
+  {
+    "slug": "ollama-gemma4-26b",
+    "provider": "ollama:gemma4:26b",
+    "display": "Ollama Gemma 4 26B",
+    "family": "ollama"
+  },
+  {
+    "slug": "ollama-qwen36-tools-q35",
+    "provider": "ollama:qwen36-tools-q35:latest",
+    "display": "Ollama Qwen 3.6 Tools q35",
+    "family": "ollama"
+  },
+  {
+    "slug": "ollama-qwen36-q4",
+    "provider": "ollama:qwen36-q4:latest",
+    "display": "Ollama Qwen 3.6 q4",
+    "family": "ollama"
+  },
+  {
+    "slug": "ollama-qwen36-tools-q3",
+    "provider": "ollama:qwen36-tools-q3:latest",
+    "display": "Ollama Qwen 3.6 Tools q3",
+    "family": "ollama"
+  },
+  {
+    "slug": "venice-kimi-k2-5",
+    "provider": "venice:kimi-k2-5",
+    "display": "Venice Kimi K2.5",
+    "family": "venice",
+    "requested": "venice:kimi-2.7",
+    "note": "The live Venice model list on 2026-04-19 does not include kimi-2.7. term-llm returns a 404 and suggests kimi-k2-5 or kimi-k2-thinking."
+  },
+  {
+    "slug": "venice-glm-5-1",
+    "provider": "venice:zai-org-glm-5-1",
+    "display": "Venice GLM 5.1",
+    "family": "venice"
+  },
+  {
+    "slug": "venice-qwen3-coder-480b",
+    "provider": "venice:qwen3-coder-480b-a35b-instruct",
+    "display": "Venice Qwen3 Coder 480B",
+    "family": "venice"
+  },
+  {
+    "slug": "venice-claude-opus-4-7",
+    "provider": "venice:claude-opus-4-7",
+    "display": "Venice Claude Opus 4.7",
+    "family": "venice"
+  },
+  {
+    "slug": "venice-grok-4-20",
+    "provider": "venice:grok-4-20",
+    "display": "Venice Grok 4.20",
+    "family": "venice"
+  }
+]

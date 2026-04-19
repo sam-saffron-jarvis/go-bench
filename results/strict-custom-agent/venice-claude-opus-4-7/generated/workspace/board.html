@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>9x9 Go</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%23111'/%3E%3C/svg%3E">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2b1d0e, #4a3520);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #f1e6d3;
+    padding: 20px;
+  }
+  h1 {
+    margin: 0 0 12px 0;
+    font-weight: 500;
+    letter-spacing: 2px;
+  }
+  .hud {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 16px;
+    background: rgba(0,0,0,0.35);
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+  .turn-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 6px;
+    border: 1px solid #222;
+  }
+  .turn-dot.black { background: #111; }
+  .turn-dot.white { background: #f7f5ef; }
+  button#reset {
+    background: #8a6a3b;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  button#reset:hover { background: #a98353; }
+
+  .board-wrap {
+    position: relative;
+    background: #dcb06a;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 30px rgba(120,70,20,0.25);
+  }
+  .board {
+    position: relative;
+    width: 480px;
+    height: 480px;
+  }
+  .board svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .cell {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .stone {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.35);
+  }
+  .stone.black {
+    background: radial-gradient(circle at 35% 30%, #555, #000);
+  }
+  .stone.white {
+    background: radial-gradient(circle at 35% 30%, #fff, #bdb7a8);
+  }
+  .cell:hover .stone-preview {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+  .cell:hover .stone-preview.black {
+    background: #000;
+  }
+  .cell:hover .stone-preview.white {
+    background: #fff;
+  }
+</style>
+</head>
+<body>
+  <h1>9×9 GO</h1>
+  <div class="hud">
+    <div id="turn-indicator"><span class="turn-dot black"></span><span id="turn-text">Black to move</span></div>
+    <div>Captured by Black: <span id="cap-black">0</span></div>
+    <div>Captured by White: <span id="cap-white">0</span></div>
+    <button id="reset">RESET</button>
+  </div>
+  <div class="board-wrap">
+    <div class="board" id="board"></div>
+  </div>
+
+<script>
+(function() {
+  const SIZE = 9;
+  const BOARD_PX = 480;
+  const STEP = BOARD_PX / (SIZE - 1); // distance between lines
+  // Actually let's use padding. Keep it simple:
+  // We treat board as 9 grid points evenly spaced. step = BOARD_PX / (SIZE - 1) = 60.
+
+  const boardEl = document.getElementById('board');
+  const turnTextEl = document.getElementById('turn-text');
+  const turnDotEl = document.querySelector('#turn-indicator .turn-dot');
+  const capBlackEl = document.getElementById('cap-black');
+  const capWhiteEl = document.getElementById('cap-white');
+  const resetBtn = document.getElementById('reset');
+
+  let state;
+
+  function freshState() {
+    const board = [];
+    for (let y = 0; y < SIZE; y++) {
+      const row = [];
+      for (let x = 0; x < SIZE; x++) row.push(null);
+      board.push(row);
+    }
+    return {
+      size: SIZE,
+      currentPlayer: 'black',
+      board: board,
+      captured: { black: 0, white: 0 }
+    };
+  }
+
+  function buildBoard() {
+    boardEl.innerHTML = '';
+
+    // SVG for grid lines and star points
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('viewBox', '0 0 480 480');
+    for (let i = 0; i < SIZE; i++) {
+      const pos = i * STEP;
+      // horizontal
+      const h = document.createElementNS(svgNS, 'line');
+      h.setAttribute('x1', 0);
+      h.setAttribute('y1', pos);
+      h.setAttribute('x2', BOARD_PX);
+      h.setAttribute('y2', pos);
+      h.setAttribute('stroke', '#2b1d0e');
+      h.setAttribute('stroke-width', '1.5');
+      svg.appendChild(h);
+      // vertical
+      const v = document.createElementNS(svgNS, 'line');
+      v.setAttribute('x1', pos);
+      v.setAttribute('y1', 0);
+      v.setAttribute('x2', pos);
+      v.setAttribute('y2', BOARD_PX);
+      v.setAttribute('stroke', '#2b1d0e');
+      v.setAttribute('stroke-width', '1.5');
+      svg.appendChild(v);
+    }
+    // star points on 9x9: (2,2), (2,6), (6,2), (6,6), (4,4)
+    const stars = [[2,2],[2,6],[6,2],[6,6],[4,4]];
+    for (const [sx, sy] of stars) {
+      const c = document.createElementNS(svgNS, 'circle');
+      c.setAttribute('cx', sx * STEP);
+      c.setAttribute('cy', sy * STEP);
+      c.setAttribute('r', 3.5);
+      c.setAttribute('fill', '#2b1d0e');
+      svg.appendChild(c);
+    }
+    boardEl.appendChild(svg);
+
+    // Click targets
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.style.left = (x * STEP) + 'px';
+        cell.style.top = (y * STEP) + 'px';
+        cell.setAttribute('data-cell', x + ',' + y);
+        cell.addEventListener('click', () => handleClick(x, y));
+        boardEl.appendChild(cell);
+      }
+    }
+  }
+
+  function render() {
+    // remove old stones
+    const old = boardEl.querySelectorAll('.stone');
+    old.forEach(n => n.remove());
+
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        const v = state.board[y][x];
+        if (v) {
+          const cell = boardEl.querySelector('[data-cell="' + x + ',' + y + '"]');
+          const stone = document.createElement('div');
+          stone.className = 'stone ' + v;
+          cell.appendChild(stone);
+        }
+      }
+    }
+
+    turnTextEl.textContent = state.currentPlayer === 'black' ? 'Black to move' : 'White to move';
+    turnDotEl.className = 'turn-dot ' + state.currentPlayer;
+    capBlackEl.textContent = state.captured.black;
+    capWhiteEl.textContent = state.captured.white;
+  }
+
+  function neighbors(x, y) {
+    const out = [];
+    if (x > 0) out.push([x - 1, y]);
+    if (x < SIZE - 1) out.push([x + 1, y]);
+    if (y > 0) out.push([x, y - 1]);
+    if (y < SIZE - 1) out.push([x, y + 1]);
+    return out;
+  }
+
+  // Find group of same color connected to (x,y) and count liberties.
+  function groupInfo(board, x, y) {
+    const color = board[y][x];
+    if (!color) return null;
+    const stack = [[x, y]];
+    const visited = new Set();
+    const stones = [];
+    const liberties = new Set();
+    visited.add(x + ',' + y);
+    while (stack.length) {
+      const [cx, cy] = stack.pop();
+      stones.push([cx, cy]);
+      for (const [nx, ny] of neighbors(cx, cy)) {
+        const key = nx + ',' + ny;
+        const nv = board[ny][nx];
+        if (nv === null) {
+          liberties.add(key);
+        } else if (nv === color && !visited.has(key)) {
+          visited.add(key);
+          stack.push([nx, ny]);
+        }
+      }
+    }
+    return { stones, liberties, color };
+  }
+
+  function handleClick(x, y) {
+    if (state.board[y][x] !== null) return;
+
+    const color = state.currentPlayer;
+    const opp = color === 'black' ? 'white' : 'black';
+
+    // Copy board and tentatively place
+    const newBoard = state.board.map(row => row.slice());
+    newBoard[y][x] = color;
+
+    // Check opposing neighbor groups for captures
+    let capturedCount = 0;
+    const toRemove = new Set();
+    for (const [nx, ny] of neighbors(x, y)) {
+      if (newBoard[ny][nx] === opp) {
+        const info = groupInfo(newBoard, nx, ny);
+        if (info.liberties.size === 0) {
+          for (const [sx, sy] of info.stones) {
+            toRemove.add(sx + ',' + sy);
+          }
+        }
+      }
+    }
+    for (const key of toRemove) {
+      const [sx, sy] = key.split(',').map(Number);
+      newBoard[sy][sx] = null;
+      capturedCount++;
+    }
+
+    // Check suicide: own group must have liberties
+    const ownInfo = groupInfo(newBoard, x, y);
+    if (ownInfo.liberties.size === 0) {
+      // illegal suicide
+      return;
+    }
+
+    state.board = newBoard;
+    state.captured[color] += capturedCount;
+    state.currentPlayer = opp;
+    render();
+  }
+
+  function reset() {
+    state = freshState();
+    render();
+  }
+
+  resetBtn.addEventListener('click', reset);
+
+  // init
+  buildBoard();
+  reset();
+
+  window.__goGame__ = {
+    getState: function() {
+      return {
+        size: state.size,
+        currentPlayer: state.currentPlayer,
+        board: state.board.map(row => row.slice()),
+        captured: { black: state.captured.black, white: state.captured.white }
+      };
+    }
+  };
+})();
+</script>
+</body>
+</html>

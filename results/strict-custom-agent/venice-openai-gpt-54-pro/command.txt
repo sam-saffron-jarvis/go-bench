@@ -1,0 +1,1 @@
+term-llm ask --no-session --text --stats --yolo --provider venice:openai-gpt-54-pro --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."

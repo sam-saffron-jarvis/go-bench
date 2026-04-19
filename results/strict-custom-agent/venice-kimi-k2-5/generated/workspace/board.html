@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9x9 Go Board</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #2c2c2c;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+        }
+        
+        h1 {
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+        
+        .info {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .turn-indicator {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .turn-indicator .player {
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+        
+        .turn-indicator .player.black {
+            background: #000;
+            color: #fff;
+        }
+        
+        .turn-indicator .player.white {
+            background: #fff;
+            color: #000;
+        }
+        
+        .captures {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .capture-count {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .stone-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .stone-icon.black {
+            background: #000;
+            border: 1px solid #444;
+        }
+        
+        .stone-icon.white {
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+        
+        .board-container {
+            background: #dcb35c;
+            padding: 25px;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        
+        #board {
+            position: relative;
+            width: 450px;
+            height: 450px;
+        }
+        
+        .grid-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .grid-line-h, .grid-line-v {
+            stroke: #000;
+            stroke-width: 1;
+        }
+        
+        .star-points circle {
+            fill: #000;
+        }
+        
+        .intersections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .intersection {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.1s;
+        }
+        
+        .intersection:hover {
+            background: rgba(255,0,0,0.2);
+        }
+        
+        .stone {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .stone.black {
+            background: radial-gradient(circle at 30% 30%, #444, #000);
+        }
+        
+        .stone.white {
+            background: radial-gradient(circle at 30% 30%, #fff, #ddd);
+        }
+        
+        .controls {
+            margin-top: 20px;
+        }
+        
+        #reset {
+            padding: 12px 30px;
+            font-size: 1em;
+            background: #4a90d9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        #reset:hover {
+            background: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <h1>9x9 Go</h1>
+    
+    <div class="info">
+        <div class="turn-indicator">
+            Current turn: <span id="current-player" class="player black">Black</span>
+        </div>
+        <div class="captures">
+            <div class="capture-count">
+                <span class="stone-icon black"></span>
+                <span>Black captured: <span id="captured-black">0</span></span>
+            </div>
+            <div class="capture-count">
+                <span class="stone-icon white"></span>
+                <span>White captured: <span id="captured-white">0</span></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="board-container">
+        <div id="board">
+            <svg class="grid-lines" viewBox="0 0 450 450">
+                <!-- Horizontal lines -->
+                <g id="h-lines"></g>
+                <!-- Vertical lines -->
+                <g id="v-lines"></g>
+                <!-- Star points (hoshi) -->
+                <g class="star-points">
+                    <circle cx="175" cy="175" r="3"/>
+                    <circle cx="275" cy="175" r="3"/>
+                    <circle cx="175" cy="275" r="3"/>
+                    <circle cx="275" cy="275" r="3"/>
+                    <circle cx="225" cy="225" r="3"/>
+                </g>
+            </svg>
+            <div class="intersections" id="intersections"></div>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button id="reset">Reset Board</button>
+    </div>
+    
+    <script>
+        (function() {
+            const BOARD_SIZE = 9;
+            const CELL_SIZE = 50;
+            const OFFSET = 25;
+            
+            let board = []; // 9x9 array, null or 'black' or 'white'
+            let currentPlayer = 'black';
+            let captured = { black: 0, white: 0 };
+            
+            function initBoard() {
+                board = [];
+                for (let y = 0; y < BOARD_SIZE; y++) {
+                    const row = [];
+                    for (let x = 0; x < BOARD_SIZE; x++) {
+                        row.push(null);
+                    }
+                    board.push(row);
+                }
+            }
+            
+            function createGridLines() {
+                const hLines = document.getElementById('h-lines');
+                const vLines = document.getElementById('v-lines');
+                
+                for (let i = 0; i < BOARD_SIZE; i++) {
+                    const pos = OFFSET + i * CELL_SIZE;
+                    
+                    // Horizontal line
+                    const hLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    hLine.setAttribute('x1', OFFSET);
+                    hLine.setAttribute('y1', pos);
+                    hLine.setAttribute('x2', OFFSET + (BOARD_SIZE - 1) * CELL_SIZE);
+                    hLine.setAttribute('y2', pos);
+                    hLine.setAttribute('class', 'grid-line-h');
+                    hLines.appendChild(hLine);
+                    
+                    // Vertical line
+                    const vLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    vLine.setAttribute('x1', pos);
+                    vLine.setAttribute('y1', OFFSET);
+                    vLine.setAttribute('x2', pos);
+                    vLine.setAttribute('y2', OFFSET + (BOARD_SIZE - 1) * CELL_SIZE);
+                    vLine.setAttribute('class', 'grid-line-v');
+                    vLines.appendChild(vLine);
+                }
+            }
+            
+            function createIntersections() {
+                const container = document.getElementById('intersections');
+                container.innerHTML = '';
+                
+                for (let y = 0; y < BOARD_SIZE; y++) {
+                    for (let x = 0; x < BOARD_SIZE; x++) {
+                        const intersection = document.createElement('div');
+                        intersection.className = 'intersection';
+                        intersection.style.left = (OFFSET + x * CELL_SIZE) + 'px';
+                        intersection.style.top = (OFFSET + y * CELL_SIZE) + 'px';
+                        intersection.setAttribute('data-cell', `${x},${y}`);
+                        intersection.addEventListener('click', () => handleClick(x, y));
+                        container.appendChild(intersection);
+                    }
+                }
+            }
+            
+            function getGroup(board, x, y, color, visited) {
+                const key = `${x},${y}`;
+                if (visited.has(key)) return { stones: [], liberties: [] };
+                
+                if (x < 0 || x >= BOARD_SIZE || y < 0 || y >= BOARD_SIZE) {
+                    return { stones: [], liberties: [] };
+                }
+                
+                if (board[y][x] !== color) {
+                    if (board[y][x] === null) {
+                        return { stones: [], liberties: [{x, y}] };
+                    }
+                    return { stones: [], liberties: [] };
+                }
+                
+                visited.add(key);
+                const group = { stones: [{x, y}], liberties: [] };
+                
+                const neighbors = [
+                    {x: x+1, y: y},
+                    {x: x-1, y: y},
+                    {x: x, y: y+1},
+                    {x: x, y: y-1}
+                ];
+                
+                for (const n of neighbors) {
+                    const result = getGroup(board, n.x, n.y, color, visited);
+                    group.stones.push(...result.stones);
+                    // Add unique liberties
+                    for (const lib of result.liberties) {
+                        if (!group.liberties.some(l => l.x === lib.x && l.y === lib.y)) {
+                            group.liberties.push(lib);
+                        }
+                    }
+                }
+                
+                return group;
+            }
+            
+            function countLiberties(board, x, y, color) {
+                const visited = new Set();
+                const group = getGroup(board, x, y, color, visited);
+                return group.liberties.length;
+            }
+            
+            function wouldHaveLibertiesAfterMove(x, y, color) {
+                // Temporarily place stone
+                board[y][x] = color;
+                
+                // Check if this stone or any connected group has liberties
+                const visited = new Set();
+                const group = getGroup(board, x, y, color, visited);
+                const hasLiberties = group.liberties.length > 0;
+                
+                // Remove temporary stone
+                board[y][x] = null;
+                
+                return hasLiberties;
+            }
+            
+            function handleClick(x, y) {
+                // Check if occupied
+                if (board[y][x] !== null) {
+                    return;
+                }
+                
+                // Check for captures first
+                const opponent = currentPlayer === 'black' ? 'white' : 'black';
+                const capturedStones = [];
+                
+                // Temporarily place stone to check for captures
+                board[y][x] = currentPlayer;
+                
+                // Check adjacent opponent groups for captures
+                const neighbors = [
+                    {x: x+1, y: y},
+                    {x: x-1, y: y},
+                    {x: x, y: y+1},
+                    {x: x, y: y-1}
+                ];
+                
+                for (const n of neighbors) {
+                    if (n.x >= 0 && n.x < BOARD_SIZE && n.y >= 0 && n.y < BOARD_SIZE) {
+                        if (board[n.y][n.x] === opponent) {
+                            const oppVisited = new Set();
+                            const oppGroup = getGroup(board, n.x, n.y, opponent, oppVisited);
+                            if (oppGroup.liberties.length === 0) {
+                                // This group is captured
+                                capturedStones.push(...oppGroup.stones);
+                            }
+                        }
+                    }
+                }
+                
+                // Check suicide rule - illegal unless it captures
+                const selfVisited = new Set();
+                const selfGroup = getGroup(board, x, y, currentPlayer, selfVisited);
+                const hasLiberties = selfGroup.liberties.length > 0;
+                
+                if (!hasLiberties && capturedStones.length === 0) {
+                    // Suicide is illegal
+                    board[y][x] = null;
+                    return;
+                }
+                
+                // Remove captured stones
+                for (const stone of capturedStones) {
+                    board[stone.y][stone.x] = null;
+                }
+                
+                // Update capture counts
+                if (capturedStones.length > 0) {
+                    captured[currentPlayer] += capturedStones.length;
+                }
+                
+                // Switch player
+                currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+                
+                updateDisplay();
+            }
+            
+            function updateDisplay() {
+                // Update stones
+                const intersections = document.getElementById('intersections');
+                // Remove existing stones
+                const existingStones = intersections.querySelectorAll('.stone');
+                existingStones.forEach(s => s.remove());
+                
+                // Add stones based on board state
+                for (let y = 0; y < BOARD_SIZE; y++) {
+                    for (let x = 0; x < BOARD_SIZE; x++) {
+                        if (board[y][x]) {
+                            const stone = document.createElement('div');
+                            stone.className = `stone ${board[y][x]}`;
+                            stone.style.left = (OFFSET + x * CELL_SIZE) + 'px';
+                            stone.style.top = (OFFSET + y * CELL_SIZE) + 'px';
+                            intersections.appendChild(stone);
+                        }
+                    }
+                }
+                
+                // Update turn indicator
+                const indicator = document.getElementById('current-player');
+                indicator.textContent = currentPlayer === 'black' ? 'Black' : 'White';
+                indicator.className = `player ${currentPlayer}`;
+                
+                // Update capture counts
+                document.getElementById('captured-black').textContent = captured.black;
+                document.getElementById('captured-white').textContent = captured.white;
+            }
+            
+            function reset() {
+                initBoard();
+                currentPlayer = 'black';
+                captured = { black: 0, white: 0 };
+                updateDisplay();
+            }
+            
+            function getState() {
+                // Return deep copy of board
+                const boardCopy = board.map(row => [...row]);
+                return {
+                    size: BOARD_SIZE,
+                    currentPlayer: currentPlayer,
+                    board: boardCopy,
+                    captured: { ...captured }
+                };
+            }
+            
+            // Initialize
+            initBoard();
+            createGridLines();
+            createIntersections();
+            
+            // Set up reset button
+            document.getElementById('reset').addEventListener('click', reset);
+            
+            // Expose global object
+            window.__goGame__ = {
+                getState: getState
+            };
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Board - 9x9</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .board-wrapper {
+            background: #d4a574;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(9, 40px);
+            grid-template-rows: repeat(9, 40px);
+            gap: 0;
+            background: #d4a574;
+            border: 2px solid #333;
+            padding: 10px;
+        }
+
+        .intersection {
+            width: 40px;
+            height: 40px;
+            background: #d4a574;
+            border: 1px solid #999;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.1s;
+        }
+
+        .intersection:hover {
+            background: #e8b888;
+        }
+
+        .intersection.star {
+            position: relative;
+        }
+
+        .intersection.star::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        .stone {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.3), 
+                        inset 1px 1px 2px rgba(255, 255, 255, 0.2);
+            cursor: grab;
+            transition: transform 0.05s;
+        }
+
+        .stone:active {
+            cursor: grabbing;
+            transform: scale(1.05);
+        }
+
+        .stone.black {
+            background: radial-gradient(circle at 30% 30%, #444, #000);
+        }
+
+        .stone.white {
+            background: radial-gradient(circle at 30% 30%, #fff, #ddd);
+            border: 1px solid #999;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            min-width: 250px;
+        }
+
+        .info {
+            font-size: 18px;
+            font-weight: 600;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            background: #f0f0f0;
+            border-left: 4px solid #667eea;
+        }
+
+        .player-turn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .player-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .player-indicator.black {
+            background: #000;
+        }
+
+        .player-indicator.white {
+            background: white;
+            border: 2px solid #999;
+        }
+
+        .score {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 16px;
+        }
+
+        .score-item {
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .score-item strong {
+            display: block;
+            color: #667eea;
+            font-size: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .stats {
+            font-size: 14px;
+            color: #666;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .board {
+                grid-template-columns: repeat(9, 30px);
+                grid-template-rows: repeat(9, 30px);
+            }
+
+            .intersection {
+                width: 30px;
+                height: 30px;
+            }
+
+            .stone {
+                width: 26px;
+                height: 26px;
+            }
+
+            .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="board-wrapper">
+            <div class="board" id="board"></div>
+        </div>
+
+        <div class="controls">
+            <div class="info">
+                <div class="player-turn">
+                    <span>Current Player:</span>
+                    <div class="player-indicator black" id="playerIndicator"></div>
+                </div>
+            </div>
+
+            <div class="score">
+                <div class="score-item">
+                    <span>Black Stones</span>
+                    <strong id="blackCount">0</strong>
+                </div>
+                <div class="score-item">
+                    <span>White Stones</span>
+                    <strong id="whiteCount">0</strong>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="game.pass()">Pass</button>
+            <button class="btn-secondary" onclick="game.undo()">Undo Last Move</button>
+            <button class="btn-secondary" onclick="game.reset()">New Game</button>
+
+            <div class="stats">
+                <div>Total Moves: <strong id="moveCount">0</strong></div>
+                <div>Game Status: <strong id="gameStatus">In Progress</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BOARD_SIZE = 9;
+        const EMPTY = 0;
+        const BLACK = 1;
+        const WHITE = 2;
+
+        class GoGame {
+            constructor() {
+                this.board = Array(BOARD_SIZE * BOARD_SIZE).fill(EMPTY);
+                this.currentPlayer = BLACK;
+                this.moveHistory = [];
+                this.consecutivePasses = 0;
+                this.gameStatus = 'In Progress';
+                this.init();
+            }
+
+            init() {
+                this.createBoardUI();
+                this.render();
+            }
+
+            createBoardUI() {
+                const boardElement = document.getElementById('board');
+                boardElement.innerHTML = '';
+
+                for (let i = 0; i < BOARD_SIZE; i++) {
+                    for (let j = 0; j < BOARD_SIZE; j++) {
+                        const intersection = document.createElement('div');
+                        intersection.className = 'intersection';
+
+                        // Add star points (hoshi) at 9x9 standard positions
+                        if ((i === 2 || i === 4 || i === 6) && (j === 2 || j === 4 || j === 6)) {
+                            intersection.classList.add('star');
+                        }
+
+                        intersection.dataset.row = i;
+                        intersection.dataset.col = j;
+                        intersection.addEventListener('click', (e) => this.handleClick(i, j));
+
+                        boardElement.appendChild(intersection);
+                    }
+                }
+            }
+
+            handleClick(row, col) {
+                if (this.gameStatus !== 'In Progress') return;
+
+                const index = row * BOARD_SIZE + col;
+                if (this.board[index] !== EMPTY) return;
+
+                // Check if move is legal (simplified - no capture/suicide rules for MVP)
+                this.board[index] = this.currentPlayer;
+                this.moveHistory.push({ row, col, player: this.currentPlayer });
+                this.consecutivePasses = 0;
+
+                this.currentPlayer = this.currentPlayer === BLACK ? WHITE : BLACK;
+                this.render();
+            }
+
+            pass() {
+                this.consecutivePasses++;
+                this.moveHistory.push({ pass: true, player: this.currentPlayer });
+                this.currentPlayer = this.currentPlayer === BLACK ? WHITE : BLACK;
+
+                if (this.consecutivePasses >= 2) {
+                    this.endGame();
+                }
+
+                this.render();
+            }
+
+            undo() {
+                if (this.moveHistory.length === 0) return;
+
+                const lastMove = this.moveHistory.pop();
+                if (lastMove.pass) {
+                    this.consecutivePasses--;
+                    this.gameStatus = 'In Progress';
+                } else {
+                    const index = lastMove.row * BOARD_SIZE + lastMove.col;
+                    this.board[index] = EMPTY;
+                    this.consecutivePasses = 0;
+                }
+
+                this.currentPlayer = lastMove.player;
+                this.render();
+            }
+
+            endGame() {
+                this.gameStatus = 'Game Over (Both Passed)';
+                this.currentPlayer = null;
+            }
+
+            reset() {
+                this.board = Array(BOARD_SIZE * BOARD_SIZE).fill(EMPTY);
+                this.currentPlayer = BLACK;
+                this.moveHistory = [];
+                this.consecutivePasses = 0;
+                this.gameStatus = 'In Progress';
+                this.render();
+            }
+
+            render() {
+                // Update board stones
+                const intersections = document.querySelectorAll('.intersection');
+                intersections.forEach((el) => {
+                    const row = parseInt(el.dataset.row);
+                    const col = parseInt(el.dataset.col);
+                    const index = row * BOARD_SIZE + col;
+                    const cell = this.board[index];
+
+                    const existingStone = el.querySelector('.stone');
+                    if (existingStone) existingStone.remove();
+
+                    if (cell !== EMPTY) {
+                        const stone = document.createElement('div');
+                        stone.className = `stone ${cell === BLACK ? 'black' : 'white'}`;
+                        el.appendChild(stone);
+                    }
+                });
+
+                // Update player indicator
+                const indicator = document.getElementById('playerIndicator');
+                if (this.currentPlayer) {
+                    indicator.className = `player-indicator ${this.currentPlayer === BLACK ? 'black' : 'white'}`;
+                } else {
+                    indicator.style.opacity = '0.5';
+                }
+
+                // Update counts
+                const blackCount = this.board.filter(cell => cell === BLACK).length;
+                const whiteCount = this.board.filter(cell => cell === WHITE).length;
+                document.getElementById('blackCount').textContent = blackCount;
+                document.getElementById('whiteCount').textContent = whiteCount;
+
+                // Update stats
+                document.getElementById('moveCount').textContent = this.moveHistory.filter(m => !m.pass).length;
+                document.getElementById('gameStatus').textContent = this.gameStatus;
+            }
+        }
+
+        const game = new GoGame();
+    </script>
+</body>
+</html>

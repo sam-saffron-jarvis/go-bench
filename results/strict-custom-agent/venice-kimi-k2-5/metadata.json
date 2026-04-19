@@ -1,0 +1,68 @@
+{
+  "bench": "strict-custom-agent",
+  "slug": "venice-kimi-k2-5",
+  "display": "Venice Kimi K2.5",
+  "provider": "venice:kimi-k2-5",
+  "requested": "venice:kimi-2.7",
+  "note": "The live Venice model list on 2026-04-19 does not include kimi-2.7. term-llm returns a 404 and suggests kimi-k2-5 or kimi-k2-thinking.",
+  "timestamp_utc": "2026-04-19T08:00:54.890399+00:00",
+  "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--text",
+    "--stats",
+    "--yolo",
+    "--provider",
+    "venice:kimi-k2-5",
+    "--max-turns",
+    "30",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    "./workspace",
+    "-f",
+    "./SPEC.md",
+    "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+  ],
+  "command_text": "term-llm ask --no-session --text --stats --yolo --provider venice:kimi-k2-5 --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+  "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 58.214,
+    "stats": {
+      "raw": "Stats: 58.2s (llm 56.7s + tool 1.5s) | 12k in (cache: 8.1k read) \u2192 4.1k out (last: 8.1k\u219222, peak: 8.1k) | 2 tools | 3 llm calls",
+      "elapsed_seconds": 58.2,
+      "input_tokens": 12000,
+      "output_tokens": 4100,
+      "last_input_tokens": 8100,
+      "last_output_tokens": 22,
+      "tool_calls": 2,
+      "llm_calls": 3,
+      "cache_read_tokens": 8100,
+      "peak_tokens": 8100,
+      "llm_seconds": 56.7,
+      "tool_seconds": 1.5
+    }
+  },
+  "verification": {
+    "passed": true,
+    "exit_code": 0,
+    "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/venice-kimi-k2-5/workspace/board.html satisfied all acceptance tests"
+  },
+  "artifacts": {
+    "run_log": "run.log",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": "screenshot.png"
+  },
+  "output": {
+    "expected_file": "workspace/board.html",
+    "exists": true
+  }
+}

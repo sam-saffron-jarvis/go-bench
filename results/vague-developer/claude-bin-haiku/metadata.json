@@ -1,0 +1,62 @@
+{
+  "bench": "vague-developer",
+  "slug": "claude-bin-haiku",
+  "display": "Claude Code Haiku",
+  "provider": "claude-bin:haiku",
+  "requested": null,
+  "note": null,
+  "timestamp_utc": "2026-04-19T07:24:57.681437+00:00",
+  "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "@developer",
+    "--no-session",
+    "--text",
+    "--stats",
+    "--yolo",
+    "--provider",
+    "claude-bin:haiku",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    ".",
+    "build a standalone 9x9 fully functioning go board in index.html"
+  ],
+  "command_text": "term-llm ask @developer --no-session --text --stats --yolo --provider claude-bin:haiku --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+  "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 29.918,
+    "stats": {
+      "raw": "Stats: 29.9s (llm 29.9s + tool 0.0s) | 20 in (cache: 11k read) \u2192 4.4k out (last: 11k\u2192670) | 1 tools | 2 llm calls",
+      "elapsed_seconds": 29.9,
+      "input_tokens": 20,
+      "output_tokens": 4400,
+      "last_input_tokens": 11000,
+      "last_output_tokens": 670,
+      "tool_calls": 1,
+      "llm_calls": 2,
+      "cache_read_tokens": 11000,
+      "llm_seconds": 29.9,
+      "tool_seconds": 0.0
+    }
+  },
+  "verification": {
+    "passed": false,
+    "exit_code": 1,
+    "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+  },
+  "artifacts": {
+    "run_log": "run.log",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": "screenshot.png"
+  },
+  "output": {
+    "expected_file": "index.html",
+    "exists": true
+  }
+}

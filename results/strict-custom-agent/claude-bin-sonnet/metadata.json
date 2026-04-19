@@ -1,0 +1,67 @@
+{
+  "bench": "strict-custom-agent",
+  "slug": "claude-bin-sonnet",
+  "display": "Claude Code Sonnet",
+  "provider": "claude-bin:sonnet",
+  "requested": null,
+  "note": null,
+  "timestamp_utc": "2026-04-19T07:59:21.442690+00:00",
+  "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--text",
+    "--stats",
+    "--yolo",
+    "--provider",
+    "claude-bin:sonnet",
+    "--max-turns",
+    "30",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    "./workspace",
+    "-f",
+    "./SPEC.md",
+    "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+  ],
+  "command_text": "term-llm ask --no-session --text --stats --yolo --provider claude-bin:sonnet --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+  "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 47.86,
+    "stats": {
+      "raw": "Stats: 47.8s (llm 46.3s + tool 1.5s) | 9 in (cache: 34k read) \u2192 3.1k out (last: 13k\u21925) | 2 tools | 3 llm calls",
+      "elapsed_seconds": 47.8,
+      "input_tokens": 9,
+      "output_tokens": 3100,
+      "last_input_tokens": 13000,
+      "last_output_tokens": 5,
+      "tool_calls": 2,
+      "llm_calls": 3,
+      "cache_read_tokens": 34000,
+      "llm_seconds": 46.3,
+      "tool_seconds": 1.5
+    }
+  },
+  "verification": {
+    "passed": true,
+    "exit_code": 0,
+    "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/claude-bin-sonnet/workspace/board.html satisfied all acceptance tests"
+  },
+  "artifacts": {
+    "run_log": "run.log",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": "screenshot.png"
+  },
+  "output": {
+    "expected_file": "workspace/board.html",
+    "exists": true
+  }
+}

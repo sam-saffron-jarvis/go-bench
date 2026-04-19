@@ -1,0 +1,68 @@
+{
+  "bench": "strict-custom-agent",
+  "slug": "venice-grok-4-20",
+  "display": "Venice Grok 4.20",
+  "provider": "venice:grok-4-20",
+  "requested": null,
+  "note": null,
+  "timestamp_utc": "2026-04-19T07:33:43.507378+00:00",
+  "term_llm_version": "term-llm version v0.0.169 (commit: 2b13af1, built: 2026-04-19T06:39:34Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--text",
+    "--stats",
+    "--yolo",
+    "--provider",
+    "venice:grok-4-20",
+    "--max-turns",
+    "30",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    "./workspace",
+    "-f",
+    "./SPEC.md",
+    "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+  ],
+  "command_text": "term-llm ask --no-session --text --stats --yolo --provider venice:grok-4-20 --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+  "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 103.643,
+    "stats": {
+      "raw": "Stats: 103.6s (llm 69.0s + tool 34.6s) | 25k in (cache: 86k read) \u2192 13k out (last: 21k\u219223, peak: 21k) | 7 tools | 8 llm calls",
+      "elapsed_seconds": 103.6,
+      "input_tokens": 25000,
+      "output_tokens": 13000,
+      "last_input_tokens": 21000,
+      "last_output_tokens": 23,
+      "tool_calls": 7,
+      "llm_calls": 8,
+      "cache_read_tokens": 86000,
+      "peak_tokens": 21000,
+      "llm_seconds": 69.0,
+      "tool_seconds": 34.6
+    }
+  },
+  "verification": {
+    "passed": true,
+    "exit_code": 0,
+    "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/venice-grok-4-20/workspace/board.html satisfied all acceptance tests"
+  },
+  "artifacts": {
+    "run_log": "run.log",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": "screenshot.png"
+  },
+  "output": {
+    "expected_file": "workspace/board.html",
+    "exists": true
+  }
+}
