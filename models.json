@@ -12,6 +12,36 @@
     "family": "claude-bin"
   },
   {
+    "slug": "claude-bin-opus",
+    "provider": "claude-bin:opus",
+    "display": "Claude Code Opus",
+    "family": "claude-bin"
+  },
+  {
+    "slug": "chatgpt-gpt-5-4",
+    "provider": "chatgpt:gpt-5.4",
+    "display": "ChatGPT GPT-5.4",
+    "family": "chatgpt"
+  },
+  {
+    "slug": "chatgpt-gpt-5-4-xhigh",
+    "provider": "chatgpt:gpt-5.4-xhigh",
+    "display": "ChatGPT GPT-5.4 xhigh",
+    "family": "chatgpt"
+  },
+  {
+    "slug": "chatgpt-gpt-5-4-mini",
+    "provider": "chatgpt:gpt-5.4-mini",
+    "display": "ChatGPT GPT-5.4 Mini",
+    "family": "chatgpt"
+  },
+  {
+    "slug": "chatgpt-gpt-5-4-mini-xhigh",
+    "provider": "chatgpt:gpt-5.4-mini-xhigh",
+    "display": "ChatGPT GPT-5.4 Mini xhigh",
+    "family": "chatgpt"
+  },
+  {
     "slug": "ollama-gemma4-26b",
     "provider": "ollama:gemma4:26b",
     "display": "Ollama Gemma 4 26B",

@@ -36,9 +36,30 @@ def fmt_stats(meta: dict) -> tuple[str, str, str, str]:
     return elapsed, tokens, tools, llm_calls
 
 
-def result_link(meta: dict, name: str) -> str:
+def artifact_links(meta: dict) -> str:
     rel = meta["_path"].parent.relative_to(REPO_ROOT)
-    return f"[{name}]({rel.as_posix()})"
+    artifacts = meta.get("artifacts") or {}
+    links = [f"[dir]({rel.as_posix()})"]
+
+    final_text = artifacts.get("final_text")
+    if final_text:
+        links.append(f"[final]({rel.as_posix()}/{final_text})")
+
+    events_jsonl = artifacts.get("events_jsonl")
+    run_log = artifacts.get("run_log")
+    if events_jsonl:
+        links.append(f"[events]({rel.as_posix()}/{events_jsonl})")
+    elif run_log:
+        links.append(f"[log]({rel.as_posix()}/{run_log})")
+
+    stderr_log = artifacts.get("stderr_log")
+    if stderr_log:
+        links.append(f"[stderr]({rel.as_posix()}/{stderr_log})")
+
+    screenshot = artifacts.get("screenshot")
+    if screenshot:
+        links.append(f"[shot]({rel.as_posix()}/{screenshot})")
+    return " ".join(links)
 
 
 def build_markdown(rows: list[dict]) -> str:
@@ -58,19 +79,16 @@ def build_markdown(rows: list[dict]) -> str:
         for meta in bench_rows:
             elapsed, tokens, tools, llm_calls = fmt_stats(meta)
             status = "PASS" if meta["verification"]["passed"] else "FAIL"
-            rel = meta["_path"].parent.relative_to(REPO_ROOT)
-            links = [f"[dir]({rel.as_posix()})", f"[log]({rel.as_posix()}/run.log)"]
-            screenshot = meta.get("artifacts", {}).get("screenshot")
-            if screenshot:
-                links.append(f"[shot]({rel.as_posix()}/{screenshot})")
+            links = artifact_links(meta)
             lines.append(
-                f"| {meta['display']} | {status} | {elapsed} | {tokens} | {tools} | {llm_calls} | {' '.join(links)} |"
+                f"| {meta['display']} | {status} | {elapsed} | {tokens} | {tools} | {llm_calls} | {links} |"
             )
         lines.append("")
     lines.append("## Notes")
     lines.append("")
     lines.append("- The strict bench uses a custom agent plus a custom verifier tool.")
-    lines.append("- The vague bench uses `@developer` with the prompt `build a standalone 9x9 fully functioning go board in index.html` and verifies the result externally after the run.")
+    lines.append("- The vague bench uses a frozen local copy of the built-in developer agent, not the floating `@developer` alias.")
+    lines.append("- Benchmark telemetry comes from `term-llm ask --json`; newer runs store raw events in `events.jsonl`.")
     lines.append("- `venice:kimi-2.7` was probed separately and returned 404; Venice currently suggests `kimi-k2-5` or `kimi-k2-thinking`.")
     lines.append("")
     return "\n".join(lines) + "\n"

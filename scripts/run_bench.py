@@ -4,16 +4,16 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import re
 import shutil
 import subprocess
-import sys
 import time
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 STRICT_TEMPLATE = REPO_ROOT / "benches" / "strict-custom-agent" / "template"
+VAGUE_TEMPLATE = REPO_ROOT / "benches" / "vague-developer" / "template"
 STRICT_VERIFIER = STRICT_TEMPLATE / "agent" / "scripts" / "verify-board.mjs"
 RESULTS_ROOT = REPO_ROOT / "results"
 RUNS_ROOT = REPO_ROOT / ".runs"
@@ -24,30 +24,14 @@ STRICT_PROMPT = (
 )
 VAGUE_PROMPT = "build a standalone 9x9 fully functioning go board in index.html"
 
-STATS_RE = re.compile(
-    r"Stats:\s+(?P<elapsed>[0-9.]+)s"
-    r"(?:\s+\(llm\s+(?P<llm_time>[0-9.]+)s\s+\+\s+tool\s+(?P<tool_time>[0-9.]+)s\))?"
-    r"\s+\|\s+(?P<input>[0-9.]+[kKmM]?)\s+in"
-    r"(?:\s+\(cache:\s+(?P<cache>[0-9.]+[kKmM]?)\s+read\))?"
-    r"\s+→\s+(?P<output>[0-9.]+[kKmM]?)\s+out\s+"
-    r"\(last:\s+(?P<last_in>[0-9.]+[kKmM]?)→(?P<last_out>[0-9.]+[kKmM]?)(?:,\s+peak:\s+(?P<peak>[0-9.]+[kKmM]?))?\)\s+\|\s+"
-    r"(?P<tools>\d+)\s+tools\s+\|\s+(?P<llm_calls>\d+)\s+llm calls"
-)
 
-
-def parse_compact_number(value: str) -> int:
-    lower = value.lower()
-    mult = 1
-    if lower.endswith("k"):
-        mult = 1000
-        lower = lower[:-1]
-    elif lower.endswith("m"):
-        mult = 1000000
-        lower = lower[:-1]
-    return int(float(lower) * mult)
-
-
-def sh(cmd: list[str], cwd: Path | None = None, env: dict[str, str] | None = None, timeout: int | None = None) -> subprocess.CompletedProcess[str]:
+def sh(
+    cmd: list[str],
+    cwd: Path | None = None,
+    env: dict[str, str] | None = None,
+    timeout: int | None = None,
+    merge_stderr: bool = True,
+) -> subprocess.CompletedProcess[str]:
     merged_env = os.environ.copy()
     if env:
         merged_env.update(env)
@@ -57,7 +41,7 @@ def sh(cmd: list[str], cwd: Path | None = None, env: dict[str, str] | None = Non
         env=merged_env,
         text=True,
         stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
+        stderr=subprocess.STDOUT if merge_stderr else subprocess.PIPE,
         timeout=timeout,
         check=False,
     )
@@ -77,34 +61,77 @@ def unload_ollama() -> None:
         time.sleep(1)
 
 
-def parse_stats(log_text: str) -> dict | None:
-    lines = [line.strip() for line in log_text.splitlines() if line.strip().startswith("Stats:")]
-    if not lines:
-        return None
-    raw = lines[-1]
-    match = STATS_RE.search(raw)
-    if not match:
-        return {"raw": raw}
-    data = match.groupdict()
-    parsed = {
-        "raw": raw,
-        "elapsed_seconds": float(data["elapsed"]),
-        "input_tokens": parse_compact_number(data["input"]),
-        "output_tokens": parse_compact_number(data["output"]),
-        "last_input_tokens": parse_compact_number(data["last_in"]),
-        "last_output_tokens": parse_compact_number(data["last_out"]),
-        "tool_calls": int(data["tools"]),
-        "llm_calls": int(data["llm_calls"]),
-    }
-    if data.get("cache"):
-        parsed["cache_read_tokens"] = parse_compact_number(data["cache"])
-    if data.get("peak"):
-        parsed["peak_tokens"] = parse_compact_number(data["peak"])
-    if data.get("llm_time"):
-        parsed["llm_seconds"] = float(data["llm_time"])
-    if data.get("tool_time"):
-        parsed["tool_seconds"] = float(data["tool_time"])
-    return parsed
+def parse_json_events(stdout_text: str) -> tuple[list[dict], list[dict]]:
+    events: list[dict] = []
+    errors: list[dict] = []
+    for line_no, raw_line in enumerate(stdout_text.splitlines(), start=1):
+        line = raw_line.strip()
+        if not line:
+            continue
+        try:
+            parsed = json.loads(line)
+        except json.JSONDecodeError as exc:
+            errors.append(
+                {
+                    "line": line_no,
+                    "error": str(exc),
+                    "text": raw_line[:500],
+                }
+            )
+            continue
+        if not isinstance(parsed, dict):
+            errors.append(
+                {
+                    "line": line_no,
+                    "error": f"expected object, got {type(parsed).__name__}",
+                    "text": raw_line[:500],
+                }
+            )
+            continue
+        events.append(parsed)
+    return events, errors
+
+
+def last_event(events: list[dict], event_type: str) -> dict | None:
+    for event in reversed(events):
+        if event.get("type") == event_type:
+            return event
+    return None
+
+
+def first_event(events: list[dict], event_type: str) -> dict | None:
+    for event in events:
+        if event.get("type") == event_type:
+            return event
+    return None
+
+
+def compact_int(value: int) -> str:
+    if value >= 1_000_000:
+        text = f"{value / 1_000_000:.1f}".rstrip("0").rstrip(".")
+        return f"{text}m"
+    if value >= 1_000:
+        text = f"{value / 1_000:.1f}".rstrip("0").rstrip(".")
+        return f"{text}k"
+    return str(value)
+
+
+def format_stats_summary(stats: dict | None) -> str:
+    if not stats:
+        return "no stats"
+    duration_ms = stats.get("duration_ms")
+    if isinstance(duration_ms, (int, float)):
+        duration = f"{duration_ms / 1000:.1f}s"
+    else:
+        duration = "?s"
+    parts = [duration]
+    if "input_tokens" in stats and "output_tokens" in stats:
+        parts.append(f"{compact_int(int(stats['input_tokens']))} in → {compact_int(int(stats['output_tokens']))} out")
+    if "tool_calls" in stats:
+        parts.append(f"{stats['tool_calls']} tools")
+    if "llm_calls" in stats:
+        parts.append(f"{stats['llm_calls']} llm calls")
+    return " | ".join(parts)
 
 
 def prepare_temp_dir(bench: str, slug: str) -> Path:
@@ -116,7 +143,7 @@ def prepare_temp_dir(bench: str, slug: str) -> Path:
         shutil.copytree(STRICT_TEMPLATE, temp_dir)
         (temp_dir / "workspace").mkdir(exist_ok=True)
     elif bench == "vague-developer":
-        temp_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(VAGUE_TEMPLATE, temp_dir)
     else:
         raise ValueError(f"unknown bench: {bench}")
     return temp_dir
@@ -131,7 +158,7 @@ def generated_output_path(bench: str, temp_dir: Path) -> Path:
 
 
 def command_for(bench: str, provider: str) -> list[str]:
-    common = ["--no-session", "--text", "--stats", "--yolo", "--provider", provider]
+    common = ["--no-session", "--json", "--yolo", "--provider", provider]
     if bench == "strict-custom-agent":
         return [
             "term-llm",
@@ -153,8 +180,9 @@ def command_for(bench: str, provider: str) -> list[str]:
         return [
             "term-llm",
             "ask",
-            "@developer",
             *common,
+            "--agent",
+            "./agent",
             "--read-dir",
             ".",
             "--write-dir",
@@ -232,24 +260,50 @@ def main() -> int:
 
     start = time.time()
     timed_out = False
+    stdout_text = ""
+    stderr_text = ""
     try:
-        proc = sh(command, cwd=temp_dir, timeout=args.timeout_seconds)
-        run_output = proc.stdout
+        proc = sh(command, cwd=temp_dir, timeout=args.timeout_seconds, merge_stderr=False)
+        stdout_text = proc.stdout or ""
+        stderr_text = proc.stderr or ""
         return_code = proc.returncode
     except subprocess.TimeoutExpired as exc:
         timed_out = True
-        run_output = (exc.stdout or "") + "\nTIMEOUT\n"
+        stdout_text = exc.stdout or ""
+        stderr_text = (exc.stderr or "") + "\nTIMEOUT\n"
         return_code = 124
     elapsed = time.time() - start
 
-    (result_dir / "run.log").write_text(run_output, encoding="utf-8")
+    (result_dir / "events.jsonl").write_text(stdout_text, encoding="utf-8")
+    stderr_name = None
+    if stderr_text.strip():
+        stderr_name = "stderr.log"
+        (result_dir / stderr_name).write_text(stderr_text, encoding="utf-8")
+
+    events, parse_errors = parse_json_events(stdout_text)
+    stats = last_event(events, "stats")
+    done = last_event(events, "done")
+    session_started = first_event(events, "session.started")
+    final_text = "".join(event.get("text", "") for event in events if event.get("type") == "text.delta")
+    final_text_name = None
+    if final_text:
+        final_text_name = "final.txt"
+        (result_dir / final_text_name).write_text(final_text, encoding="utf-8")
+
+    event_counts = Counter(event.get("type") for event in events if event.get("type"))
+    tool_counts = Counter(event.get("name") for event in events if event.get("type") == "tool.started" and event.get("name"))
+    tool_success = Counter()
+    for event in events:
+        if event.get("type") != "tool.completed" or not event.get("name"):
+            continue
+        key = "success" if event.get("success") else "failure"
+        tool_success[f"{event['name']}:{key}"] += 1
 
     html_path = generated_output_path(bench, temp_dir)
     verified, verify_output_text, verify_returncode = verify_output(html_path, result_dir)
     screenshot_name = render_screenshot(html_path, result_dir)
     copy_generated_tree(temp_dir, bench, result_dir)
 
-    stats = parse_stats(run_output)
     metadata = {
         "bench": bench,
         "slug": slug,
@@ -268,6 +322,13 @@ def main() -> int:
             "timed_out": timed_out,
             "elapsed_seconds": round(elapsed, 3),
             "stats": stats,
+            "event_count": len(events),
+            "event_counts": dict(event_counts),
+            "tool_counts": dict(tool_counts),
+            "tool_outcomes": dict(tool_success),
+            "json_parse_errors": parse_errors,
+            "session_started": session_started,
+            "done": done,
         },
         "verification": {
             "passed": verified,
@@ -275,7 +336,9 @@ def main() -> int:
             "output": verify_output_text.strip(),
         },
         "artifacts": {
-            "run_log": "run.log",
+            "events_jsonl": "events.jsonl",
+            "stderr_log": stderr_name,
+            "final_text": final_text_name,
             "verify_log": "verify.log",
             "generated_dir": "generated",
             "screenshot": screenshot_name,
@@ -288,8 +351,7 @@ def main() -> int:
     (result_dir / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 
     status = "PASS" if verified else "FAIL"
-    stats_text = stats["raw"] if stats and "raw" in stats else "no stats"
-    print(f"[{bench}] {slug}: {status} | {stats_text}")
+    print(f"[{bench}] {slug}: {status} | {format_stats_summary(stats)}")
     return 0
 
 

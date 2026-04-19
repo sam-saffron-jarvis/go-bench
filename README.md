@@ -25,12 +25,12 @@ This is the "can the model use tool-driven trial and error correctly" bench.
 
 ### 2. `vague-developer`
 
-A deliberately under-specified run based on the built-in developer agent.
+A deliberately under-specified run using a **frozen local copy** of term-llm's built-in developer agent.
 
 Command shape:
 
 ```bash
-term-llm ask @developer -p <provider:model> --stats --yolo \
+term-llm ask --agent ./agent -p <provider:model> --json --yolo \
   "build a standalone 9x9 fully functioning go board in index.html"
 ```
 
@@ -41,12 +41,13 @@ This is the "how well does the model do with vague instructions and no explicit 
 ## Tooling
 
 - `term-llm` v0.0.169
+- `term-llm ask --json` on all benchmark runs, so telemetry comes from structured JSONL events instead of parsing terminal text
 - Playwright + Chromium for verification and screenshots
-- `--stats` on all benchmark runs so logs include token and tool-call counts
 
 ## Repo layout
 
 - `benches/strict-custom-agent/template/` — strict bench scaffold
+- `benches/vague-developer/template/` — vague bench scaffold, including a pinned copy of the developer agent
 - `scripts/run_bench.py` — run one bench/model pair and collect artifacts
 - `scripts/run_matrix.py` — run a model matrix across benches
 - `results/` — committed artifacts and metadata for completed runs
@@ -57,7 +58,8 @@ See `models.json`.
 
 The current list includes:
 
-- Claude Code: Sonnet, Haiku
+- Claude Code: Sonnet, Haiku, Opus
+- ChatGPT: GPT-5.4, GPT-5.4 xhigh, GPT-5.4 Mini, GPT-5.4 Mini xhigh
 - Ollama: Gemma 4 26B, Qwen 3.6 variants
 - Venice: GLM 5.1, Kimi K2.5, Qwen3 Coder 480B, Claude Opus 4.7, Grok 4.20
 
@@ -99,7 +101,9 @@ Generated summaries live at:
 Each run directory contains:
 
 - `metadata.json`
-- `run.log`
+- `events.jsonl` — raw `term-llm ask --json` stream
+- `final.txt` when the run produced assistant text
+- `stderr.log` when the CLI wrote anything to stderr
 - `verify.log`
 - `generated/`
 - `screenshot.png` when an HTML artifact exists
