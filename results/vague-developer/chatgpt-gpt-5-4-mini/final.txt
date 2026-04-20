@@ -1,0 +1,21 @@
+Implemented a standalone 9×9 Go board in `internal/serveui/static/index.html`.
+
+What it does:
+- Full 9×9 board UI with stone placement
+- Alternating turns
+- Capture detection
+- Suicide prevention
+- Simple ko rule
+- Pass, undo, and new game controls
+- Responsive layout with no external dependencies
+
+Verification:
+- Ran `go build ./...` successfully
+
+Notes:
+- I replaced the original chat shell HTML in that file with a self-contained Go game page, so this is now a standalone board rather than part of the chat UI.
+- If you want, I can also add:
+  - territory scoring
+  - game-over/finish handling
+  - move coordinates (A1, etc.)
+  - SGF export/import

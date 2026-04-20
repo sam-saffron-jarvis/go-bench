@@ -1,0 +1,1 @@
+I'll create the board.html file with the required Go game logic.DONE

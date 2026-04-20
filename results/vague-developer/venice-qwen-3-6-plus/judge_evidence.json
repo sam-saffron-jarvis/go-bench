@@ -1,0 +1,6447 @@
+{
+  "html_path": "/root/source/go-bench/results/vague-developer/venice-qwen-3-6-plus/generated/index.html",
+  "html_name": "index.html",
+  "collected_at": "2026-04-19T21:41:45.009Z",
+  "served_url": "http://127.0.0.1:40145/index.html",
+  "full_page_screenshot": "full-page.png",
+  "dom": {
+    "title": "9x9 Go Board",
+    "body_text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Black to play",
+    "status_lines": [
+      "Black: 0 captures",
+      "White: 0 captures",
+      "Pass",
+      "Undo",
+      "New Game",
+      "Black to play"
+    ],
+    "buttons": [
+      {
+        "text": "Pass",
+        "selector": "button#pass-btn.primary"
+      },
+      {
+        "text": "Undo",
+        "selector": "button#undo-btn"
+      },
+      {
+        "text": "New Game",
+        "selector": "button#reset-btn.danger"
+      }
+    ],
+    "counts": {
+      "canvas": 1,
+      "svg": 0,
+      "data_cells": 0,
+      "buttonish": 3,
+      "grid_like": 0
+    },
+    "board_candidate": {
+      "type": "canvas",
+      "source": "canvas",
+      "selector": "canvas#canvas",
+      "rect": {
+        "x": 495,
+        "y": 378,
+        "width": 450,
+        "height": 450
+      },
+      "score": 486000
+    },
+    "candidate_preview": [
+      {
+        "type": "canvas",
+        "source": "canvas",
+        "selector": "canvas#canvas",
+        "rect": {
+          "x": 495,
+          "y": 378,
+          "width": 450,
+          "height": 450
+        },
+        "score": 486000
+      },
+      {
+        "type": "div",
+        "source": "generic",
+        "selector": "div#board-container",
+        "rect": {
+          "x": 470,
+          "y": 353,
+          "width": 500,
+          "height": 500
+        },
+        "score": 375000
+      },
+      {
+        "type": "div",
+        "source": "generic",
+        "selector": "div#board",
+        "rect": {
+          "x": 495,
+          "y": 378,
+          "width": 450,
+          "height": 450
+        },
+        "score": 303750
+      }
+    ],
+    "reset_candidates": [
+      {
+        "text": "Pass Undo New Game",
+        "selector": "div#controls"
+      },
+      {
+        "text": "New Game",
+        "selector": "button#reset-btn.danger"
+      }
+    ]
+  },
+  "board_candidate": {
+    "type": "canvas",
+    "source": "canvas",
+    "selector": "canvas#canvas",
+    "rect": {
+      "x": 495,
+      "y": 378,
+      "width": 450,
+      "height": 450
+    },
+    "score": 486000
+  },
+  "console_errors": [],
+  "page_errors": [],
+  "request_failures": [],
+  "external_requests": [],
+  "scenarios": {
+    "basic-play": {
+      "click_sequence": [
+        "P00",
+        "P10",
+        "P01"
+      ],
+      "steps": [
+        {
+          "name": "00-initial",
+          "image": "basic-play-00-initial.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Black to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Black to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "01-P00",
+          "image": "basic-play-01-P00.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game White to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "White to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "02-P10",
+          "image": "basic-play-02-P10.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Black to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Black to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 126,
+              "g": 142,
+              "b": 124,
+              "a": 255,
+              "brightness": 131,
+              "label": "mid"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "03-P01",
+          "image": "basic-play-03-P01.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game White to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "White to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 126,
+              "g": 142,
+              "b": 124,
+              "a": 255,
+              "brightness": 131,
+              "label": "mid"
+            },
+            "M00_01": {
+              "r": 30,
+              "g": 45,
+              "b": 28,
+              "a": 255,
+              "brightness": 34,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        }
+      ],
+      "diffs": [
+        {
+          "from": "00-initial",
+          "to": "01-P00",
+          "changed_pixels": 1117,
+          "total_pixels": 202500,
+          "changed_ratio": 0.005516
+        },
+        {
+          "from": "01-P00",
+          "to": "02-P10",
+          "changed_pixels": 1533,
+          "total_pixels": 202500,
+          "changed_ratio": 0.00757
+        },
+        {
+          "from": "02-P10",
+          "to": "03-P01",
+          "changed_pixels": 1224,
+          "total_pixels": 202500,
+          "changed_ratio": 0.006044
+        }
+      ]
+    },
+    "occupied-point": {
+      "click_sequence": [
+        "P00",
+        "P00"
+      ],
+      "steps": [
+        {
+          "name": "00-initial",
+          "image": "occupied-point-00-initial.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Black to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Black to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "01-P00",
+          "image": "occupied-point-01-P00.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game White to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "White to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "02-P00",
+          "image": "occupied-point-02-P00.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Invalid move!",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Invalid move!"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        }
+      ],
+      "diffs": [
+        {
+          "from": "00-initial",
+          "to": "01-P00",
+          "changed_pixels": 1117,
+          "total_pixels": 202500,
+          "changed_ratio": 0.005516
+        },
+        {
+          "from": "01-P00",
+          "to": "02-P00",
+          "changed_pixels": 0,
+          "total_pixels": 202500,
+          "changed_ratio": 0
+        }
+      ]
+    },
+    "capture-sequence": {
+      "click_sequence": [
+        "P10",
+        "P11",
+        "P01",
+        "P00",
+        "P21",
+        "P20",
+        "P12"
+      ],
+      "steps": [
+        {
+          "name": "00-initial",
+          "image": "capture-sequence-00-initial.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Black to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Black to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "01-P10",
+          "image": "capture-sequence-01-P10.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game White to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "White to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 30,
+              "g": 46,
+              "b": 28,
+              "a": 255,
+              "brightness": 35,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "02-P11",
+          "image": "capture-sequence-02-P11.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Black to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Black to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 107,
+              "g": 123,
+              "b": 105,
+              "a": 255,
+              "brightness": 112,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 30,
+              "g": 46,
+              "b": 28,
+              "a": 255,
+              "brightness": 35,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "03-P01",
+          "image": "capture-sequence-03-P01.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game White to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "White to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 107,
+              "g": 123,
+              "b": 105,
+              "a": 255,
+              "brightness": 112,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 30,
+              "g": 46,
+              "b": 28,
+              "a": 255,
+              "brightness": 35,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 30,
+              "g": 45,
+              "b": 28,
+              "a": 255,
+              "brightness": 34,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "04-P00",
+          "image": "capture-sequence-04-P00.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Invalid move!",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Invalid move!"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 107,
+              "g": 123,
+              "b": 105,
+              "a": 255,
+              "brightness": 112,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 30,
+              "g": 46,
+              "b": 28,
+              "a": 255,
+              "brightness": 35,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 30,
+              "g": 45,
+              "b": 28,
+              "a": 255,
+              "brightness": 34,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "05-P21",
+          "image": "capture-sequence-05-P21.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Black to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Black to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 107,
+              "g": 123,
+              "b": 105,
+              "a": 255,
+              "brightness": 112,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 194,
+              "g": 194,
+              "b": 194,
+              "a": 255,
+              "brightness": 194,
+              "label": "mid"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 30,
+              "g": 46,
+              "b": 28,
+              "a": 255,
+              "brightness": 35,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 30,
+              "g": 45,
+              "b": 28,
+              "a": 255,
+              "brightness": 34,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 190,
+              "g": 191,
+              "b": 190,
+              "a": 255,
+              "brightness": 190,
+              "label": "mid"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "06-P20",
+          "image": "capture-sequence-06-P20.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game White to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "White to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 107,
+              "g": 123,
+              "b": 105,
+              "a": 255,
+              "brightness": 112,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 34,
+              "g": 60,
+              "b": 30,
+              "a": 255,
+              "brightness": 41,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 194,
+              "g": 194,
+              "b": 194,
+              "a": 255,
+              "brightness": 194,
+              "label": "mid"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 30,
+              "g": 46,
+              "b": 28,
+              "a": 255,
+              "brightness": 35,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 30,
+              "g": 45,
+              "b": 28,
+              "a": 255,
+              "brightness": 34,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 190,
+              "g": 191,
+              "b": 190,
+              "a": 255,
+              "brightness": 190,
+              "label": "mid"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "07-P12",
+          "image": "capture-sequence-07-P12.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Black to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Black to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 107,
+              "g": 123,
+              "b": 105,
+              "a": 255,
+              "brightness": 112,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 34,
+              "g": 60,
+              "b": 30,
+              "a": 255,
+              "brightness": 41,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 194,
+              "g": 194,
+              "b": 194,
+              "a": 255,
+              "brightness": 194,
+              "label": "mid"
+            },
+            "P12": {
+              "r": 194,
+              "g": 194,
+              "b": 194,
+              "a": 255,
+              "brightness": 194,
+              "label": "mid"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 30,
+              "g": 46,
+              "b": 28,
+              "a": 255,
+              "brightness": 35,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 30,
+              "g": 45,
+              "b": 28,
+              "a": 255,
+              "brightness": 34,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 190,
+              "g": 191,
+              "b": 190,
+              "a": 255,
+              "brightness": 190,
+              "label": "mid"
+            },
+            "M11_12": {
+              "r": 190,
+              "g": 192,
+              "b": 190,
+              "a": 255,
+              "brightness": 191,
+              "label": "mid"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        }
+      ],
+      "diffs": [
+        {
+          "from": "00-initial",
+          "to": "01-P10",
+          "changed_pixels": 1102,
+          "total_pixels": 202500,
+          "changed_ratio": 0.005442
+        },
+        {
+          "from": "01-P10",
+          "to": "02-P11",
+          "changed_pixels": 1534,
+          "total_pixels": 202500,
+          "changed_ratio": 0.007575
+        },
+        {
+          "from": "02-P11",
+          "to": "03-P01",
+          "changed_pixels": 1224,
+          "total_pixels": 202500,
+          "changed_ratio": 0.006044
+        },
+        {
+          "from": "03-P01",
+          "to": "04-P00",
+          "changed_pixels": 1434,
+          "total_pixels": 202500,
+          "changed_ratio": 0.007081
+        },
+        {
+          "from": "04-P00",
+          "to": "05-P21",
+          "changed_pixels": 2950,
+          "total_pixels": 202500,
+          "changed_ratio": 0.014568
+        },
+        {
+          "from": "05-P21",
+          "to": "06-P20",
+          "changed_pixels": 1195,
+          "total_pixels": 202500,
+          "changed_ratio": 0.005901
+        },
+        {
+          "from": "06-P20",
+          "to": "07-P12",
+          "changed_pixels": 1514,
+          "total_pixels": 202500,
+          "changed_ratio": 0.007477
+        }
+      ]
+    },
+    "reset-check": {
+      "click_sequence": [
+        "P00",
+        "P10"
+      ],
+      "steps": [
+        {
+          "name": "00-initial",
+          "image": "reset-check-00-initial.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Black to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Black to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "01-P00",
+          "image": "reset-check-01-P00.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game White to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "White to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "02-P10",
+          "image": "reset-check-02-P10.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Black to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Black to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 126,
+              "g": 142,
+              "b": 124,
+              "a": 255,
+              "brightness": 131,
+              "label": "mid"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        },
+        {
+          "name": "03-after-action",
+          "image": "reset-check-03-after-action.png",
+          "text_excerpt": "碁 GO Black: 0 captures White: 0 captures Pass Undo New Game Black to play",
+          "status_lines": [
+            "Black: 0 captures",
+            "White: 0 captures",
+            "Pass",
+            "Undo",
+            "New Game",
+            "Black to play"
+          ],
+          "samples": {
+            "P00": {
+              "r": 51,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "P10": {
+              "r": 46,
+              "g": 86,
+              "b": 41,
+              "a": 255,
+              "brightness": 58,
+              "label": "dark-stoneish"
+            },
+            "P01": {
+              "r": 50,
+              "g": 93,
+              "b": 44,
+              "a": 255,
+              "brightness": 62,
+              "label": "dark-stoneish"
+            },
+            "P11": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P20": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P21": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P12": {
+              "r": 48,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "P22": {
+              "r": 47,
+              "g": 90,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P23": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P25": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P26": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P32": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P36": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P44": {
+              "r": 10,
+              "g": 19,
+              "b": 8,
+              "a": 255,
+              "brightness": 12,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P54": {
+              "r": 39,
+              "g": 76,
+              "b": 34,
+              "a": 255,
+              "brightness": 50,
+              "label": "dark-stoneish"
+            },
+            "P62": {
+              "r": 43,
+              "g": 85,
+              "b": 37,
+              "a": 255,
+              "brightness": 55,
+              "label": "dark-stoneish"
+            },
+            "P63": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P65": {
+              "r": 46,
+              "g": 89,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "P66": {
+              "r": 47,
+              "g": 91,
+              "b": 41,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "P72": {
+              "r": 44,
+              "g": 87,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "P76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M00_10": {
+              "r": 126,
+              "g": 142,
+              "b": 124,
+              "a": 255,
+              "brightness": 131,
+              "label": "mid"
+            },
+            "M00_01": {
+              "r": 50,
+              "g": 94,
+              "b": 45,
+              "a": 255,
+              "brightness": 63,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M11_12": {
+              "r": 49,
+              "g": 92,
+              "b": 43,
+              "a": 255,
+              "brightness": 61,
+              "label": "dark-stoneish"
+            },
+            "M22_32": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M22_23": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            },
+            "M26_36": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M26_25": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M44_54": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M44_45": {
+              "r": 38,
+              "g": 76,
+              "b": 33,
+              "a": 255,
+              "brightness": 49,
+              "label": "dark-stoneish"
+            },
+            "M62_72": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M62_63": {
+              "r": 43,
+              "g": 86,
+              "b": 38,
+              "a": 255,
+              "brightness": 56,
+              "label": "dark-stoneish"
+            },
+            "M66_76": {
+              "r": 48,
+              "g": 91,
+              "b": 42,
+              "a": 255,
+              "brightness": 60,
+              "label": "dark-stoneish"
+            },
+            "M66_65": {
+              "r": 47,
+              "g": 90,
+              "b": 41,
+              "a": 255,
+              "brightness": 59,
+              "label": "dark-stoneish"
+            }
+          }
+        }
+      ],
+      "diffs": [
+        {
+          "from": "00-initial",
+          "to": "01-P00",
+          "changed_pixels": 1117,
+          "total_pixels": 202500,
+          "changed_ratio": 0.005516
+        },
+        {
+          "from": "01-P00",
+          "to": "02-P10",
+          "changed_pixels": 1533,
+          "total_pixels": 202500,
+          "changed_ratio": 0.00757
+        },
+        {
+          "from": "02-P10",
+          "to": "03-after-action",
+          "changed_pixels": 0,
+          "total_pixels": 202500,
+          "changed_ratio": 0
+        }
+      ]
+    }
+  },
+  "scenario_meta": {
+    "candidate_rect": {
+      "x": 495,
+      "y": 378,
+      "width": 450,
+      "height": 450
+    },
+    "point_map": {
+      "P00": {
+        "i": 0,
+        "j": 0,
+        "x": 540,
+        "y": 423
+      },
+      "P10": {
+        "i": 1,
+        "j": 0,
+        "x": 585,
+        "y": 423
+      },
+      "P01": {
+        "i": 0,
+        "j": 1,
+        "x": 540,
+        "y": 468
+      },
+      "P11": {
+        "i": 1,
+        "j": 1,
+        "x": 585,
+        "y": 468
+      },
+      "P20": {
+        "i": 2,
+        "j": 0,
+        "x": 630,
+        "y": 423
+      },
+      "P21": {
+        "i": 2,
+        "j": 1,
+        "x": 630,
+        "y": 468
+      },
+      "P12": {
+        "i": 1,
+        "j": 2,
+        "x": 585,
+        "y": 513
+      },
+      "P22": {
+        "i": 2,
+        "j": 2,
+        "x": 630,
+        "y": 513
+      },
+      "P23": {
+        "i": 2,
+        "j": 3,
+        "x": 630,
+        "y": 558
+      },
+      "P25": {
+        "i": 2,
+        "j": 5,
+        "x": 630,
+        "y": 648
+      },
+      "P26": {
+        "i": 2,
+        "j": 6,
+        "x": 630,
+        "y": 693
+      },
+      "P32": {
+        "i": 3,
+        "j": 2,
+        "x": 675,
+        "y": 513
+      },
+      "P36": {
+        "i": 3,
+        "j": 6,
+        "x": 675,
+        "y": 693
+      },
+      "P44": {
+        "i": 4,
+        "j": 4,
+        "x": 720,
+        "y": 603
+      },
+      "P45": {
+        "i": 4,
+        "j": 5,
+        "x": 720,
+        "y": 648
+      },
+      "P54": {
+        "i": 5,
+        "j": 4,
+        "x": 765,
+        "y": 603
+      },
+      "P62": {
+        "i": 6,
+        "j": 2,
+        "x": 810,
+        "y": 513
+      },
+      "P63": {
+        "i": 6,
+        "j": 3,
+        "x": 810,
+        "y": 558
+      },
+      "P65": {
+        "i": 6,
+        "j": 5,
+        "x": 810,
+        "y": 648
+      },
+      "P66": {
+        "i": 6,
+        "j": 6,
+        "x": 810,
+        "y": 693
+      },
+      "P72": {
+        "i": 7,
+        "j": 2,
+        "x": 855,
+        "y": 513
+      },
+      "P76": {
+        "i": 7,
+        "j": 6,
+        "x": 855,
+        "y": 693
+      },
+      "M00_10": {
+        "i": 0.5,
+        "j": 0,
+        "x": 562.5,
+        "y": 423
+      },
+      "M00_01": {
+        "i": 0,
+        "j": 0.5,
+        "x": 540,
+        "y": 445.5
+      },
+      "M11_21": {
+        "i": 1.5,
+        "j": 1,
+        "x": 607.5,
+        "y": 468
+      },
+      "M11_12": {
+        "i": 1,
+        "j": 1.5,
+        "x": 585,
+        "y": 490.5
+      },
+      "M22_32": {
+        "i": 2.5,
+        "j": 2,
+        "x": 652.5,
+        "y": 513
+      },
+      "M22_23": {
+        "i": 2,
+        "j": 2.5,
+        "x": 630,
+        "y": 535.5
+      },
+      "M26_36": {
+        "i": 2.5,
+        "j": 6,
+        "x": 652.5,
+        "y": 693
+      },
+      "M26_25": {
+        "i": 2,
+        "j": 5.5,
+        "x": 630,
+        "y": 670.5
+      },
+      "M44_54": {
+        "i": 4.5,
+        "j": 4,
+        "x": 742.5,
+        "y": 603
+      },
+      "M44_45": {
+        "i": 4,
+        "j": 4.5,
+        "x": 720,
+        "y": 625.5
+      },
+      "M62_72": {
+        "i": 6.5,
+        "j": 2,
+        "x": 832.5,
+        "y": 513
+      },
+      "M62_63": {
+        "i": 6,
+        "j": 2.5,
+        "x": 810,
+        "y": 535.5
+      },
+      "M66_76": {
+        "i": 6.5,
+        "j": 6,
+        "x": 832.5,
+        "y": 693
+      },
+      "M66_65": {
+        "i": 6,
+        "j": 5.5,
+        "x": 810,
+        "y": 670.5
+      }
+    },
+    "reset_control": {
+      "text": "Pass Undo New Game",
+      "selector": "div#controls"
+    },
+    "visual_heuristics": {
+      "hoshi_contrast": {
+        "P22": {
+          "center": {
+            "r": 47,
+            "g": 90,
+            "b": 42,
+            "a": 255,
+            "brightness": 60,
+            "label": "dark-stoneish"
+          },
+          "reference_a": {
+            "r": 47,
+            "g": 90,
+            "b": 41,
+            "a": 255,
+            "brightness": 59,
+            "label": "dark-stoneish"
+          },
+          "reference_b": {
+            "r": 47,
+            "g": 90,
+            "b": 41,
+            "a": 255,
+            "brightness": 59,
+            "label": "dark-stoneish"
+          },
+          "darker_than_reference_a_by": -1,
+          "darker_than_reference_b_by": -1
+        },
+        "P26": {
+          "center": {
+            "r": 43,
+            "g": 85,
+            "b": 37,
+            "a": 255,
+            "brightness": 55,
+            "label": "dark-stoneish"
+          },
+          "reference_a": {
+            "r": 43,
+            "g": 86,
+            "b": 38,
+            "a": 255,
+            "brightness": 56,
+            "label": "dark-stoneish"
+          },
+          "reference_b": {
+            "r": 43,
+            "g": 86,
+            "b": 38,
+            "a": 255,
+            "brightness": 56,
+            "label": "dark-stoneish"
+          },
+          "darker_than_reference_a_by": 1,
+          "darker_than_reference_b_by": 1
+        },
+        "P44": {
+          "center": {
+            "r": 10,
+            "g": 19,
+            "b": 8,
+            "a": 255,
+            "brightness": 12,
+            "label": "dark-stoneish"
+          },
+          "reference_a": {
+            "r": 38,
+            "g": 76,
+            "b": 33,
+            "a": 255,
+            "brightness": 49,
+            "label": "dark-stoneish"
+          },
+          "reference_b": {
+            "r": 38,
+            "g": 76,
+            "b": 33,
+            "a": 255,
+            "brightness": 49,
+            "label": "dark-stoneish"
+          },
+          "darker_than_reference_a_by": 37,
+          "darker_than_reference_b_by": 37
+        },
+        "P62": {
+          "center": {
+            "r": 43,
+            "g": 85,
+            "b": 37,
+            "a": 255,
+            "brightness": 55,
+            "label": "dark-stoneish"
+          },
+          "reference_a": {
+            "r": 43,
+            "g": 86,
+            "b": 38,
+            "a": 255,
+            "brightness": 56,
+            "label": "dark-stoneish"
+          },
+          "reference_b": {
+            "r": 43,
+            "g": 86,
+            "b": 38,
+            "a": 255,
+            "brightness": 56,
+            "label": "dark-stoneish"
+          },
+          "darker_than_reference_a_by": 1,
+          "darker_than_reference_b_by": 1
+        },
+        "P66": {
+          "center": {
+            "r": 47,
+            "g": 91,
+            "b": 41,
+            "a": 255,
+            "brightness": 60,
+            "label": "dark-stoneish"
+          },
+          "reference_a": {
+            "r": 48,
+            "g": 91,
+            "b": 42,
+            "a": 255,
+            "brightness": 60,
+            "label": "dark-stoneish"
+          },
+          "reference_b": {
+            "r": 47,
+            "g": 90,
+            "b": 41,
+            "a": 255,
+            "brightness": 59,
+            "label": "dark-stoneish"
+          },
+          "darker_than_reference_a_by": 0,
+          "darker_than_reference_b_by": -1
+        }
+      },
+      "stone_centering_probe": {
+        "intersection": {
+          "r": 51,
+          "g": 94,
+          "b": 45,
+          "a": 255,
+          "brightness": 63,
+          "label": "dark-stoneish"
+        },
+        "horizontal_midpoint": {
+          "r": 50,
+          "g": 94,
+          "b": 45,
+          "a": 255,
+          "brightness": 63,
+          "label": "dark-stoneish"
+        },
+        "vertical_midpoint": {
+          "r": 50,
+          "g": 94,
+          "b": 45,
+          "a": 255,
+          "brightness": 63,
+          "label": "dark-stoneish"
+        },
+        "darker_than_horizontal_midpoint_by": 0,
+        "darker_than_vertical_midpoint_by": 0
+      },
+      "capture_probe": {
+        "after_white_at_P11": {
+          "r": 107,
+          "g": 123,
+          "b": 105,
+          "a": 255,
+          "brightness": 112,
+          "label": "boardish"
+        },
+        "final_at_P11": {
+          "r": 107,
+          "g": 123,
+          "b": 105,
+          "a": 255,
+          "brightness": 112,
+          "label": "boardish"
+        },
+        "brightness_delta": 0
+      }
+    }
+  }
+}

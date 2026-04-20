@@ -1,0 +1,6415 @@
+{
+  "html_path": "/root/source/go-bench/results/vague-developer/venice-kimi-k2-5/generated/index.html",
+  "html_name": "index.html",
+  "collected_at": "2026-04-19T14:10:46.312Z",
+  "served_url": "http://127.0.0.1:35243/index.html",
+  "full_page_screenshot": "full-page.png",
+  "dom": {
+    "title": "9x9 Go Board",
+    "body_text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: Black to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+    "status_lines": [
+      "Black to play",
+      "⚫ Black: 0 ⚪ White: 0",
+      "↩️ Undo",
+      "⏭️ Pass",
+      "🔄 New Game"
+    ],
+    "buttons": [
+      {
+        "text": "↩️ Undo",
+        "selector": "button.btn-undo"
+      },
+      {
+        "text": "⏭️ Pass",
+        "selector": "button.btn-pass"
+      },
+      {
+        "text": "🔄 New Game",
+        "selector": "button.btn-reset"
+      }
+    ],
+    "counts": {
+      "canvas": 1,
+      "svg": 0,
+      "data_cells": 0,
+      "buttonish": 3,
+      "grid_like": 0
+    },
+    "board_candidate": {
+      "type": "canvas",
+      "source": "canvas",
+      "selector": "canvas#goboard",
+      "rect": {
+        "x": 450,
+        "y": 345,
+        "width": 540,
+        "height": 540
+      },
+      "score": 699840
+    },
+    "candidate_preview": [
+      {
+        "type": "canvas",
+        "source": "canvas",
+        "selector": "canvas#goboard",
+        "rect": {
+          "x": 450,
+          "y": 345,
+          "width": 540,
+          "height": 540
+        },
+        "score": 699840
+      },
+      {
+        "type": "div",
+        "source": "generic",
+        "selector": "div.board-container",
+        "rect": {
+          "x": 430,
+          "y": 325,
+          "width": 580,
+          "height": 580
+        },
+        "score": 504600
+      }
+    ],
+    "reset_candidates": [
+      {
+        "text": "↩️ Undo ⏭️ Pass 🔄 New Game",
+        "selector": "div.controls"
+      },
+      {
+        "text": "🔄 New Game",
+        "selector": "button.btn-reset"
+      }
+    ]
+  },
+  "board_candidate": {
+    "type": "canvas",
+    "source": "canvas",
+    "selector": "canvas#goboard",
+    "rect": {
+      "x": 450,
+      "y": 345,
+      "width": 540,
+      "height": 540
+    },
+    "score": 699840
+  },
+  "console_errors": [],
+  "page_errors": [],
+  "request_failures": [],
+  "external_requests": [],
+  "scenarios": {
+    "basic-play": {
+      "click_sequence": [
+        "P00",
+        "P10",
+        "P01"
+      ],
+      "steps": [
+        {
+          "name": "00-initial",
+          "image": "basic-play-00-initial.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: Black to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "Black to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "01-P00",
+          "image": "basic-play-01-P00.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: White to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "White to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "02-P10",
+          "image": "basic-play-02-P10.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: Black to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "Black to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 201,
+              "g": 184,
+              "b": 148,
+              "a": 255,
+              "brightness": 178,
+              "label": "mid"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "03-P01",
+          "image": "basic-play-03-P01.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: White to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "White to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 201,
+              "g": 184,
+              "b": 148,
+              "a": 255,
+              "brightness": 178,
+              "label": "mid"
+            },
+            "M00_01": {
+              "r": 92,
+              "g": 75,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        }
+      ],
+      "diffs": [
+        {
+          "from": "00-initial",
+          "to": "01-P00",
+          "changed_pixels": 2026,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006948
+        },
+        {
+          "from": "01-P00",
+          "to": "02-P10",
+          "changed_pixels": 2039,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006992
+        },
+        {
+          "from": "02-P10",
+          "to": "03-P01",
+          "changed_pixels": 2022,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006934
+        }
+      ]
+    },
+    "occupied-point": {
+      "click_sequence": [
+        "P00",
+        "P00"
+      ],
+      "steps": [
+        {
+          "name": "00-initial",
+          "image": "occupied-point-00-initial.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: Black to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "Black to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "01-P00",
+          "image": "occupied-point-01-P00.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: White to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "White to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "02-P00",
+          "image": "occupied-point-02-P00.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: White to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "White to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        }
+      ],
+      "diffs": [
+        {
+          "from": "00-initial",
+          "to": "01-P00",
+          "changed_pixels": 2026,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006948
+        },
+        {
+          "from": "01-P00",
+          "to": "02-P00",
+          "changed_pixels": 0,
+          "total_pixels": 291600,
+          "changed_ratio": 0
+        }
+      ]
+    },
+    "capture-sequence": {
+      "click_sequence": [
+        "P10",
+        "P11",
+        "P01",
+        "P00",
+        "P21",
+        "P20",
+        "P12"
+      ],
+      "steps": [
+        {
+          "name": "00-initial",
+          "image": "capture-sequence-00-initial.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: Black to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "Black to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "01-P10",
+          "image": "capture-sequence-01-P10.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: White to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "White to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 93,
+              "g": 76,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "02-P11",
+          "image": "capture-sequence-02-P11.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: Black to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "Black to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 203,
+              "g": 183,
+              "b": 141,
+              "a": 255,
+              "brightness": 176,
+              "label": "mid"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 93,
+              "g": 76,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "03-P01",
+          "image": "capture-sequence-03-P01.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: White to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "White to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 203,
+              "g": 183,
+              "b": 141,
+              "a": 255,
+              "brightness": 176,
+              "label": "mid"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 93,
+              "g": 76,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 92,
+              "g": 75,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "04-P00",
+          "image": "capture-sequence-04-P00.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: White to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "White to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 203,
+              "g": 183,
+              "b": 141,
+              "a": 255,
+              "brightness": 176,
+              "label": "mid"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 93,
+              "g": 76,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 92,
+              "g": 75,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "05-P21",
+          "image": "capture-sequence-05-P21.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: Black to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "Black to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 203,
+              "g": 183,
+              "b": 141,
+              "a": 255,
+              "brightness": 176,
+              "label": "mid"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 209,
+              "g": 209,
+              "b": 209,
+              "a": 255,
+              "brightness": 209,
+              "label": "light-stoneish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 93,
+              "g": 76,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 92,
+              "g": 75,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 206,
+              "g": 205,
+              "b": 203,
+              "a": 255,
+              "brightness": 205,
+              "label": "light-stoneish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "06-P20",
+          "image": "capture-sequence-06-P20.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: White to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "White to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 203,
+              "g": 183,
+              "b": 141,
+              "a": 255,
+              "brightness": 176,
+              "label": "mid"
+            },
+            "P20": {
+              "r": 169,
+              "g": 137,
+              "b": 71,
+              "a": 255,
+              "brightness": 126,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 209,
+              "g": 209,
+              "b": 209,
+              "a": 255,
+              "brightness": 209,
+              "label": "light-stoneish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 93,
+              "g": 76,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 92,
+              "g": 75,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 206,
+              "g": 205,
+              "b": 203,
+              "a": 255,
+              "brightness": 205,
+              "label": "light-stoneish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "07-P12",
+          "image": "capture-sequence-07-P12.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: Black to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "Black to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 203,
+              "g": 183,
+              "b": 141,
+              "a": 255,
+              "brightness": 176,
+              "label": "mid"
+            },
+            "P20": {
+              "r": 169,
+              "g": 137,
+              "b": 71,
+              "a": 255,
+              "brightness": 126,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 209,
+              "g": 209,
+              "b": 209,
+              "a": 255,
+              "brightness": 209,
+              "label": "light-stoneish"
+            },
+            "P12": {
+              "r": 209,
+              "g": 209,
+              "b": 209,
+              "a": 255,
+              "brightness": 209,
+              "label": "light-stoneish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 93,
+              "g": 76,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M00_01": {
+              "r": 92,
+              "g": 75,
+              "b": 39,
+              "a": 255,
+              "brightness": 69,
+              "label": "dark-stoneish"
+            },
+            "M11_21": {
+              "r": 206,
+              "g": 205,
+              "b": 203,
+              "a": 255,
+              "brightness": 205,
+              "label": "light-stoneish"
+            },
+            "M11_12": {
+              "r": 206,
+              "g": 205,
+              "b": 203,
+              "a": 255,
+              "brightness": 205,
+              "label": "light-stoneish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        }
+      ],
+      "diffs": [
+        {
+          "from": "00-initial",
+          "to": "01-P10",
+          "changed_pixels": 2025,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006944
+        },
+        {
+          "from": "01-P10",
+          "to": "02-P11",
+          "changed_pixels": 2033,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006972
+        },
+        {
+          "from": "02-P11",
+          "to": "03-P01",
+          "changed_pixels": 2022,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006934
+        },
+        {
+          "from": "03-P01",
+          "to": "04-P00",
+          "changed_pixels": 0,
+          "total_pixels": 291600,
+          "changed_ratio": 0
+        },
+        {
+          "from": "04-P00",
+          "to": "05-P21",
+          "changed_pixels": 2027,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006951
+        },
+        {
+          "from": "05-P21",
+          "to": "06-P20",
+          "changed_pixels": 2025,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006944
+        },
+        {
+          "from": "06-P20",
+          "to": "07-P12",
+          "changed_pixels": 2035,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006979
+        }
+      ]
+    },
+    "reset-check": {
+      "click_sequence": [
+        "P00",
+        "P10"
+      ],
+      "steps": [
+        {
+          "name": "00-initial",
+          "image": "reset-check-00-initial.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: Black to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "Black to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "01-P00",
+          "image": "reset-check-01-P00.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: White to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "White to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "02-P10",
+          "image": "reset-check-02-P10.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: Black to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "Black to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 201,
+              "g": 184,
+              "b": 148,
+              "a": 255,
+              "brightness": 178,
+              "label": "mid"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        },
+        {
+          "name": "03-after-action",
+          "image": "reset-check-03-after-action.png",
+          "text_excerpt": "⚫ 9x9 GO BOARD ⚪ Current: Black to play ⚫ Black: 0 ⚪ White: 0 ↩️ Undo ⏭️ Pass 🔄 New Game",
+          "status_lines": [
+            "Black to play",
+            "⚫ Black: 0 ⚪ White: 0",
+            "↩️ Undo",
+            "⏭️ Pass",
+            "🔄 New Game"
+          ],
+          "samples": {
+            "P00": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P10": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P11": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P20": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P22": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P26": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P44": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 255,
+              "brightness": 0,
+              "label": "dark-stoneish"
+            },
+            "P45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "P62": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P66": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "P76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M00_10": {
+              "r": 201,
+              "g": 184,
+              "b": 148,
+              "a": 255,
+              "brightness": 178,
+              "label": "mid"
+            },
+            "M00_01": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_21": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M11_12": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_32": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M22_23": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_36": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M26_25": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M44_54": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M44_45": {
+              "r": 176,
+              "g": 143,
+              "b": 74,
+              "a": 255,
+              "brightness": 131,
+              "label": "boardish"
+            },
+            "M62_72": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M62_63": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_76": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            },
+            "M66_65": {
+              "r": 220,
+              "g": 179,
+              "b": 92,
+              "a": 255,
+              "brightness": 164,
+              "label": "boardish"
+            }
+          }
+        }
+      ],
+      "diffs": [
+        {
+          "from": "00-initial",
+          "to": "01-P00",
+          "changed_pixels": 2026,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006948
+        },
+        {
+          "from": "01-P00",
+          "to": "02-P10",
+          "changed_pixels": 2039,
+          "total_pixels": 291600,
+          "changed_ratio": 0.006992
+        },
+        {
+          "from": "02-P10",
+          "to": "03-after-action",
+          "changed_pixels": 0,
+          "total_pixels": 291600,
+          "changed_ratio": 0
+        }
+      ]
+    }
+  },
+  "scenario_meta": {
+    "candidate_rect": {
+      "x": 450,
+      "y": 345,
+      "width": 540,
+      "height": 540
+    },
+    "point_map": {
+      "P00": {
+        "i": 0,
+        "j": 0,
+        "x": 504,
+        "y": 399
+      },
+      "P10": {
+        "i": 1,
+        "j": 0,
+        "x": 558,
+        "y": 399
+      },
+      "P01": {
+        "i": 0,
+        "j": 1,
+        "x": 504,
+        "y": 453
+      },
+      "P11": {
+        "i": 1,
+        "j": 1,
+        "x": 558,
+        "y": 453
+      },
+      "P20": {
+        "i": 2,
+        "j": 0,
+        "x": 612,
+        "y": 399
+      },
+      "P21": {
+        "i": 2,
+        "j": 1,
+        "x": 612,
+        "y": 453
+      },
+      "P12": {
+        "i": 1,
+        "j": 2,
+        "x": 558,
+        "y": 507
+      },
+      "P22": {
+        "i": 2,
+        "j": 2,
+        "x": 612,
+        "y": 507
+      },
+      "P23": {
+        "i": 2,
+        "j": 3,
+        "x": 612,
+        "y": 561
+      },
+      "P25": {
+        "i": 2,
+        "j": 5,
+        "x": 612,
+        "y": 669
+      },
+      "P26": {
+        "i": 2,
+        "j": 6,
+        "x": 612,
+        "y": 723
+      },
+      "P32": {
+        "i": 3,
+        "j": 2,
+        "x": 666,
+        "y": 507
+      },
+      "P36": {
+        "i": 3,
+        "j": 6,
+        "x": 666,
+        "y": 723
+      },
+      "P44": {
+        "i": 4,
+        "j": 4,
+        "x": 720,
+        "y": 615
+      },
+      "P45": {
+        "i": 4,
+        "j": 5,
+        "x": 720,
+        "y": 669
+      },
+      "P54": {
+        "i": 5,
+        "j": 4,
+        "x": 774,
+        "y": 615
+      },
+      "P62": {
+        "i": 6,
+        "j": 2,
+        "x": 828,
+        "y": 507
+      },
+      "P63": {
+        "i": 6,
+        "j": 3,
+        "x": 828,
+        "y": 561
+      },
+      "P65": {
+        "i": 6,
+        "j": 5,
+        "x": 828,
+        "y": 669
+      },
+      "P66": {
+        "i": 6,
+        "j": 6,
+        "x": 828,
+        "y": 723
+      },
+      "P72": {
+        "i": 7,
+        "j": 2,
+        "x": 882,
+        "y": 507
+      },
+      "P76": {
+        "i": 7,
+        "j": 6,
+        "x": 882,
+        "y": 723
+      },
+      "M00_10": {
+        "i": 0.5,
+        "j": 0,
+        "x": 531,
+        "y": 399
+      },
+      "M00_01": {
+        "i": 0,
+        "j": 0.5,
+        "x": 504,
+        "y": 426
+      },
+      "M11_21": {
+        "i": 1.5,
+        "j": 1,
+        "x": 585,
+        "y": 453
+      },
+      "M11_12": {
+        "i": 1,
+        "j": 1.5,
+        "x": 558,
+        "y": 480
+      },
+      "M22_32": {
+        "i": 2.5,
+        "j": 2,
+        "x": 639,
+        "y": 507
+      },
+      "M22_23": {
+        "i": 2,
+        "j": 2.5,
+        "x": 612,
+        "y": 534
+      },
+      "M26_36": {
+        "i": 2.5,
+        "j": 6,
+        "x": 639,
+        "y": 723
+      },
+      "M26_25": {
+        "i": 2,
+        "j": 5.5,
+        "x": 612,
+        "y": 696
+      },
+      "M44_54": {
+        "i": 4.5,
+        "j": 4,
+        "x": 747,
+        "y": 615
+      },
+      "M44_45": {
+        "i": 4,
+        "j": 4.5,
+        "x": 720,
+        "y": 642
+      },
+      "M62_72": {
+        "i": 6.5,
+        "j": 2,
+        "x": 855,
+        "y": 507
+      },
+      "M62_63": {
+        "i": 6,
+        "j": 2.5,
+        "x": 828,
+        "y": 534
+      },
+      "M66_76": {
+        "i": 6.5,
+        "j": 6,
+        "x": 855,
+        "y": 723
+      },
+      "M66_65": {
+        "i": 6,
+        "j": 5.5,
+        "x": 828,
+        "y": 696
+      }
+    },
+    "reset_control": {
+      "text": "↩️ Undo ⏭️ Pass 🔄 New Game",
+      "selector": "div.controls"
+    },
+    "visual_heuristics": {
+      "hoshi_contrast": {
+        "P22": {
+          "center": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "reference_a": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "reference_b": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "darker_than_reference_a_by": 0,
+          "darker_than_reference_b_by": 0
+        },
+        "P26": {
+          "center": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "reference_a": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "reference_b": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "darker_than_reference_a_by": 0,
+          "darker_than_reference_b_by": 0
+        },
+        "P44": {
+          "center": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 255,
+            "brightness": 0,
+            "label": "dark-stoneish"
+          },
+          "reference_a": {
+            "r": 176,
+            "g": 143,
+            "b": 74,
+            "a": 255,
+            "brightness": 131,
+            "label": "boardish"
+          },
+          "reference_b": {
+            "r": 176,
+            "g": 143,
+            "b": 74,
+            "a": 255,
+            "brightness": 131,
+            "label": "boardish"
+          },
+          "darker_than_reference_a_by": 131,
+          "darker_than_reference_b_by": 131
+        },
+        "P62": {
+          "center": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "reference_a": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "reference_b": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "darker_than_reference_a_by": 0,
+          "darker_than_reference_b_by": 0
+        },
+        "P66": {
+          "center": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "reference_a": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "reference_b": {
+            "r": 220,
+            "g": 179,
+            "b": 92,
+            "a": 255,
+            "brightness": 164,
+            "label": "boardish"
+          },
+          "darker_than_reference_a_by": 0,
+          "darker_than_reference_b_by": 0
+        }
+      },
+      "stone_centering_probe": {
+        "intersection": {
+          "r": 220,
+          "g": 179,
+          "b": 92,
+          "a": 255,
+          "brightness": 164,
+          "label": "boardish"
+        },
+        "horizontal_midpoint": {
+          "r": 220,
+          "g": 179,
+          "b": 92,
+          "a": 255,
+          "brightness": 164,
+          "label": "boardish"
+        },
+        "vertical_midpoint": {
+          "r": 220,
+          "g": 179,
+          "b": 92,
+          "a": 255,
+          "brightness": 164,
+          "label": "boardish"
+        },
+        "darker_than_horizontal_midpoint_by": 0,
+        "darker_than_vertical_midpoint_by": 0
+      },
+      "capture_probe": {
+        "after_white_at_P11": {
+          "r": 203,
+          "g": 183,
+          "b": 141,
+          "a": 255,
+          "brightness": 176,
+          "label": "mid"
+        },
+        "final_at_P11": {
+          "r": 203,
+          "g": 183,
+          "b": 141,
+          "a": 255,
+          "brightness": 176,
+          "label": "mid"
+        },
+        "brightness_delta": 0
+      }
+    }
+  }
+}

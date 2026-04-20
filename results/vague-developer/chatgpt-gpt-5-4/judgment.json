@@ -1,0 +1,24 @@
+{
+  "score": 17,
+  "band": "strong",
+  "subscores": {
+    "board": 3,
+    "interaction": 4,
+    "move_handling": 3,
+    "rules": 4,
+    "completeness": 3
+  },
+  "confidence": "high",
+  "summary": "Well-executed canvas Go board with stones correctly placed on intersections, visible hoshi points, confirmed capture logic, occupied-point rejection, and a full control set; ko and suicide prevention are claimed but not independently exercised in the evidence.",
+  "evidence_highlights": [
+    "Stone-centering probe: stone at P00 reads brightness 29 while midpoints read ~175 boardish, confirming stones render on intersections not cell centers",
+    "Hoshi contrast at P22, P26, P44, P62, P66 shows correct darkening at expected 9x9 hoshi positions, with center P44 at brightness 48 vs reference ~112",
+    "capture_probe confirms capture: white stone placed at P11 (brightness 205) later reads boardish (brightness 160, delta -45); pixel diff step 06\u219207 shows P10 switching from dark-stoneish (brightness 14) to boardish (164)",
+    "Occupied-point rejection confirmed: clicking P00 twice leaves second diff at 0 changed pixels and turn unchanged; all four controls (Pass, Undo, Reset, Score now) present with move history"
+  ],
+  "evidence_gaps": [
+    "Ko rule is asserted in the UI description but no test sequence exercises it",
+    "Suicide prevention is asserted in the UI description but no test sequence exercises it",
+    "Live area scoring shows anomalous 'Black 81 White 0' after the very first stone, which may confuse users even if it is technically consistent with area scoring on an empty board"
+  ]
+}

@@ -6,6 +6,7 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 import time
 from collections import Counter
 from datetime import datetime, timezone
@@ -17,6 +18,7 @@ VAGUE_TEMPLATE = REPO_ROOT / "benches" / "vague-developer" / "template"
 STRICT_VERIFIER = STRICT_TEMPLATE / "agent" / "scripts" / "verify-board.mjs"
 RESULTS_ROOT = REPO_ROOT / "results"
 RUNS_ROOT = REPO_ROOT / ".runs"
+JUDGE_VAGUE = REPO_ROOT / "scripts" / "judge_vague.py"
 
 STRICT_PROMPT = (
     "Build the board described in SPEC.md. Create or replace workspace/board.html. "
@@ -238,6 +240,7 @@ def main() -> int:
     parser.add_argument("--slug", required=True)
     parser.add_argument("--display", default="")
     parser.add_argument("--timeout-seconds", type=int, default=1500)
+    parser.add_argument("--judge-provider", default="claude-bin:sonnet")
     parser.add_argument("--note", default="")
     parser.add_argument("--requested", default="")
     args = parser.parse_args()
@@ -269,12 +272,14 @@ def main() -> int:
         return_code = proc.returncode
     except subprocess.TimeoutExpired as exc:
         timed_out = True
-        stdout_text = exc.stdout or ""
-        stderr_text = (exc.stderr or "") + "\nTIMEOUT\n"
+        _raw_out = exc.stdout or b""
+        _raw_err = exc.stderr or b""
+        stdout_text = _raw_out.decode("utf-8", errors="replace") if isinstance(_raw_out, bytes) else _raw_out
+        stderr_text = (_raw_err.decode("utf-8", errors="replace") if isinstance(_raw_err, bytes) else _raw_err) + "\nTIMEOUT\n"
         return_code = 124
     elapsed = time.time() - start
 
-    (result_dir / "events.jsonl").write_text(stdout_text, encoding="utf-8")
+    (result_dir / "events.jsonl").write_text(stdout_text.decode("utf-8", errors="replace") if isinstance(stdout_text, bytes) else stdout_text, encoding="utf-8")
     stderr_name = None
     if stderr_text.strip():
         stderr_name = "stderr.log"
@@ -350,8 +355,37 @@ def main() -> int:
     }
     (result_dir / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 
+    if bench == "vague-developer":
+        judge_proc = sh(
+            [
+                sys.executable,
+                str(JUDGE_VAGUE),
+                "--result-dir",
+                str(result_dir),
+                "--judge-provider",
+                args.judge_provider,
+            ],
+            cwd=REPO_ROOT,
+            timeout=900,
+            merge_stderr=False,
+        )
+        if judge_proc.stdout.strip():
+            print(judge_proc.stdout.strip())
+        if judge_proc.stderr.strip():
+            print(judge_proc.stderr.strip(), file=sys.stderr)
+        if judge_proc.returncode != 0:
+            raise SystemExit(judge_proc.returncode)
+        metadata = json.loads((result_dir / "metadata.json").read_text(encoding="utf-8"))
+
     status = "PASS" if verified else "FAIL"
-    print(f"[{bench}] {slug}: {status} | {format_stats_summary(stats)}")
+    if bench == "vague-developer" and metadata.get("judgment"):
+        judgment = metadata["judgment"]
+        print(
+            f"[{bench}] {slug}: strict {status} | judged {judgment.get('score')}/20 {judgment.get('band')} | "
+            f"{format_stats_summary(stats)}"
+        )
+    else:
+        print(f"[{bench}] {slug}: {status} | {format_stats_summary(stats)}")
     return 0
 
 

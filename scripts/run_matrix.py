@@ -23,6 +23,7 @@ def main() -> int:
     parser.add_argument("--only", default="")
     parser.add_argument("--skip-existing", action="store_true")
     parser.add_argument("--timeout-seconds", type=int, default=1500)
+    parser.add_argument("--judge-provider", default="claude-bin:sonnet")
     args = parser.parse_args()
 
     benches = [b.strip() for b in args.benches.split(",") if b.strip()]
@@ -54,6 +55,8 @@ def main() -> int:
                 model.get("display", model["slug"]),
                 "--timeout-seconds",
                 str(args.timeout_seconds),
+                "--judge-provider",
+                args.judge_provider,
             ]
             if model.get("note"):
                 cmd.extend(["--note", model["note"]])

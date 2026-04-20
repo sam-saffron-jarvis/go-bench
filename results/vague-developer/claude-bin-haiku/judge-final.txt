@@ -1,0 +1,27 @@
+```json
+{
+  "score": 14,
+  "band": "playable",
+  "subscores": {
+    "board": 2,
+    "interaction": 4,
+    "move_handling": 3,
+    "rules": 1,
+    "completeness": 4
+  },
+  "confidence": "medium",
+  "summary": "A well-featured div-grid Go board with solid interaction and controls but capture logic is absent, confirmed by stone counts not dropping when a surrounded group should be removed.",
+  "evidence_highlights": [
+    "Turns alternate correctly and occupied-point rejection confirmed: zero pixel diff and move count held at 1 on second click to same intersection",
+    "Stone placement produces clear pixel changes each move; black stone at P21 reads brightness 18 (dark-stoneish)",
+    "Full control set present: PASS, UNDO LAST MOVE, NEW GAME, move counter, stone counts, game status",
+    "Center hoshi (P44) detected with 53-brightness contrast vs neighbours; only one hoshi visible"
+  ],
+  "evidence_gaps": [
+    "Capture failed: after 7-move sequence surrounding white at P11 on all sides, White Stones still reads 3 and pixel at P11 stays near white-stone brightness rather than returning to board color",
+    "Corner hoshi points (P22, P26, P62, P66) show zero darkness contrast — missing or not rendered",
+    "Stone-centering probe shows intersection is lighter than adjacent midpoints after stone placement, raising doubt about intersection-vs-cell rendering",
+    "No evidence of ko rule or suicide prevention tested"
+  ]
+}
+```

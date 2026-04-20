@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>9x9 Go Board</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #2c2c2c;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+    min-height: 100vh;
+  }
+  h1 { margin: 0 0 16px; font-weight: 300; }
+  .info {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+    align-items: center;
+    font-size: 16px;
+  }
+  .turn-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .stone-preview {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #555;
+  }
+  .stone-preview.black { background: #111; }
+  .stone-preview.white { background: #f5f5f5; }
+  #reset {
+    padding: 8px 16px;
+    font-size: 14px;
+    background: #d4873a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #reset:hover { background: #e09952; }
+  .board-wrapper {
+    position: relative;
+    background: #dcb068;
+    padding: 30px;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .board {
+    position: relative;
+    width: 480px;
+    height: 480px;
+  }
+  .grid-line {
+    position: absolute;
+    background: #222;
+  }
+  .grid-line.h { height: 1px; left: 0; right: 0; }
+  .grid-line.v { width: 1px; top: 0; bottom: 0; }
+  .star {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #222;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .cell {
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  .stone {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .stone.black {
+    background: radial-gradient(circle at 30% 30%, #555, #000);
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.4);
+  }
+  .stone.white {
+    background: radial-gradient(circle at 30% 30%, #fff, #bbb);
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.4);
+  }
+  .cell:hover .ghost {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+  .cell:hover .ghost.black { background: #000; }
+  .cell:hover .ghost.white { background: #fff; }
+</style>
+</head>
+<body>
+<h1>9×9 Go</h1>
+<div class="info">
+  <div class="turn-indicator">Turn: <span class="stone-preview" id="turn-stone"></span><span id="turn-text"></span></div>
+  <div>Black captured: <span id="cap-black">0</span></div>
+  <div>White captured: <span id="cap-white">0</span></div>
+  <button id="reset">Reset</button>
+</div>
+<div class="board-wrapper">
+  <div class="board" id="board"></div>
+</div>
+
+<script>
+(function() {
+  const SIZE = 9;
+  const BOARD_PX = 480;
+  const SPACING = BOARD_PX / (SIZE - 1);
+
+  let board = [];
+  let currentPlayer = "black";
+  let captured = { black: 0, white: 0 };
+
+  function makeEmptyBoard() {
+    const b = [];
+    for (let y = 0; y < SIZE; y++) {
+      const row = [];
+      for (let x = 0; x < SIZE; x++) row.push(null);
+      b.push(row);
+    }
+    return b;
+  }
+
+  function opponent(color) {
+    return color === "black" ? "white" : "black";
+  }
+
+  function neighbors(x, y) {
+    const out = [];
+    if (x > 0) out.push([x - 1, y]);
+    if (x < SIZE - 1) out.push([x + 1, y]);
+    if (y > 0) out.push([x, y - 1]);
+    if (y < SIZE - 1) out.push([x, y + 1]);
+    return out;
+  }
+
+  function groupAndLiberties(b, x, y) {
+    const color = b[y][x];
+    if (!color) return { stones: [], liberties: 0 };
+    const visited = new Set();
+    const libs = new Set();
+    const stones = [];
+    const stack = [[x, y]];
+    while (stack.length) {
+      const [cx, cy] = stack.pop();
+      const k = cx + "," + cy;
+      if (visited.has(k)) continue;
+      visited.add(k);
+      stones.push([cx, cy]);
+      for (const [nx, ny] of neighbors(cx, cy)) {
+        const v = b[ny][nx];
+        if (v === null) libs.add(nx + "," + ny);
+        else if (v === color) stack.push([nx, ny]);
+      }
+    }
+    return { stones, liberties: libs.size };
+  }
+
+  function tryMove(x, y) {
+    if (board[y][x] !== null) return false;
+    const color = currentPlayer;
+    const opp = opponent(color);
+
+    const test = board.map(row => row.slice());
+    test[y][x] = color;
+
+    let capturedCount = 0;
+    for (const [nx, ny] of neighbors(x, y)) {
+      if (test[ny][nx] === opp) {
+        const { stones, liberties } = groupAndLiberties(test, nx, ny);
+        if (liberties === 0) {
+          for (const [sx, sy] of stones) {
+            test[sy][sx] = null;
+            capturedCount++;
+          }
+        }
+      }
+    }
+
+    const self = groupAndLiberties(test, x, y);
+    if (self.liberties === 0) return false;
+
+    board = test;
+    captured[color] += capturedCount;
+    currentPlayer = opp;
+    render();
+    return true;
+  }
+
+  function reset() {
+    board = makeEmptyBoard();
+    currentPlayer = "black";
+    captured = { black: 0, white: 0 };
+    render();
+  }
+
+  const boardEl = document.getElementById("board");
+
+  function buildBoard() {
+    boardEl.innerHTML = "";
+    for (let i = 0; i < SIZE; i++) {
+      const h = document.createElement("div");
+      h.className = "grid-line h";
+      h.style.top = (i * SPACING) + "px";
+      boardEl.appendChild(h);
+      const v = document.createElement("div");
+      v.className = "grid-line v";
+      v.style.left = (i * SPACING) + "px";
+      boardEl.appendChild(v);
+    }
+    const stars = [[2,2],[2,6],[6,2],[6,6],[4,4]];
+    for (const [sx, sy] of stars) {
+      const s = document.createElement("div");
+      s.className = "star";
+      s.style.left = (sx * SPACING) + "px";
+      s.style.top = (sy * SPACING) + "px";
+      boardEl.appendChild(s);
+    }
+    for (let y = 0; y < SIZE; y++) {
+      for (let x = 0; x < SIZE; x++) {
+        const cell = document.createElement("button");
+        cell.className = "cell";
+        cell.setAttribute("data-cell", x + "," + y);
+        cell.style.left = (x * SPACING) + "px";
+        cell.style.top = (y * SPACING) + "px";
+        cell.addEventListener("click", () => tryMove(x, y));
+        boardEl.appendChild(cell);
+      }
+    }
+  }
+
+  function render() {
+    const cells = boardEl.querySelectorAll(".cell");
+    cells.forEach(c => {
+      const [x, y] = c.getAttribute("data-cell").split(",").map(Number);
+      c.innerHTML = "";
+      const v = board[y][x];
+      if (v) {
+        const s = document.createElement("div");
+        s.className = "stone " + v;
+        c.appendChild(s);
+      } else {
+        const g = document.createElement("div");
+        g.className = "ghost " + currentPlayer;
+        c.appendChild(g);
+      }
+    });
+    document.getElementById("turn-text").textContent =
+      currentPlayer.charAt(0).toUpperCase() + currentPlayer.slice(1);
+    const ts = document.getElementById("turn-stone");
+    ts.className = "stone-preview " + currentPlayer;
+    document.getElementById("cap-black").textContent = captured.black;
+    document.getElementById("cap-white").textContent = captured.white;
+  }
+
+  document.getElementById("reset").addEventListener("click", reset);
+
+  window.__goGame__ = {
+    getState: function() {
+      return {
+        size: SIZE,
+        currentPlayer: currentPlayer,
+        board: board.map(row => row.slice()),
+        captured: { black: captured.black, white: captured.white }
+      };
+    }
+  };
+
+  buildBoard();
+  reset();
+})();
+</script>
+</body>
+</html>

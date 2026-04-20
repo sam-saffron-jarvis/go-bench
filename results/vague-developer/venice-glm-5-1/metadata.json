@@ -102,5 +102,60 @@
   "output": {
     "expected_file": "index.html",
     "exists": true
+  },
+  "judgment": {
+    "judge_provider": "claude-bin:sonnet",
+    "timestamp_utc": "2026-04-19T14:06:55.719161+00:00",
+    "score": 13,
+    "band": "playable",
+    "subscores": {
+      "board": 3,
+      "interaction": 3,
+      "move_handling": 2,
+      "rules": 2,
+      "completeness": 3
+    },
+    "confidence": "medium",
+    "summary": "Solid canvas Go board with stones correctly placed on intersections and visible hoshi dots, good controls and turn alternation, but capture counter never increments and move counter stays at 0 throughout all scenarios.",
+    "evidence_highlights": [
+      "Stone centering probe shows placed stone brightness 40 at intersection vs 170 at midpoints, confirming stones render on intersections not cell centers",
+      "P44 (center hoshi) shows brightness 44 vs 145 reference (delta 101) on empty board, confirming hoshi dots are drawn",
+      "Occupied-point rejection confirmed: second click on P00 produces 0 changed pixels and status stays unchanged",
+      "Turn alternation verified across all scenarios: status correctly flips between 'Black to play' and 'White to play'"
+    ],
+    "evidence_gaps": [
+      "Capture counter never increments from 0 in any scenario, including the dedicated capture sequence \u2014 no capture evidence",
+      "Move counter remains at 'Move 0' throughout all scenarios, suggesting move tracking is non-functional or display is broken",
+      "Suicide rejection at P00 shows only 112 changed pixels with ambiguous pixel color (brightness 180), not conclusive"
+    ],
+    "run": {
+      "exit_code": 0,
+      "elapsed_seconds": 67.821,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 2129,
+        "duration_ms": 67801,
+        "input_tokens": 3,
+        "llm_calls": 1,
+        "llm_ms": 67801,
+        "output_tokens": 3378,
+        "seq": 17,
+        "tool_calls": 0,
+        "tool_ms": 0,
+        "ts": "2026-04-19T14:06:55.717933454Z",
+        "type": "stats"
+      },
+      "event_count": 19,
+      "json_parse_errors": []
+    },
+    "artifacts": {
+      "evidence_json": "judge_evidence.json",
+      "judgment_json": "judgment.json",
+      "judge_artifacts_dir": "judge-artifacts",
+      "judge_events_jsonl": "judge-events.jsonl",
+      "judge_final_text": "judge-final.txt",
+      "judge_stderr_log": null
+    },
+    "collector_error": null
   }
 }

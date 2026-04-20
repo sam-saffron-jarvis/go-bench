@@ -135,6 +135,552 @@
   },
   {
     "bench": "strict-custom-agent",
+    "slug": "claude-bin-opus",
+    "display": "Claude Code Opus",
+    "provider": "claude-bin:opus",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T21:45:35.563742+00:00",
+    "term_llm_version": "term-llm version v0.0.170 (commit: 4f60c1d, built: 2026-04-19T11:20:26Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "claude-bin:opus",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider claude-bin:opus --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 37.802,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 34095,
+        "duration_ms": 37776,
+        "input_tokens": 18,
+        "llm_calls": 3,
+        "llm_ms": 36265,
+        "output_tokens": 3497,
+        "seq": 12,
+        "tool_calls": 2,
+        "tool_ms": 1511,
+        "ts": "2026-04-19T21:45:32.610856768Z",
+        "type": "stats"
+      },
+      "event_count": 14,
+      "event_counts": {
+        "session.started": 1,
+        "text.delta": 4,
+        "tool.started": 2,
+        "tool.completed": 2,
+        "usage": 3,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "write_file": 1,
+        "verify_board": 1
+      },
+      "tool_outcomes": {
+        "write_file:success": 1,
+        "verify_board:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "go-board-bench",
+        "mcp": "",
+        "model": "opus",
+        "provider": "Claude CLI (opus)",
+        "resuming": false,
+        "search": false,
+        "seq": 0,
+        "session_id": "20260420-074454-4a1449c015d3819f",
+        "tools": "read_file,write_file,edit_file,glob,grep",
+        "ts": "2026-04-19T21:44:54.833877142Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 13,
+        "tokens": 7,
+        "ts": "2026-04-19T21:45:32.610864274Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/claude-bin-opus/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "chatgpt-gpt-5-4",
+    "display": "ChatGPT GPT-5.4",
+    "provider": "chatgpt:gpt-5.4",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T21:46:50.540308+00:00",
+    "term_llm_version": "term-llm version v0.0.170 (commit: 4f60c1d, built: 2026-04-19T11:20:26Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "chatgpt:gpt-5.4",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider chatgpt:gpt-5.4 --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 68.149,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 12800,
+        "duration_ms": 68125,
+        "input_tokens": 3491,
+        "llm_calls": 3,
+        "llm_ms": 66598,
+        "output_tokens": 3328,
+        "seq": 9,
+        "tool_calls": 2,
+        "tool_ms": 1526,
+        "ts": "2026-04-19T21:46:47.482866557Z",
+        "type": "stats"
+      },
+      "event_count": 11,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 2,
+        "usage": 3,
+        "tool.completed": 2,
+        "text.delta": 1,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "write_file": 1,
+        "verify_board": 1
+      },
+      "tool_outcomes": {
+        "write_file:success": 1,
+        "verify_board:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "go-board-bench",
+        "mcp": "",
+        "model": "gpt-5.4",
+        "provider": "ChatGPT (gpt-5.4)",
+        "resuming": false,
+        "search": false,
+        "seq": 0,
+        "session_id": "20260420-074539-90bd0704032a7428",
+        "tools": "read_file,write_file,edit_file,glob,grep",
+        "ts": "2026-04-19T21:45:39.357588055Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 10,
+        "tokens": 5,
+        "ts": "2026-04-19T21:46:47.482875961Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/chatgpt-gpt-5-4/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "chatgpt-gpt-5-4-xhigh",
+    "display": "ChatGPT GPT-5.4 xhigh",
+    "provider": "chatgpt:gpt-5.4-xhigh",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T21:48:47.066838+00:00",
+    "term_llm_version": "term-llm version v0.0.170 (commit: 4f60c1d, built: 2026-04-19T11:20:26Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "chatgpt:gpt-5.4-xhigh",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider chatgpt:gpt-5.4-xhigh --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 108.21,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 17280,
+        "duration_ms": 108187,
+        "input_tokens": 3569,
+        "llm_calls": 3,
+        "llm_ms": 106673,
+        "output_tokens": 5621,
+        "seq": 9,
+        "tool_calls": 2,
+        "tool_ms": 1513,
+        "ts": "2026-04-19T21:48:44.033683021Z",
+        "type": "stats"
+      },
+      "event_count": 11,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 2,
+        "usage": 3,
+        "tool.completed": 2,
+        "text.delta": 1,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "write_file": 1,
+        "verify_board": 1
+      },
+      "tool_outcomes": {
+        "write_file:success": 1,
+        "verify_board:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "go-board-bench",
+        "mcp": "",
+        "model": "gpt-5.4-xhigh",
+        "provider": "ChatGPT (gpt-5.4, effort=xhigh)",
+        "resuming": false,
+        "search": false,
+        "seq": 0,
+        "session_id": "20260420-074655-62e8d2e710f3f8ea",
+        "tools": "read_file,write_file,edit_file,glob,grep",
+        "ts": "2026-04-19T21:46:55.846121111Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 10,
+        "tokens": 16,
+        "ts": "2026-04-19T21:48:44.033691255Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/chatgpt-gpt-5-4-xhigh/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "chatgpt-gpt-5-4-mini",
+    "display": "ChatGPT GPT-5.4 Mini",
+    "provider": "chatgpt:gpt-5.4-mini",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T21:44:45.395288+00:00",
+    "term_llm_version": "term-llm version v0.0.170 (commit: 4f60c1d, built: 2026-04-19T11:20:26Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "chatgpt:gpt-5.4-mini",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider chatgpt:gpt-5.4-mini --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 24.129,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 14336,
+        "duration_ms": 24103,
+        "input_tokens": 4432,
+        "llm_calls": 4,
+        "llm_ms": 22594,
+        "output_tokens": 2894,
+        "seq": 12,
+        "tool_calls": 3,
+        "tool_ms": 1509,
+        "ts": "2026-04-19T21:44:42.356667115Z",
+        "type": "stats"
+      },
+      "event_count": 14,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 3,
+        "usage": 4,
+        "tool.completed": 3,
+        "text.delta": 1,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "read_file": 1,
+        "write_file": 1,
+        "verify_board": 1
+      },
+      "tool_outcomes": {
+        "read_file:success": 1,
+        "write_file:success": 1,
+        "verify_board:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "go-board-bench",
+        "mcp": "",
+        "model": "gpt-5.4-mini",
+        "provider": "ChatGPT (gpt-5.4-mini)",
+        "resuming": false,
+        "search": false,
+        "seq": 0,
+        "session_id": "20260420-074418-abb79541bd0e8a28",
+        "tools": "read_file,write_file,edit_file,glob,grep",
+        "ts": "2026-04-19T21:44:18.253433864Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 13,
+        "tokens": 5,
+        "ts": "2026-04-19T21:44:42.35667551Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/chatgpt-gpt-5-4-mini/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
+    "slug": "chatgpt-gpt-5-4-mini-xhigh",
+    "display": "ChatGPT GPT-5.4 Mini xhigh",
+    "provider": "chatgpt:gpt-5.4-mini-xhigh",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T23:17:12.669260+00:00",
+    "term_llm_version": "term-llm version v0.0.172 (commit: c6929c4, built: 2026-04-19T23:15:49Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "chatgpt:gpt-5.4-mini-xhigh",
+      "--max-turns",
+      "30",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      "./workspace",
+      "-f",
+      "./SPEC.md",
+      "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider chatgpt:gpt-5.4-mini-xhigh --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+    "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 205.8,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 40960,
+        "duration_ms": 205764,
+        "input_tokens": 25990,
+        "llm_calls": 5,
+        "llm_ms": 203758,
+        "output_tokens": 24031,
+        "seq": 17,
+        "tool_calls": 5,
+        "tool_ms": 2006,
+        "ts": "2026-04-19T23:17:09.134763117Z",
+        "type": "stats"
+      },
+      "event_count": 19,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 5,
+        "usage": 5,
+        "tool.completed": 5,
+        "text.delta": 1,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "glob": 2,
+        "read_file": 1,
+        "write_file": 1,
+        "verify_board": 1
+      },
+      "tool_outcomes": {
+        "read_file:success": 1,
+        "glob:success": 2,
+        "write_file:success": 1,
+        "verify_board:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "go-board-bench",
+        "mcp": "",
+        "model": "gpt-5.4-mini-xhigh",
+        "provider": "ChatGPT (gpt-5.4-mini, effort=xhigh)",
+        "resuming": false,
+        "search": false,
+        "seq": 0,
+        "session_id": "20260420-091343-72ee761640b60259",
+        "tools": "read_file,write_file,edit_file,glob,grep",
+        "ts": "2026-04-19T23:13:43.370197519Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 18,
+        "tokens": 23,
+        "ts": "2026-04-19T23:17:09.134771124Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": true,
+      "exit_code": 0,
+      "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/chatgpt-gpt-5-4-mini-xhigh/workspace/board.html satisfied all acceptance tests"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "workspace/board.html",
+      "exists": true
+    }
+  },
+  {
+    "bench": "strict-custom-agent",
     "slug": "ollama-gemma4-26b",
     "display": "Ollama Gemma 4 26B",
     "provider": "ollama:gemma4:26b",
@@ -887,6 +1433,527 @@
     "output": {
       "expected_file": "index.html",
       "exists": true
+    },
+    "judgment": {
+      "judge_provider": "claude-bin:sonnet",
+      "timestamp_utc": "2026-04-19T21:38:43.014771+00:00",
+      "score": 14,
+      "band": "playable",
+      "subscores": {
+        "board": 2,
+        "interaction": 4,
+        "move_handling": 3,
+        "rules": 1,
+        "completeness": 4
+      },
+      "confidence": "medium",
+      "summary": "A well-featured div-grid Go board with solid interaction and controls but capture logic is absent, confirmed by stone counts not dropping when a surrounded group should be removed.",
+      "evidence_highlights": [
+        "Turns alternate correctly and occupied-point rejection confirmed: zero pixel diff and move count held at 1 on second click to same intersection",
+        "Stone placement produces clear pixel changes each move; black stone at P21 reads brightness 18 (dark-stoneish)",
+        "Full control set present: PASS, UNDO LAST MOVE, NEW GAME, move counter, stone counts, game status",
+        "Center hoshi (P44) detected with 53-brightness contrast vs neighbours; only one hoshi visible"
+      ],
+      "evidence_gaps": [
+        "Capture failed: after 7-move sequence surrounding white at P11 on all sides, White Stones still reads 3 and pixel at P11 stays near white-stone brightness rather than returning to board color",
+        "Corner hoshi points (P22, P26, P62, P66) show zero darkness contrast \u2014 missing or not rendered",
+        "Stone-centering probe shows intersection is lighter than adjacent midpoints after stone placement, raising doubt about intersection-vs-cell rendering",
+        "No evidence of ko rule or suicide prevention tested"
+      ],
+      "run": {
+        "exit_code": 0,
+        "elapsed_seconds": 119.48,
+        "stats": {
+          "cache_write_tokens": 0,
+          "cached_input_tokens": 2129,
+          "duration_ms": 119461,
+          "input_tokens": 3,
+          "llm_calls": 1,
+          "llm_ms": 119461,
+          "output_tokens": 6184,
+          "seq": 22,
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "ts": "2026-04-19T21:38:43.01329148Z",
+          "type": "stats"
+        },
+        "event_count": 24,
+        "json_parse_errors": []
+      },
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": "judge-events.jsonl",
+        "judge_final_text": "judge-final.txt",
+        "judge_stderr_log": null
+      },
+      "collector_error": null
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "claude-bin-opus",
+    "display": "Claude Code Opus",
+    "provider": "claude-bin:opus",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T22:36:33.070118+00:00",
+    "term_llm_version": "term-llm version v0.0.170 (commit: 4f60c1d, built: 2026-04-19T11:20:26Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "claude-bin:opus",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider claude-bin:opus --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 75.228,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 70972,
+        "duration_ms": 75202,
+        "input_tokens": 30,
+        "llm_calls": 5,
+        "llm_ms": 75169,
+        "output_tokens": 6856,
+        "seq": 29,
+        "tool_calls": 4,
+        "tool_ms": 33,
+        "ts": "2026-04-19T22:36:00.788194462Z",
+        "type": "stats"
+      },
+      "event_count": 31,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 4,
+        "tool.completed": 4,
+        "usage": 5,
+        "text.delta": 15,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "shell": 2,
+        "read_file": 1,
+        "write_file": 1
+      },
+      "tool_outcomes": {
+        "shell:success": 2,
+        "read_file:success": 1,
+        "write_file:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "opus",
+        "provider": "Claude CLI (opus)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260420-083445-fe566d2c7ad06f1d",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-19T22:34:45.585641364Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 30,
+        "tokens": 229,
+        "ts": "2026-04-19T22:36:00.788197497Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": true
+    },
+    "judgment": {
+      "judge_provider": "claude-bin:sonnet",
+      "timestamp_utc": "2026-04-19T23:04:33.099275+00:00",
+      "score": 16,
+      "band": "playable",
+      "subscores": {
+        "board": 2,
+        "interaction": 4,
+        "move_handling": 3,
+        "rules": 3,
+        "completeness": 4
+      },
+      "confidence": "medium",
+      "summary": "Well-built canvas Go board with confirmed turn alternation, occupied-point rejection, and explicit suicide detection, but only the center tengen hoshi is visible and no direct stone-capture evidence was observed.",
+      "evidence_highlights": [
+        "Status text toggles Black/White to play on every click with ~2000-pixel board diffs confirming stones land at intersections",
+        "Occupied-point click produces 'Illegal move' message with zero pixel diff, confirming rejection",
+        "Placing White into a corner surrounded by Black produces 'Illegal: suicide' message, proving liberty-counting logic exists",
+        "Pass, Undo, New Game buttons present; capture counters displayed; no external requests or console errors"
+      ],
+      "evidence_gaps": [
+        "Only the center tengen (P44) shows a dark hoshi dot; the four corner hoshi points (P22, P26, P62, P66) show no contrast against the board background",
+        "Capture scenario does not complete a capture \u2014 no stone removal or counter increment is observed, leaving actual capture behavior unconfirmed"
+      ],
+      "run": {
+        "exit_code": 0,
+        "elapsed_seconds": 115.11,
+        "stats": {
+          "cache_write_tokens": 0,
+          "cached_input_tokens": 2129,
+          "duration_ms": 115089,
+          "input_tokens": 3,
+          "llm_calls": 1,
+          "llm_ms": 115089,
+          "output_tokens": 5909,
+          "seq": 18,
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "ts": "2026-04-19T23:04:33.097476784Z",
+          "type": "stats"
+        },
+        "event_count": 20,
+        "json_parse_errors": []
+      },
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": "judge-events.jsonl",
+        "judge_final_text": "judge-final.txt",
+        "judge_stderr_log": null
+      },
+      "collector_error": null
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "chatgpt-gpt-5-4",
+    "display": "ChatGPT GPT-5.4",
+    "provider": "chatgpt:gpt-5.4",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T22:42:44.383984+00:00",
+    "term_llm_version": "term-llm version v0.0.170 (commit: 4f60c1d, built: 2026-04-19T11:20:26Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "chatgpt:gpt-5.4",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider chatgpt:gpt-5.4 --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 142.066,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 29056,
+        "duration_ms": 142041,
+        "input_tokens": 9073,
+        "llm_calls": 6,
+        "llm_ms": 142009,
+        "output_tokens": 6935,
+        "seq": 243,
+        "tool_calls": 8,
+        "tool_ms": 27,
+        "ts": "2026-04-19T22:42:12.03461443Z",
+        "type": "stats"
+      },
+      "event_count": 245,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 8,
+        "usage": 6,
+        "tool.completed": 8,
+        "text.delta": 220,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "glob": 1,
+        "grep": 1,
+        "shell": 2,
+        "read_file": 3,
+        "write_file": 1
+      },
+      "tool_outcomes": {
+        "glob:success": 1,
+        "grep:success": 1,
+        "shell:success": 2,
+        "read_file:success": 3,
+        "write_file:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "gpt-5.4",
+        "provider": "ChatGPT (gpt-5.4)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260420-083949-70d7d8210a0a7c29",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-19T22:39:49.993022616Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 244,
+        "tokens": 224,
+        "ts": "2026-04-19T22:42:12.0346188Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": true
+    },
+    "judgment": {
+      "judge_provider": "claude-bin:sonnet",
+      "timestamp_utc": "2026-04-19T23:06:54.805374+00:00",
+      "score": 17,
+      "band": "strong",
+      "subscores": {
+        "board": 3,
+        "interaction": 4,
+        "move_handling": 3,
+        "rules": 4,
+        "completeness": 3
+      },
+      "confidence": "high",
+      "summary": "Well-executed canvas Go board with stones correctly placed on intersections, visible hoshi points, confirmed capture logic, occupied-point rejection, and a full control set; ko and suicide prevention are claimed but not independently exercised in the evidence.",
+      "evidence_highlights": [
+        "Stone-centering probe: stone at P00 reads brightness 29 while midpoints read ~175 boardish, confirming stones render on intersections not cell centers",
+        "Hoshi contrast at P22, P26, P44, P62, P66 shows correct darkening at expected 9x9 hoshi positions, with center P44 at brightness 48 vs reference ~112",
+        "capture_probe confirms capture: white stone placed at P11 (brightness 205) later reads boardish (brightness 160, delta -45); pixel diff step 06\u219207 shows P10 switching from dark-stoneish (brightness 14) to boardish (164)",
+        "Occupied-point rejection confirmed: clicking P00 twice leaves second diff at 0 changed pixels and turn unchanged; all four controls (Pass, Undo, Reset, Score now) present with move history"
+      ],
+      "evidence_gaps": [
+        "Ko rule is asserted in the UI description but no test sequence exercises it",
+        "Suicide prevention is asserted in the UI description but no test sequence exercises it",
+        "Live area scoring shows anomalous 'Black 81 White 0' after the very first stone, which may confuse users even if it is technically consistent with area scoring on an empty board"
+      ],
+      "run": {
+        "exit_code": 0,
+        "elapsed_seconds": 128.315,
+        "stats": {
+          "cache_write_tokens": 0,
+          "cached_input_tokens": 2129,
+          "duration_ms": 128297,
+          "input_tokens": 3,
+          "llm_calls": 1,
+          "llm_ms": 128297,
+          "output_tokens": 7204,
+          "seq": 24,
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "ts": "2026-04-19T23:06:54.803876847Z",
+          "type": "stats"
+        },
+        "event_count": 26,
+        "json_parse_errors": []
+      },
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": "judge-events.jsonl",
+        "judge_final_text": "judge-final.txt",
+        "judge_stderr_log": null
+      },
+      "collector_error": null
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "chatgpt-gpt-5-4-mini",
+    "display": "ChatGPT GPT-5.4 Mini",
+    "provider": "chatgpt:gpt-5.4-mini",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-19T22:50:49.487845+00:00",
+    "term_llm_version": "term-llm version v0.0.170 (commit: 4f60c1d, built: 2026-04-19T11:20:26Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "chatgpt:gpt-5.4-mini",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider chatgpt:gpt-5.4-mini --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 52.179,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 65024,
+        "duration_ms": 52106,
+        "input_tokens": 19766,
+        "llm_calls": 8,
+        "llm_ms": 46541,
+        "output_tokens": 4669,
+        "seq": 185,
+        "tool_calls": 9,
+        "tool_ms": 5561,
+        "ts": "2026-04-19T22:50:49.304823838Z",
+        "type": "stats"
+      },
+      "event_count": 187,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 9,
+        "usage": 8,
+        "tool.completed": 9,
+        "text.delta": 158,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "activate_skill": 1,
+        "shell": 4,
+        "glob": 2,
+        "grep": 1,
+        "read_file": 1
+      },
+      "tool_outcomes": {
+        "activate_skill:success": 1,
+        "shell:success": 4,
+        "glob:success": 2,
+        "grep:success": 1,
+        "read_file:success": 1
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "gpt-5.4-mini",
+        "provider": "ChatGPT (gpt-5.4-mini)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260420-084957-35a14d629b54a310",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-19T22:49:57.198682102Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 186,
+        "tokens": 162,
+        "ts": "2026-04-19T22:50:49.304831753Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: /root/source/go-bench/.runs/vague-developer/chatgpt-gpt-5-4-mini/index.html does not exist"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": null
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": false
+    },
+    "judgment": {
+      "judge_provider": null,
+      "timestamp_utc": "2026-04-19T22:50:49.527180+00:00",
+      "score": 0,
+      "band": "broken",
+      "subscores": {
+        "board": 0,
+        "interaction": 0,
+        "move_handling": 0,
+        "rules": 0,
+        "completeness": 0
+      },
+      "confidence": "high",
+      "summary": "No usable index.html was produced.",
+      "evidence_highlights": [
+        "Expected output file is missing."
+      ],
+      "evidence_gaps": [
+        "No rendered board could be inspected."
+      ],
+      "run": null,
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": null,
+        "judge_final_text": null,
+        "judge_stderr_log": null
+      }
     }
   },
   {
@@ -989,6 +2056,61 @@
     "output": {
       "expected_file": "index.html",
       "exists": true
+    },
+    "judgment": {
+      "judge_provider": "claude-bin:sonnet",
+      "timestamp_utc": "2026-04-19T14:13:02.080035+00:00",
+      "score": 13,
+      "band": "playable",
+      "subscores": {
+        "board": 2,
+        "interaction": 3,
+        "move_handling": 3,
+        "rules": 2,
+        "completeness": 3
+      },
+      "confidence": "medium",
+      "summary": "Canvas Go board with correct intersection-based stone placement, turn alternation, occupied-point rejection, and suicide prevention, but only the center hoshi renders visibly, the four corner hoshi positions lack any contrast, and no capture evidence appears across all test sequences.",
+      "evidence_highlights": [
+        "Turn alternation confirmed every move via status text and ~2026-pixel canvas diffs per click",
+        "Occupied-point rejection confirmed: re-click on P00 produces zero pixel change and no turn advance",
+        "Suicide prevention demonstrated: White's attempt at corner P00 (both neighbors Black) produces zero change and no turn advance",
+        "Three functional controls present (Undo, Pass, New Game) with working reset confirmed by zero diff after New Game"
+      ],
+      "evidence_gaps": [
+        "Capture probe shows brightness_delta=0 at P11 after surrounding sequence; no stone removal observed in any scenario",
+        "P22, P26, P62, P66 (corner hoshi positions) all show zero contrast with adjacent board pixels; only center P44 renders as a visible dark dot",
+        "Capture counts remain Black:0 White:0 throughout all scenarios, suggesting capture counting is absent or non-functional"
+      ],
+      "run": {
+        "exit_code": 0,
+        "elapsed_seconds": 123.981,
+        "stats": {
+          "cache_write_tokens": 0,
+          "cached_input_tokens": 2129,
+          "duration_ms": 123964,
+          "input_tokens": 3,
+          "llm_calls": 1,
+          "llm_ms": 123964,
+          "output_tokens": 6935,
+          "seq": 17,
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "ts": "2026-04-19T14:13:02.078814212Z",
+          "type": "stats"
+        },
+        "event_count": 19,
+        "json_parse_errors": []
+      },
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": "judge-events.jsonl",
+        "judge_final_text": "judge-final.txt",
+        "judge_stderr_log": null
+      },
+      "collector_error": null
     }
   },
   {
@@ -1095,6 +2217,61 @@
     "output": {
       "expected_file": "index.html",
       "exists": true
+    },
+    "judgment": {
+      "judge_provider": "claude-bin:sonnet",
+      "timestamp_utc": "2026-04-19T14:06:55.719161+00:00",
+      "score": 13,
+      "band": "playable",
+      "subscores": {
+        "board": 3,
+        "interaction": 3,
+        "move_handling": 2,
+        "rules": 2,
+        "completeness": 3
+      },
+      "confidence": "medium",
+      "summary": "Solid canvas Go board with stones correctly placed on intersections and visible hoshi dots, good controls and turn alternation, but capture counter never increments and move counter stays at 0 throughout all scenarios.",
+      "evidence_highlights": [
+        "Stone centering probe shows placed stone brightness 40 at intersection vs 170 at midpoints, confirming stones render on intersections not cell centers",
+        "P44 (center hoshi) shows brightness 44 vs 145 reference (delta 101) on empty board, confirming hoshi dots are drawn",
+        "Occupied-point rejection confirmed: second click on P00 produces 0 changed pixels and status stays unchanged",
+        "Turn alternation verified across all scenarios: status correctly flips between 'Black to play' and 'White to play'"
+      ],
+      "evidence_gaps": [
+        "Capture counter never increments from 0 in any scenario, including the dedicated capture sequence \u2014 no capture evidence",
+        "Move counter remains at 'Move 0' throughout all scenarios, suggesting move tracking is non-functional or display is broken",
+        "Suicide rejection at P00 shows only 112 changed pixels with ambiguous pixel color (brightness 180), not conclusive"
+      ],
+      "run": {
+        "exit_code": 0,
+        "elapsed_seconds": 67.821,
+        "stats": {
+          "cache_write_tokens": 0,
+          "cached_input_tokens": 2129,
+          "duration_ms": 67801,
+          "input_tokens": 3,
+          "llm_calls": 1,
+          "llm_ms": 67801,
+          "output_tokens": 3378,
+          "seq": 17,
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "ts": "2026-04-19T14:06:55.717933454Z",
+          "type": "stats"
+        },
+        "event_count": 19,
+        "json_parse_errors": []
+      },
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": "judge-events.jsonl",
+        "judge_final_text": "judge-final.txt",
+        "judge_stderr_log": null
+      },
+      "collector_error": null
     }
   },
   {
@@ -1201,6 +2378,36 @@
     "output": {
       "expected_file": "index.html",
       "exists": false
+    },
+    "judgment": {
+      "judge_provider": null,
+      "timestamp_utc": "2026-04-19T21:41:44.873202+00:00",
+      "score": 0,
+      "band": "broken",
+      "subscores": {
+        "board": 0,
+        "interaction": 0,
+        "move_handling": 0,
+        "rules": 0,
+        "completeness": 0
+      },
+      "confidence": "high",
+      "summary": "No usable index.html was produced.",
+      "evidence_highlights": [
+        "Expected output file is missing."
+      ],
+      "evidence_gaps": [
+        "No rendered board could be inspected."
+      ],
+      "run": null,
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": null,
+        "judge_final_text": null,
+        "judge_stderr_log": null
+      }
     }
   },
   {
@@ -1305,6 +2512,62 @@
     "output": {
       "expected_file": "index.html",
       "exists": true
+    },
+    "judgment": {
+      "judge_provider": "claude-bin:sonnet",
+      "timestamp_utc": "2026-04-19T21:44:05.959111+00:00",
+      "score": 14,
+      "band": "playable",
+      "subscores": {
+        "board": 2,
+        "interaction": 3,
+        "move_handling": 3,
+        "rules": 2,
+        "completeness": 4
+      },
+      "confidence": "medium",
+      "summary": "A functional canvas-based 9x9 Go board with clear turn alternation, occupied-point rejection, and confirmed suicide prevention, but zero capture evidence across all scenarios and only the tengen hoshi visible out of the five standard 9x9 hoshi points.",
+      "evidence_highlights": [
+        "Turn alternation confirmed across all scenarios (Black/White to play updates correctly after each valid click)",
+        "Occupied-point rejection works: second click on P00 shows 'Invalid move!' with zero pixel change",
+        "Suicide prevention confirmed: White attempting P00 when surrounded by Black stones at P10 and P01 returns 'Invalid move!'",
+        "Tengen (P44) shows strong hoshi contrast (brightness 12 vs 49 surroundings); Pass, Undo, and New Game buttons all present"
+      ],
+      "evidence_gaps": [
+        "Capture counters remain at 0 throughout all scenarios including the capture-sequence; no stone removal observed",
+        "Four corner hoshi points (P22, P26, P62, P66) show negligible brightness contrast (0\u20131 delta) \u2014 effectively absent",
+        "Black stones produce very low brightness change (~4 points darker than board background), making them visually indistinct",
+        "No ko or scoring evidence present"
+      ],
+      "run": {
+        "exit_code": 0,
+        "elapsed_seconds": 128.681,
+        "stats": {
+          "cache_write_tokens": 0,
+          "cached_input_tokens": 2129,
+          "duration_ms": 128661,
+          "input_tokens": 3,
+          "llm_calls": 1,
+          "llm_ms": 128661,
+          "output_tokens": 6963,
+          "seq": 19,
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "ts": "2026-04-19T21:44:05.957691958Z",
+          "type": "stats"
+        },
+        "event_count": 21,
+        "json_parse_errors": []
+      },
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": "judge-events.jsonl",
+        "judge_final_text": "judge-final.txt",
+        "judge_stderr_log": null
+      },
+      "collector_error": null
     }
   },
   {
@@ -1409,6 +2672,36 @@
     "output": {
       "expected_file": "index.html",
       "exists": false
+    },
+    "judgment": {
+      "judge_provider": null,
+      "timestamp_utc": "2026-04-19T21:41:44.869226+00:00",
+      "score": 0,
+      "band": "broken",
+      "subscores": {
+        "board": 0,
+        "interaction": 0,
+        "move_handling": 0,
+        "rules": 0,
+        "completeness": 0
+      },
+      "confidence": "high",
+      "summary": "No usable index.html was produced.",
+      "evidence_highlights": [
+        "Expected output file is missing."
+      ],
+      "evidence_gaps": [
+        "No rendered board could be inspected."
+      ],
+      "run": null,
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": null,
+        "judge_final_text": null,
+        "judge_stderr_log": null
+      }
     }
   },
   {
@@ -1511,6 +2804,61 @@
     "output": {
       "expected_file": "index.html",
       "exists": true
+    },
+    "judgment": {
+      "judge_provider": "claude-bin:sonnet",
+      "timestamp_utc": "2026-04-19T21:41:10.645481+00:00",
+      "score": 11,
+      "band": "partial",
+      "subscores": {
+        "board": 2,
+        "interaction": 3,
+        "move_handling": 2,
+        "rules": 1,
+        "completeness": 3
+      },
+      "confidence": "medium",
+      "summary": "Canvas-based 9\u00d79 Go board with alternating black/white play and solid controls, but capture logic is undemonstrated and the top-left corner intersection is never clickable.",
+      "evidence_highlights": [
+        "Turn alternation confirmed across all scenarios: black stones (brightness ~14\u201386) and white stones (~190\u2013197) place in strict alternation, and turn is retained after the rejected P00 click",
+        "Center hoshi at P44 clearly present from the first frame (brightness 39 vs. board ~155\u2013166) and stable throughout every scenario",
+        "Four controls rendered and functional: Pass, Undo, New Game, Score; per-player capture counters displayed"
+      ],
+      "evidence_gaps": [
+        "P00 (top-left corner intersection) produces 0 changed pixels on every click in every scenario \u2014 consistent click-detection failure, not occupied-point rejection",
+        "Capture sequence with white group at P11/P21/P12 shows Black Captures: 0 throughout; no capture evidence anywhere in the evidence",
+        "Corner hoshi positions P22, P26, P62, P66 show only 1 brightness-unit contrast against neighbors \u2014 no convincing hoshi dots beyond the tengen",
+        "No evidence of suicide prevention or ko detection"
+      ],
+      "run": {
+        "exit_code": 0,
+        "elapsed_seconds": 135.008,
+        "stats": {
+          "cache_write_tokens": 0,
+          "cached_input_tokens": 2129,
+          "duration_ms": 134989,
+          "input_tokens": 3,
+          "llm_calls": 1,
+          "llm_ms": 134989,
+          "output_tokens": 7873,
+          "seq": 13,
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "ts": "2026-04-19T21:41:10.644078481Z",
+          "type": "stats"
+        },
+        "event_count": 15,
+        "json_parse_errors": []
+      },
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": "judge-events.jsonl",
+        "judge_final_text": "judge-final.txt",
+        "judge_stderr_log": null
+      },
+      "collector_error": null
     }
   },
   {
@@ -1619,6 +2967,61 @@
     "output": {
       "expected_file": "index.html",
       "exists": true
+    },
+    "judgment": {
+      "judge_provider": "claude-bin:sonnet",
+      "timestamp_utc": "2026-04-19T14:09:02.030717+00:00",
+      "score": 16,
+      "band": "playable",
+      "subscores": {
+        "board": 3,
+        "interaction": 4,
+        "move_handling": 3,
+        "rules": 2,
+        "completeness": 4
+      },
+      "confidence": "high",
+      "summary": "Polished canvas 9x9 Go board with correct hoshi placement, stones on intersections, solid interaction, confirmed suicide prevention and occupied-point rejection, but no capture was observed in the automated test sequence.",
+      "evidence_highlights": [
+        "Hoshi contrast data confirms darker marks at all five tested 9x9 hoshi positions (P22, P26, P44, P62, P66), each 64\u201393 brightness units darker than surrounding board pixels",
+        "Stone-centering probe shows placed stone at intersection is brighter than midpoints between intersections, confirming stones render on intersection lines not cell centers",
+        "Occupied-point scenario: second click on P00 produced 0 pixel change and did not advance the turn \u2014 rejection confirmed",
+        "White attempted at corner A9 (P00) in capture sequence was blocked while surrounded by Black stones with no liberties, confirming suicide prevention; controls include New Game, Undo, Pass, and capture counts"
+      ],
+      "evidence_gaps": [
+        "No capture was observed: the capture_probe shows white stone at P11 persisting (brightness delta 1) through the entire 7-move capture-sequence scenario",
+        "Ko rule behavior is untested and unconfirmed",
+        "External CDN dependencies (Tailwind, Google Fonts) loaded successfully but would break core styling in offline use"
+      ],
+      "run": {
+        "exit_code": 0,
+        "elapsed_seconds": 113.79,
+        "stats": {
+          "cache_write_tokens": 0,
+          "cached_input_tokens": 2129,
+          "duration_ms": 113774,
+          "input_tokens": 3,
+          "llm_calls": 1,
+          "llm_ms": 113774,
+          "output_tokens": 6052,
+          "seq": 21,
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "ts": "2026-04-19T14:09:02.029679936Z",
+          "type": "stats"
+        },
+        "event_count": 23,
+        "json_parse_errors": []
+      },
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": "judge-events.jsonl",
+        "judge_final_text": "judge-final.txt",
+        "judge_stderr_log": null
+      },
+      "collector_error": null
     }
   }
 ]

@@ -98,5 +98,60 @@
   "output": {
     "expected_file": "index.html",
     "exists": true
+  },
+  "judgment": {
+    "judge_provider": "claude-bin:sonnet",
+    "timestamp_utc": "2026-04-19T14:13:02.080035+00:00",
+    "score": 13,
+    "band": "playable",
+    "subscores": {
+      "board": 2,
+      "interaction": 3,
+      "move_handling": 3,
+      "rules": 2,
+      "completeness": 3
+    },
+    "confidence": "medium",
+    "summary": "Canvas Go board with correct intersection-based stone placement, turn alternation, occupied-point rejection, and suicide prevention, but only the center hoshi renders visibly, the four corner hoshi positions lack any contrast, and no capture evidence appears across all test sequences.",
+    "evidence_highlights": [
+      "Turn alternation confirmed every move via status text and ~2026-pixel canvas diffs per click",
+      "Occupied-point rejection confirmed: re-click on P00 produces zero pixel change and no turn advance",
+      "Suicide prevention demonstrated: White's attempt at corner P00 (both neighbors Black) produces zero change and no turn advance",
+      "Three functional controls present (Undo, Pass, New Game) with working reset confirmed by zero diff after New Game"
+    ],
+    "evidence_gaps": [
+      "Capture probe shows brightness_delta=0 at P11 after surrounding sequence; no stone removal observed in any scenario",
+      "P22, P26, P62, P66 (corner hoshi positions) all show zero contrast with adjacent board pixels; only center P44 renders as a visible dark dot",
+      "Capture counts remain Black:0 White:0 throughout all scenarios, suggesting capture counting is absent or non-functional"
+    ],
+    "run": {
+      "exit_code": 0,
+      "elapsed_seconds": 123.981,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 2129,
+        "duration_ms": 123964,
+        "input_tokens": 3,
+        "llm_calls": 1,
+        "llm_ms": 123964,
+        "output_tokens": 6935,
+        "seq": 17,
+        "tool_calls": 0,
+        "tool_ms": 0,
+        "ts": "2026-04-19T14:13:02.078814212Z",
+        "type": "stats"
+      },
+      "event_count": 19,
+      "json_parse_errors": []
+    },
+    "artifacts": {
+      "evidence_json": "judge_evidence.json",
+      "judgment_json": "judgment.json",
+      "judge_artifacts_dir": "judge-artifacts",
+      "judge_events_jsonl": "judge-events.jsonl",
+      "judge_final_text": "judge-final.txt",
+      "judge_stderr_log": null
+    },
+    "collector_error": null
   }
 }

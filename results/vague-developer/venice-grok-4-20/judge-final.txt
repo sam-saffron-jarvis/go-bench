@@ -1,0 +1,26 @@
+```json
+{
+  "score": 16,
+  "band": "playable",
+  "subscores": {
+    "board": 3,
+    "interaction": 4,
+    "move_handling": 3,
+    "rules": 2,
+    "completeness": 4
+  },
+  "confidence": "high",
+  "summary": "Polished canvas 9x9 Go board with correct hoshi placement, stones on intersections, solid interaction, confirmed suicide prevention and occupied-point rejection, but no capture was observed in the automated test sequence.",
+  "evidence_highlights": [
+    "Hoshi contrast data confirms darker marks at all five tested 9x9 hoshi positions (P22, P26, P44, P62, P66), each 64–93 brightness units darker than surrounding board pixels",
+    "Stone-centering probe shows placed stone at intersection is brighter than midpoints between intersections, confirming stones render on intersection lines not cell centers",
+    "Occupied-point scenario: second click on P00 produced 0 pixel change and did not advance the turn — rejection confirmed",
+    "White attempted at corner A9 (P00) in capture sequence was blocked while surrounded by Black stones with no liberties, confirming suicide prevention; controls include New Game, Undo, Pass, and capture counts"
+  ],
+  "evidence_gaps": [
+    "No capture was observed: the capture_probe shows white stone at P11 persisting (brightness delta 1) through the entire 7-move capture-sequence scenario",
+    "Ko rule behavior is untested and unconfirmed",
+    "External CDN dependencies (Tailwind, Google Fonts) loaded successfully but would break core styling in offline use"
+  ]
+}
+```

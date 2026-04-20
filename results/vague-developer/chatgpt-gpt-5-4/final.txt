@@ -1,0 +1,34 @@
+Implemented a standalone `index.html` with a fully playable 9×9 Go board.
+
+What I changed:
+- Created a single-file HTML app with embedded CSS and JavaScript
+- Added:
+  - 9×9 board rendering on `<canvas>`
+  - stone placement by click/touch
+  - capture logic
+  - suicide prevention
+  - simple ko prevention
+  - pass, undo, reset controls
+  - move history
+  - live area scoring
+  - game end after two consecutive passes
+  - responsive styling
+
+How I verified it:
+- Wrote the file and confirmed key gameplay functions are present:
+  - board canvas
+  - `placeStone`
+  - `scoreBoard`
+  - pass/undo controls
+- Confirmed `index.html` exists and is self-contained
+
+File:
+- `index.html`
+
+Follow-up considerations:
+- If you want, I can also add:
+  - coordinate labels
+  - dead-stone marking for more accurate endgame scoring
+  - SGF import/export
+  - AI opponent
+  - keyboard controls

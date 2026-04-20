@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9×9 Go Board</title>
+  <style>
+    :root {
+      --line: rgba(54, 33, 16, 0.72);
+      --panel: rgba(255, 255, 255, 0.48);
+      --panel-border: rgba(92, 59, 26, 0.16);
+      --text: #2e1d11;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      min-height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, #f8edd7 0%, #ecd8b7 40%, #dcc091 100%);
+    }
+
+    .shell {
+      width: min(100%, 1080px);
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .title-wrap h1 {
+      margin: 0;
+      font-size: clamp(1.65rem, 3vw, 2.4rem);
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    .title-wrap p {
+      margin: 8px 0 0;
+      color: #6b4c2c;
+      font-size: 0.97rem;
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .panel,
+    .reset-btn {
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      background: var(--panel);
+      box-shadow: 0 10px 24px rgba(68, 39, 11, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(8px);
+    }
+
+    .panel {
+      min-width: 128px;
+      padding: 12px 14px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .panel .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #7a5a3c;
+    }
+
+    .panel .value {
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .turn-chip {
+      width: 0.95rem;
+      height: 0.95rem;
+      border-radius: 50%;
+      flex: none;
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.55), 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+
+    .turn-chip.black {
+      background: radial-gradient(circle at 30% 28%, #676767 0%, #222 50%, #000 100%);
+    }
+
+    .turn-chip.white {
+      background: radial-gradient(circle at 30% 28%, #fff 0%, #efefef 55%, #cccccc 100%);
+    }
+
+    .reset-btn {
+      padding: 0 18px;
+      min-height: 56px;
+      font: inherit;
+      font-weight: 700;
+      color: inherit;
+      cursor: pointer;
+      transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+    }
+
+    .reset-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(68, 39, 11, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    .reset-btn:active {
+      transform: translateY(0);
+    }
+
+    .board-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .board {
+      --step: clamp(34px, 5.2vw, 52px);
+      position: relative;
+      width: calc(var(--step) * 9);
+      height: calc(var(--step) * 9);
+      border-radius: 22px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(255, 255, 255, 0.22), transparent 30%),
+        linear-gradient(145deg, #e9c47a 0%, #d9a95b 56%, #bf8541 100%);
+      box-shadow:
+        0 20px 44px rgba(66, 41, 12, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 0 0 2px rgba(93, 59, 25, 0.44);
+    }
+
+    .board::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, transparent calc(50% - 1px), var(--line) calc(50% - 1px), var(--line) calc(50% + 1px), transparent calc(50% + 1px)),
+        linear-gradient(to bottom, transparent calc(50% - 1px), var(--line) calc(50% - 1px), var(--line) calc(50% + 1px), transparent calc(50% + 1px));
+      background-size: var(--step) var(--step);
+      background-position: calc(var(--step) / 2) calc(var(--step) / 2);
+      opacity: 0.86;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .board::after {
+      content: "";
+      position: absolute;
+      left: calc(4.5 * var(--step));
+      top: calc(4.5 * var(--step));
+      width: 7px;
+      height: 7px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: #332010;
+      box-shadow:
+        calc(-2 * var(--step)) calc(-2 * var(--step)) 0 0 #332010,
+        calc(2 * var(--step)) calc(-2 * var(--step)) 0 0 #332010,
+        calc(-2 * var(--step)) calc(2 * var(--step)) 0 0 #332010,
+        calc(2 * var(--step)) calc(2 * var(--step)) 0 0 #332010;
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .point {
+      position: absolute;
+      left: calc((var(--x) + 0.5) * var(--step));
+      top: calc((var(--y) + 0.5) * var(--step));
+      width: calc(var(--step) * 0.9);
+      height: calc(var(--step) * 0.9);
+      transform: translate(-50%, -50%);
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      z-index: 1;
+      touch-action: manipulation;
+      outline: none;
+      transition: transform 70ms ease;
+    }
+
+    .point:hover {
+      transform: translate(-50%, -50%) scale(1.03);
+    }
+
+    .point:focus-visible {
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.55), 0 0 0 5px rgba(76, 46, 19, 0.45);
+    }
+
+    .point::after {
+      content: "";
+      position: absolute;
+      inset: 15%;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 120ms ease;
+    }
+
+    .point.black::after {
+      opacity: 1;
+      background: radial-gradient(circle at 30% 28%, #686868 0%, #202020 48%, #000 100%);
+      box-shadow:
+        inset -3px -4px 6px rgba(0, 0, 0, 0.45),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.16),
+        0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+
+    .point.white::after {
+      opacity: 1;
+      background: radial-gradient(circle at 30% 28%, #fff 0%, #f2f2f2 50%, #d2d2d2 100%);
+      box-shadow:
+        inset -3px -4px 6px rgba(0, 0, 0, 0.18),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.62),
+        0 1px 2px rgba(0, 0, 0, 0.26);
+    }
+
+    .board-caption {
+      margin: 8px 0 0;
+      text-align: center;
+      color: #644728;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        padding: 16px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .status-row {
+        width: 100%;
+      }
+
+      .panel {
+        flex: 1 1 120px;
+      }
+
+      .reset-btn {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="title-wrap">
+        <h1>9×9 Go Board</h1>
+        <p>Black plays first. Captures and suicide rules are enforced.</p>
+      </div>
+      <div class="status-row" aria-live="polite">
+        <div class="panel" aria-label="Current turn">
+          <span class="label">Turn</span>
+          <span class="value"><span id="turn-chip" class="turn-chip black"></span><span id="turn-text">Black to play</span></span>
+        </div>
+        <div class="panel" aria-label="Black captured stones">
+          <span class="label">Black captured</span>
+          <span id="captured-black" class="value">0</span>
+        </div>
+        <div class="panel" aria-label="White captured stones">
+          <span class="label">White captured</span>
+          <span id="captured-white" class="value">0</span>
+        </div>
+        <button id="reset" class="reset-btn" type="button">Reset</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="board-wrap">
+        <div id="board" class="board" aria-label="Playable 9 by 9 Go board"></div>
+      </div>
+      <p class="board-caption">Click an intersection to place a stone.</p>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const SIZE = 9;
+      const boardEl = document.getElementById('board');
+      const resetBtn = document.getElementById('reset');
+      const turnTextEl = document.getElementById('turn-text');
+      const turnChipEl = document.getElementById('turn-chip');
+      const capturedBlackEl = document.getElementById('captured-black');
+      const capturedWhiteEl = document.getElementById('captured-white');
+
+      const cells = [];
+      let board = createEmptyBoard();
+      let currentPlayer = 'black';
+      let captured = { black: 0, white: 0 };
+
+      function createEmptyBoard() {
+        return Array.from({ length: SIZE }, () => Array(SIZE).fill(null));
+      }
+
+      function cloneBoard(grid) {
+        return grid.map(row => row.slice());
+      }
+
+      function otherPlayer(player) {
+        return player === 'black' ? 'white' : 'black';
+      }
+
+      function inBounds(x, y) {
+        return x >= 0 && x < SIZE && y >= 0 && y < SIZE;
+      }
+
+      function neighbors(x, y) {
+        return [
+          [x + 1, y],
+          [x - 1, y],
+          [x, y + 1],
+          [x, y - 1]
+        ].filter(([nx, ny]) => inBounds(nx, ny));
+      }
+
+      function collectGroup(grid, startX, startY) {
+        const color = grid[startY][startX];
+        const stack = [[startX, startY]];
+        const stones = [];
+        const liberties = new Set();
+        const seen = new Set([`${startX},${startY}`]);
+
+        while (stack.length) {
+          const [x, y] = stack.pop();
+          stones.push([x, y]);
+
+          for (const [nx, ny] of neighbors(x, y)) {
+            const value = grid[ny][nx];
+            if (value === null) {
+              liberties.add(`${nx},${ny}`);
+            } else if (value === color) {
+              const key = `${nx},${ny}`;
+              if (!seen.has(key)) {
+                seen.add(key);
+                stack.push([nx, ny]);
+              }
+            }
+          }
+        }
+
+        return { stones, liberties };
+      }
+
+      function updateStatus() {
+        turnTextEl.textContent = currentPlayer === 'black' ? 'Black to play' : 'White to play';
+        turnChipEl.className = `turn-chip ${currentPlayer}`;
+        capturedBlackEl.textContent = String(captured.black);
+        capturedWhiteEl.textContent = String(captured.white);
+      }
+
+      function renderBoard() {
+        for (let y = 0; y < SIZE; y++) {
+          for (let x = 0; x < SIZE; x++) {
+            const cell = cells[y][x];
+            const value = board[y][x];
+            cell.classList.toggle('black', value === 'black');
+            cell.classList.toggle('white', value === 'white');
+            const label = value
+              ? `${value.charAt(0).toUpperCase() + value.slice(1)} stone at ${x},${y}`
+              : `Empty intersection ${x},${y}`;
+            cell.setAttribute('aria-label', label);
+          }
+        }
+        updateStatus();
+      }
+
+      function resetGame() {
+        board = createEmptyBoard();
+        currentPlayer = 'black';
+        captured = { black: 0, white: 0 };
+        renderBoard();
+      }
+
+      function placeStone(x, y) {
+        if (board[y][x] !== null) return;
+
+        const nextBoard = cloneBoard(board);
+        const nextCaptured = { ...captured };
+        const player = currentPlayer;
+        const opponent = otherPlayer(player);
+
+        nextBoard[y][x] = player;
+
+        const processed = new Set();
+        for (const [nx, ny] of neighbors(x, y)) {
+          if (nextBoard[ny][nx] !== opponent) continue;
+          const key = `${nx},${ny}`;
+          if (processed.has(key)) continue;
+
+          const group = collectGroup(nextBoard, nx, ny);
+          for (const [sx, sy] of group.stones) {
+            processed.add(`${sx},${sy}`);
+          }
+
+          if (group.liberties.size === 0) {
+            for (const [sx, sy] of group.stones) {
+              nextBoard[sy][sx] = null;
+            }
+            nextCaptured[player] += group.stones.length;
+          }
+        }
+
+        const selfGroup = collectGroup(nextBoard, x, y);
+        if (selfGroup.liberties.size === 0) {
+          return;
+        }
+
+        board = nextBoard;
+        captured = nextCaptured;
+        currentPlayer = opponent;
+        renderBoard();
+      }
+
+      function buildBoard() {
+        for (let y = 0; y < SIZE; y++) {
+          const row = [];
+          for (let x = 0; x < SIZE; x++) {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'point';
+            button.dataset.cell = `${x},${y}`;
+            button.style.setProperty('--x', x);
+            button.style.setProperty('--y', y);
+            button.setAttribute('aria-label', `Empty intersection ${x},${y}`);
+            button.addEventListener('click', () => placeStone(x, y));
+            row.push(button);
+            boardEl.appendChild(button);
+          }
+          cells.push(row);
+        }
+      }
+
+      resetBtn.addEventListener('click', resetGame);
+      buildBoard();
+      resetGame();
+
+      window.__goGame__ = {
+        getState() {
+          return {
+            size: SIZE,
+            currentPlayer,
+            board: cloneBoard(board),
+            captured: { ...captured }
+          };
+        }
+      };
+    })();
+  </script>
+</body>
+</html>

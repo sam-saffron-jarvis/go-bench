@@ -1,0 +1,27 @@
+```json
+{
+  "score": 14,
+  "band": "playable",
+  "subscores": {
+    "board": 2,
+    "interaction": 3,
+    "move_handling": 3,
+    "rules": 2,
+    "completeness": 4
+  },
+  "confidence": "medium",
+  "summary": "A functional canvas-based 9x9 Go board with clear turn alternation, occupied-point rejection, and confirmed suicide prevention, but zero capture evidence across all scenarios and only the tengen hoshi visible out of the five standard 9x9 hoshi points.",
+  "evidence_highlights": [
+    "Turn alternation confirmed across all scenarios (Black/White to play updates correctly after each valid click)",
+    "Occupied-point rejection works: second click on P00 shows 'Invalid move!' with zero pixel change",
+    "Suicide prevention confirmed: White attempting P00 when surrounded by Black stones at P10 and P01 returns 'Invalid move!'",
+    "Tengen (P44) shows strong hoshi contrast (brightness 12 vs 49 surroundings); Pass, Undo, and New Game buttons all present"
+  ],
+  "evidence_gaps": [
+    "Capture counters remain at 0 throughout all scenarios including the capture-sequence; no stone removal observed",
+    "Four corner hoshi points (P22, P26, P62, P66) show negligible brightness contrast (0–1 delta) — effectively absent",
+    "Black stones produce very low brightness change (~4 points darker than board background), making them visually indistinct",
+    "No ko or scoring evidence present"
+  ]
+}
+```

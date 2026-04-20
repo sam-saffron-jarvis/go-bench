@@ -1,0 +1,108 @@
+{
+  "bench": "strict-custom-agent",
+  "slug": "chatgpt-gpt-5-4",
+  "display": "ChatGPT GPT-5.4",
+  "provider": "chatgpt:gpt-5.4",
+  "requested": null,
+  "note": null,
+  "timestamp_utc": "2026-04-19T21:46:50.540308+00:00",
+  "term_llm_version": "term-llm version v0.0.170 (commit: 4f60c1d, built: 2026-04-19T11:20:26Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--json",
+    "--yolo",
+    "--provider",
+    "chatgpt:gpt-5.4",
+    "--max-turns",
+    "30",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    "./workspace",
+    "-f",
+    "./SPEC.md",
+    "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE."
+  ],
+  "command_text": "term-llm ask --no-session --json --yolo --provider chatgpt:gpt-5.4 --max-turns 30 --agent ./agent --read-dir . --write-dir ./workspace -f ./SPEC.md \"Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.\"",
+  "prompt": "Build the board described in SPEC.md. Create or replace workspace/board.html. Use the verify_board tool repeatedly until it passes. When the board passes, reply DONE.",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 68.149,
+    "stats": {
+      "cache_write_tokens": 0,
+      "cached_input_tokens": 12800,
+      "duration_ms": 68125,
+      "input_tokens": 3491,
+      "llm_calls": 3,
+      "llm_ms": 66598,
+      "output_tokens": 3328,
+      "seq": 9,
+      "tool_calls": 2,
+      "tool_ms": 1526,
+      "ts": "2026-04-19T21:46:47.482866557Z",
+      "type": "stats"
+    },
+    "event_count": 11,
+    "event_counts": {
+      "session.started": 1,
+      "tool.started": 2,
+      "usage": 3,
+      "tool.completed": 2,
+      "text.delta": 1,
+      "stats": 1,
+      "done": 1
+    },
+    "tool_counts": {
+      "write_file": 1,
+      "verify_board": 1
+    },
+    "tool_outcomes": {
+      "write_file:success": 1,
+      "verify_board:success": 1
+    },
+    "json_parse_errors": [],
+    "session_started": {
+      "agent": "go-board-bench",
+      "mcp": "",
+      "model": "gpt-5.4",
+      "provider": "ChatGPT (gpt-5.4)",
+      "resuming": false,
+      "search": false,
+      "seq": 0,
+      "session_id": "20260420-074539-90bd0704032a7428",
+      "tools": "read_file,write_file,edit_file,glob,grep",
+      "ts": "2026-04-19T21:45:39.357588055Z",
+      "type": "session.started",
+      "yolo": true
+    },
+    "done": {
+      "seq": 10,
+      "tokens": 5,
+      "ts": "2026-04-19T21:46:47.482875961Z",
+      "type": "done"
+    }
+  },
+  "verification": {
+    "passed": true,
+    "exit_code": 0,
+    "output": "PASS: /root/source/go-bench/.runs/strict-custom-agent/chatgpt-gpt-5-4/workspace/board.html satisfied all acceptance tests"
+  },
+  "artifacts": {
+    "events_jsonl": "events.jsonl",
+    "stderr_log": null,
+    "final_text": "final.txt",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": "screenshot.png"
+  },
+  "output": {
+    "expected_file": "workspace/board.html",
+    "exists": true
+  }
+}

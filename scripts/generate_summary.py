@@ -59,6 +59,15 @@ def artifact_links(meta: dict) -> str:
     screenshot = artifacts.get("screenshot")
     if screenshot:
         links.append(f"[shot]({rel.as_posix()}/{screenshot})")
+
+    judgment = meta.get("judgment") or {}
+    judge_artifacts = judgment.get("artifacts") or {}
+    if judge_artifacts.get("judgment_json"):
+        links.append(f"[judge]({rel.as_posix()}/{judge_artifacts['judgment_json']})")
+    if judge_artifacts.get("evidence_json"):
+        links.append(f"[evidence]({rel.as_posix()}/{judge_artifacts['evidence_json']})")
+    if judge_artifacts.get("judge_events_jsonl"):
+        links.append(f"[judge-events]({rel.as_posix()}/{judge_artifacts['judge_events_jsonl']})")
     return " ".join(links)
 
 
@@ -74,20 +83,45 @@ def build_markdown(rows: list[dict]) -> str:
             continue
         lines.append(f"## {bench}")
         lines.append("")
-        lines.append("| Model | Status | Time | Tokens in→out | Tools | LLM calls | Artifacts |")
-        lines.append("|---|---:|---:|---:|---:|---:|---|")
-        for meta in bench_rows:
-            elapsed, tokens, tools, llm_calls = fmt_stats(meta)
-            status = "PASS" if meta["verification"]["passed"] else "FAIL"
-            links = artifact_links(meta)
+        if bench == "strict-custom-agent":
+            lines.append("| Model | Status | Time | Tokens in→out | Tools | LLM calls | Artifacts |")
+            lines.append("|---|---:|---:|---:|---:|---:|---|")
+            for meta in bench_rows:
+                elapsed, tokens, tools, llm_calls = fmt_stats(meta)
+                status = "PASS" if meta["verification"]["passed"] else "FAIL"
+                links = artifact_links(meta)
+                lines.append(
+                    f"| {meta['display']} | {status} | {elapsed} | {tokens} | {tools} | {llm_calls} | {links} |"
+                )
+        else:
             lines.append(
-                f"| {meta['display']} | {status} | {elapsed} | {tokens} | {tools} | {llm_calls} | {links} |"
+                "| Model | Hidden verifier | Judge | Band | Confidence | Time | Tokens in→out | Tools | LLM calls | Artifacts |"
             )
+            lines.append("|---|---:|---:|---|---|---:|---:|---:|---:|---|")
+            for meta in bench_rows:
+                elapsed, tokens, tools, llm_calls = fmt_stats(meta)
+                strict_status = "PASS" if meta["verification"]["passed"] else "FAIL"
+                judgment = meta.get("judgment") or {}
+                judge_score = "—"
+                band = "—"
+                confidence = "—"
+                if judgment:
+                    score = judgment.get("score")
+                    if score is not None:
+                        judge_score = f"{score}/20"
+                    band = judgment.get("band") or "—"
+                    confidence = judgment.get("confidence") or "—"
+                links = artifact_links(meta)
+                lines.append(
+                    f"| {meta['display']} | {strict_status} | {judge_score} | {band} | {confidence} | {elapsed} | {tokens} | {tools} | {llm_calls} | {links} |"
+                )
         lines.append("")
     lines.append("## Notes")
     lines.append("")
     lines.append("- The strict bench uses a custom agent plus a custom verifier tool.")
     lines.append("- The vague bench uses a frozen local copy of the built-in developer agent, not the floating `@developer` alias.")
+    lines.append("- Vague bench headline scores come from Playwright evidence plus a pinned LLM judge; the hidden strict verifier is shown separately.")
+    lines.append("- Visual Go fundamentals matter in the vague judge: hoshi placement and stones landing on intersections, not square centers.")
     lines.append("- Benchmark telemetry comes from `term-llm ask --json`; newer runs store raw events in `events.jsonl`.")
     lines.append("- `venice:kimi-2.7` was probed separately and returned 404; Venice currently suggests `kimi-k2-5` or `kimi-k2-thinking`.")
     lines.append("")

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9x9 Go Board</title>
+  <style>
+    :root {
+      --board-size: min(78vmin, 560px);
+      --wood-1: #d8a45b;
+      --wood-2: #c58b43;
+      --line: #5a3718;
+      --star: #4a2d14;
+      --panel: #fffaf0;
+      --text: #2a1a0d;
+      --shadow: rgba(0,0,0,0.18);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(circle at top, #f8ecd2, #ead3a2 55%, #d3b07a);
+      color: var(--text);
+    }
+    .app {
+      width: min(92vw, 900px);
+      padding: 24px;
+      display: grid;
+      gap: 20px;
+      justify-items: center;
+    }
+    .title { font-size: 2rem; font-weight: 700; margin: 0; }
+    .statusbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      align-items: center;
+    }
+    .pill {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(90,55,24,0.15);
+      border-radius: 999px;
+      padding: 10px 16px;
+      box-shadow: 0 6px 16px var(--shadow);
+      font-weight: 600;
+    }
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(180deg, #6f4a21, #563616);
+      color: white;
+      box-shadow: 0 6px 16px var(--shadow);
+    }
+    button:hover { filter: brightness(1.06); }
+    .board-wrap {
+      position: relative;
+      width: var(--board-size);
+      height: var(--board-size);
+      padding: calc(var(--board-size) / 18);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.12), rgba(0,0,0,0.03)),
+        repeating-linear-gradient(25deg, rgba(255,255,255,0.05) 0 6px, rgba(0,0,0,0.02) 6px 12px),
+        linear-gradient(180deg, var(--wood-1), var(--wood-2));
+      border-radius: 18px;
+      box-shadow: 0 18px 40px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    .board-grid {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      grid-template-rows: repeat(9, 1fr);
+    }
+    .board-grid::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--line), var(--line)),
+        linear-gradient(var(--line), var(--line));
+      background-size: 100% 2px, 2px 100%;
+      background-repeat: no-repeat;
+      background-position: center center, center center;
+      opacity: 0;
+    }
+    .cell {
+      position: relative;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+    .cell::before,
+    .cell::after {
+      content: "";
+      position: absolute;
+      background: var(--line);
+      pointer-events: none;
+    }
+    .cell::before {
+      width: 2px;
+      height: 100%;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+    }
+    .cell::after {
+      width: 100%;
+      height: 2px;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .cell.edge-top::before { top: 50%; height: 50%; }
+    .cell.edge-bottom::before { height: 50%; }
+    .cell.edge-left::after { left: 50%; width: 50%; }
+    .cell.edge-right::after { width: 50%; }
+    .star {
+      position: absolute;
+      width: 18%;
+      height: 18%;
+      border-radius: 50%;
+      background: var(--star);
+      pointer-events: none;
+    }
+    .stone {
+      width: 76%;
+      height: 76%;
+      border-radius: 50%;
+      box-shadow: inset -4px -5px 10px rgba(0,0,0,0.28), 0 5px 10px rgba(0,0,0,0.24);
+      position: relative;
+      z-index: 2;
+    }
+    .stone.black {
+      background: radial-gradient(circle at 30% 28%, #666, #222 48%, #050505 75%);
+    }
+    .stone.white {
+      background: radial-gradient(circle at 30% 28%, #fff, #ececec 48%, #cfcfcf 78%);
+      box-shadow: inset -4px -5px 10px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.18);
+    }
+    .legend-dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 8px;
+      box-shadow: inset -1px -1px 3px rgba(0,0,0,0.25);
+    }
+    .legend-dot.black { background: #111; }
+    .legend-dot.white { background: #f2f2f2; border: 1px solid #bbb; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1 class="title">9×9 Go</h1>
+    <div class="statusbar">
+      <div class="pill" id="turn">Turn: Black</div>
+      <div class="pill" id="captures-black"><span class="legend-dot black"></span>Black captures: 0</div>
+      <div class="pill" id="captures-white"><span class="legend-dot white"></span>White captures: 0</div>
+      <button id="reset" type="button">Reset</button>
+    </div>
+    <div class="board-wrap">
+      <div class="board-grid" id="board"></div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const size = 9;
+      const boardEl = document.getElementById('board');
+      const turnEl = document.getElementById('turn');
+      const capturesBlackEl = document.getElementById('captures-black');
+      const capturesWhiteEl = document.getElementById('captures-white');
+      const resetEl = document.getElementById('reset');
+
+      let board;
+      let currentPlayer;
+      let captured;
+
+      function createEmptyBoard() {
+        return Array.from({ length: size }, () => Array(size).fill(null));
+      }
+
+      function resetGame() {
+        board = createEmptyBoard();
+        currentPlayer = 'black';
+        captured = { black: 0, white: 0 };
+        render();
+      }
+
+      function inBounds(x, y) {
+        return x >= 0 && x < size && y >= 0 && y < size;
+      }
+
+      function neighbors(x, y) {
+        return [
+          [x + 1, y],
+          [x - 1, y],
+          [x, y + 1],
+          [x, y - 1]
+        ].filter(([nx, ny]) => inBounds(nx, ny));
+      }
+
+      function getGroupAndLiberties(x, y, stateBoard = board) {
+        const color = stateBoard[y][x];
+        if (!color) return { group: [], liberties: 0 };
+
+        const stack = [[x, y]];
+        const visited = new Set();
+        const group = [];
+        const liberties = new Set();
+
+        while (stack.length) {
+          const [cx, cy] = stack.pop();
+          const key = `${cx},${cy}`;
+          if (visited.has(key)) continue;
+          visited.add(key);
+          group.push([cx, cy]);
+
+          for (const [nx, ny] of neighbors(cx, cy)) {
+            const value = stateBoard[ny][nx];
+            if (value === null) {
+              liberties.add(`${nx},${ny}`);
+            } else if (value === color) {
+              const nKey = `${nx},${ny}`;
+              if (!visited.has(nKey)) stack.push([nx, ny]);
+            }
+          }
+        }
+
+        return { group, liberties: liberties.size };
+      }
+
+      function cloneBoard(src) {
+        return src.map(row => row.slice());
+      }
+
+      function placeStone(x, y) {
+        if (board[y][x] !== null) return;
+
+        const nextBoard = cloneBoard(board);
+        nextBoard[y][x] = currentPlayer;
+        const opponent = currentPlayer === 'black' ? 'white' : 'black';
+        let removed = 0;
+
+        for (const [nx, ny] of neighbors(x, y)) {
+          if (nextBoard[ny][nx] !== opponent) continue;
+          const info = getGroupAndLiberties(nx, ny, nextBoard);
+          if (info.liberties === 0) {
+            for (const [gx, gy] of info.group) {
+              nextBoard[gy][gx] = null;
+              removed++;
+            }
+          }
+        }
+
+        const selfInfo = getGroupAndLiberties(x, y, nextBoard);
+        if (selfInfo.liberties === 0) {
+          return;
+        }
+
+        board = nextBoard;
+        if (removed > 0) {
+          captured[currentPlayer] += removed;
+        }
+        currentPlayer = opponent;
+        render();
+      }
+
+      function updateStatus() {
+        turnEl.textContent = `Turn: ${currentPlayer[0].toUpperCase()}${currentPlayer.slice(1)}`;
+        capturesBlackEl.innerHTML = `<span class="legend-dot black"></span>Black captures: ${captured.black}`;
+        capturesWhiteEl.innerHTML = `<span class="legend-dot white"></span>White captures: ${captured.white}`;
+      }
+
+      function render() {
+        updateStatus();
+        for (let y = 0; y < size; y++) {
+          for (let x = 0; x < size; x++) {
+            const cell = boardEl.querySelector(`[data-cell="${x},${y}"]`);
+            cell.innerHTML = '';
+            if ((x === 2 || x === 6) && (y === 2 || y === 6) || (x === 4 && y === 4)) {
+              const star = document.createElement('div');
+              star.className = 'star';
+              cell.appendChild(star);
+            }
+            const value = board[y][x];
+            if (value) {
+              const stone = document.createElement('div');
+              stone.className = `stone ${value}`;
+              cell.appendChild(stone);
+            }
+          }
+        }
+      }
+
+      function buildBoard() {
+        boardEl.innerHTML = '';
+        for (let y = 0; y < size; y++) {
+          for (let x = 0; x < size; x++) {
+            const cell = document.createElement('div');
+            cell.className = 'cell';
+            if (y === 0) cell.classList.add('edge-top');
+            if (y === size - 1) cell.classList.add('edge-bottom');
+            if (x === 0) cell.classList.add('edge-left');
+            if (x === size - 1) cell.classList.add('edge-right');
+            cell.dataset.cell = `${x},${y}`;
+            cell.addEventListener('click', () => placeStone(x, y));
+            boardEl.appendChild(cell);
+          }
+        }
+      }
+
+      window.__goGame__ = {
+        getState() {
+          return {
+            size,
+            currentPlayer,
+            board: board.map(row => row.slice()),
+            captured: { ...captured }
+          };
+        }
+      };
+
+      resetEl.addEventListener('click', resetGame);
+      buildBoard();
+      resetGame();
+    })();
+  </script>
+</body>
+</html>

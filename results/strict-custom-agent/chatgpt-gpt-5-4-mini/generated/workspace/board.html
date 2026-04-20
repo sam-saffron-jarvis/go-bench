@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9x9 Go Board</title>
+  <style>
+    :root {
+      --board: #c89b56;
+      --line: #4c3418;
+      --bg: #f4efe6;
+      --black: #111;
+      --white: #f8f8f8;
+      --panel: #fffaf1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at top, #fff 0, var(--bg) 55%, #e8dcc7 100%);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: #2c2418;
+    }
+    .app {
+      width: min(92vw, 760px);
+      display: grid;
+      gap: 16px;
+      justify-items: center;
+    }
+    .panel {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: rgba(255, 250, 241, 0.8);
+      border: 1px solid rgba(76, 52, 24, 0.18);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(77, 52, 24, 0.12);
+      backdrop-filter: blur(6px);
+    }
+    .status { font-weight: 700; }
+    .captured { opacity: 0.9; }
+    button {
+      appearance: none;
+      border: 0;
+      background: linear-gradient(#fff, #ece4d4);
+      color: #2c2418;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: inset 0 0 0 1px rgba(76, 52, 24, 0.18), 0 4px 12px rgba(0,0,0,0.08);
+    }
+    button:hover { filter: brightness(1.03); }
+    .board-shell {
+      width: min(92vw, 700px);
+      aspect-ratio: 1;
+      padding: 3.5%;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #d8b06b, var(--board));
+      box-shadow: 0 18px 45px rgba(77, 52, 24, 0.24), inset 0 1px 0 rgba(255,255,255,0.25);
+    }
+    .board {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      grid-template-rows: repeat(9, 1fr);
+      background:
+        linear-gradient(var(--line), var(--line)) 0 0 / 100% 1px no-repeat,
+        linear-gradient(var(--line), var(--line)) 0 12.5% / 100% 1px no-repeat,
+        linear-gradient(var(--line), var(--line)) 0 25% / 100% 1px no-repeat,
+        linear-gradient(var(--line), var(--line)) 0 37.5% / 100% 1px no-repeat,
+        linear-gradient(var(--line), var(--line)) 0 50% / 100% 1px no-repeat,
+        linear-gradient(var(--line), var(--line)) 0 62.5% / 100% 1px no-repeat,
+        linear-gradient(var(--line), var(--line)) 0 75% / 100% 1px no-repeat,
+        linear-gradient(var(--line), var(--line)) 0 87.5% / 100% 1px no-repeat,
+        linear-gradient(var(--line), var(--line)) 0 100% / 100% 1px no-repeat,
+        linear-gradient(90deg, var(--line), var(--line)) 0 0 / 1px 100% no-repeat,
+        linear-gradient(90deg, var(--line), var(--line)) 12.5% 0 / 1px 100% no-repeat,
+        linear-gradient(90deg, var(--line), var(--line)) 25% 0 / 1px 100% no-repeat,
+        linear-gradient(90deg, var(--line), var(--line)) 37.5% 0 / 1px 100% no-repeat,
+        linear-gradient(90deg, var(--line), var(--line)) 50% 0 / 1px 100% no-repeat,
+        linear-gradient(90deg, var(--line), var(--line)) 62.5% 0 / 1px 100% no-repeat,
+        linear-gradient(90deg, var(--line), var(--line)) 75% 0 / 1px 100% no-repeat,
+        linear-gradient(90deg, var(--line), var(--line)) 87.5% 0 / 1px 100% no-repeat,
+        linear-gradient(90deg, var(--line), var(--line)) 100% 0 / 1px 100% no-repeat;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .cell {
+      position: relative;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    .cell::before {
+      content: "";
+      position: absolute;
+      inset: 18%;
+      border-radius: 50%;
+    }
+    .cell:hover::before { background: rgba(255,255,255,0.12); }
+    .stone {
+      position: absolute;
+      inset: 14%;
+      border-radius: 50%;
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.25), inset 0 -6px 10px rgba(0,0,0,0.25), 0 2px 5px rgba(0,0,0,0.22);
+      pointer-events: none;
+    }
+    .stone.black { background: radial-gradient(circle at 30% 28%, #555, #111 55%, #000 100%); }
+    .stone.white { background: radial-gradient(circle at 30% 28%, #fff, #f0f0f0 55%, #d7d7d7 100%); }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="panel">
+      <div>
+        <div class="status" id="turn">Turn: Black</div>
+        <div class="captured" id="captures">Captured — Black: 0 · White: 0</div>
+      </div>
+      <button id="reset" type="button">Reset</button>
+    </div>
+    <div class="board-shell">
+      <div class="board" id="board" aria-label="Go board"></div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const size = 9;
+      const boardEl = document.getElementById('board');
+      const turnEl = document.getElementById('turn');
+      const capturesEl = document.getElementById('captures');
+      const resetEl = document.getElementById('reset');
+      let board, currentPlayer, captured;
+      const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
+      function fresh() {
+        board = Array.from({ length: size }, () => Array(size).fill(null));
+        currentPlayer = 'black';
+        captured = { black: 0, white: 0 };
+        render();
+      }
+      function inBounds(x,y){ return x>=0 && x<size && y>=0 && y<size; }
+      function groupAt(x,y,seen=new Set()) {
+        const color = board[y][x];
+        const stack = [[x,y]];
+        const stones = [];
+        const liberties = new Set();
+        while (stack.length) {
+          const [cx, cy] = stack.pop();
+          const key = `${cx},${cy}`;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          stones.push([cx, cy]);
+          for (const [dx, dy] of dirs) {
+            const nx = cx + dx, ny = cy + dy;
+            if (!inBounds(nx, ny)) continue;
+            const v = board[ny][nx];
+            if (v === null) liberties.add(`${nx},${ny}`);
+            else if (v === color) stack.push([nx, ny]);
+          }
+        }
+        return { stones, liberties: liberties.size };
+      }
+      function removeGroup(stones) { for (const [x,y] of stones) board[y][x] = null; }
+      function play(x,y) {
+        if (board[y][x] !== null) return;
+        board[y][x] = currentPlayer;
+        const opponent = currentPlayer === 'black' ? 'white' : 'black';
+        let totalCaptured = 0;
+        const checked = new Set();
+        for (const [dx, dy] of dirs) {
+          const nx = x + dx, ny = y + dy;
+          if (!inBounds(nx, ny) || board[ny][nx] !== opponent) continue;
+          const key = `${nx},${ny}`;
+          if (checked.has(key)) continue;
+          const g = groupAt(nx, ny, checked);
+          if (g.liberties === 0) {
+            removeGroup(g.stones);
+            totalCaptured += g.stones.length;
+          }
+        }
+        const selfGroup = groupAt(x, y);
+        if (selfGroup.liberties === 0 && totalCaptured === 0) {
+          board[y][x] = null;
+          return;
+        }
+        if (totalCaptured > 0) captured[currentPlayer] += totalCaptured;
+        currentPlayer = opponent;
+        render();
+      }
+      function render() {
+        boardEl.innerHTML = '';
+        for (let y = 0; y < size; y++) {
+          for (let x = 0; x < size; x++) {
+            const cell = document.createElement('button');
+            cell.className = 'cell';
+            cell.type = 'button';
+            cell.dataset.cell = `${x},${y}`;
+            cell.setAttribute('aria-label', `Intersection ${x + 1}, ${y + 1}`);
+            cell.addEventListener('click', () => play(x, y));
+            const v = board[y][x];
+            if (v) {
+              const stone = document.createElement('span');
+              stone.className = `stone ${v}`;
+              cell.appendChild(stone);
+            }
+            boardEl.appendChild(cell);
+          }
+        }
+        turnEl.textContent = `Turn: ${currentPlayer === 'black' ? 'Black' : 'White'}`;
+        capturesEl.textContent = `Captured — Black: ${captured.black} · White: ${captured.white}`;
+      }
+      resetEl.addEventListener('click', fresh);
+      window.__goGame__ = { getState: () => ({ size, currentPlayer, board: board.map(r => r.slice()), captured: { ...captured } }) };
+      fresh();
+    })();
+  </script>
+</body>
+</html>

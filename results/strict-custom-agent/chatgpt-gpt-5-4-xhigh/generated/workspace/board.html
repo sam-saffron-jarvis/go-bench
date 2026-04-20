@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9x9 Go Board</title>
+  <style>
+    :root {
+      --board-size: min(78vw, 78vh, 560px);
+      --cell-size: calc(var(--board-size) / 9);
+      --line-color: rgba(74, 43, 14, 0.9);
+      --wood-1: #d8ad63;
+      --wood-2: #c89548;
+      --stone-black-1: #2e2e2e;
+      --stone-black-2: #060606;
+      --stone-white-1: #ffffff;
+      --stone-white-2: #d9d9d9;
+      --panel: rgba(255, 249, 236, 0.92);
+      --shadow: 0 14px 38px rgba(0, 0, 0, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.35), transparent 35%),
+        linear-gradient(160deg, #f3e7cc 0%, #e3c691 42%, #c9904f 100%);
+      color: #24170c;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .app {
+      width: min(980px, 100%);
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) minmax(220px, 280px);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .board-panel,
+    .info-panel {
+      background: var(--panel);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+
+    .board-panel {
+      padding: 20px;
+      display: grid;
+      place-items: center;
+    }
+
+    .info-panel {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.6rem, 2.4vw, 2rem);
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: rgba(36, 23, 12, 0.75);
+      font-size: 0.98rem;
+    }
+
+    .board {
+      position: relative;
+      width: var(--board-size);
+      height: var(--board-size);
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      grid-template-rows: repeat(9, 1fr);
+      padding: calc(var(--cell-size) / 2);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.16), transparent 45%),
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,0.06),
+          rgba(255,255,255,0.06) 2px,
+          transparent 2px,
+          transparent 16px
+        ),
+        linear-gradient(145deg, var(--wood-1), var(--wood-2));
+      border-radius: 18px;
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,0.35),
+        inset 0 -2px 10px rgba(0,0,0,0.14),
+        0 18px 30px rgba(72, 38, 8, 0.22);
+      overflow: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .board::before {
+      content: "";
+      position: absolute;
+      inset: calc(var(--cell-size) / 2);
+      background-image:
+        repeating-linear-gradient(
+          to right,
+          transparent 0,
+          transparent calc(var(--cell-size) - 1px),
+          var(--line-color) calc(var(--cell-size) - 1px),
+          var(--line-color) var(--cell-size)
+        ),
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent calc(var(--cell-size) - 1px),
+          var(--line-color) calc(var(--cell-size) - 1px),
+          var(--line-color) var(--cell-size)
+        );
+      pointer-events: none;
+    }
+
+    .star-point {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(58, 31, 9, 0.95);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .cell {
+      position: relative;
+      display: grid;
+      place-items: center;
+      border: 0;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .cell:hover::after,
+    .cell:focus-visible::after {
+      content: "";
+      width: 38%;
+      height: 38%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 0 0 1px rgba(74, 43, 14, 0.28);
+    }
+
+    .cell:focus-visible {
+      outline: 2px solid rgba(80, 43, 7, 0.7);
+      outline-offset: -2px;
+      border-radius: 10px;
+    }
+
+    .stone {
+      width: 72%;
+      height: 72%;
+      border-radius: 50%;
+      box-shadow:
+        inset 0 1px 2px rgba(255,255,255,0.22),
+        inset 0 -3px 8px rgba(0,0,0,0.35),
+        0 4px 12px rgba(0, 0, 0, 0.22);
+    }
+
+    .stone.black {
+      background: radial-gradient(circle at 30% 28%, #747474 0%, var(--stone-black-1) 32%, var(--stone-black-2) 100%);
+    }
+
+    .stone.white {
+      background: radial-gradient(circle at 30% 26%, var(--stone-white-1) 0%, #f7f7f7 35%, var(--stone-white-2) 100%);
+      box-shadow:
+        inset 0 1px 2px rgba(255,255,255,0.9),
+        inset 0 -3px 8px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0, 0, 0, 0.16);
+    }
+
+    .status-card,
+    .capture-card,
+    .rules-card {
+      background: rgba(255, 255, 255, 0.62);
+      border-radius: 16px;
+      padding: 14px 16px;
+      border: 1px solid rgba(95, 59, 20, 0.08);
+    }
+
+    .turn-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .turn-indicator {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      box-shadow:
+        inset 0 1px 2px rgba(255,255,255,0.5),
+        0 3px 8px rgba(0,0,0,0.18);
+      flex: 0 0 auto;
+    }
+
+    .turn-indicator.black {
+      background: radial-gradient(circle at 30% 30%, #707070 0%, #212121 35%, #060606 100%);
+    }
+
+    .turn-indicator.white {
+      background: radial-gradient(circle at 30% 30%, #fff 0%, #f0f0f0 42%, #d4d4d4 100%);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .turn-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .capture-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .capture-item {
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.75);
+      display: grid;
+      gap: 6px;
+      justify-items: start;
+    }
+
+    .capture-label {
+      font-size: 0.92rem;
+      color: rgba(36, 23, 12, 0.74);
+    }
+
+    .capture-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    #reset {
+      appearance: none;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #6b3c11, #91561f);
+      color: #fffaf2;
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(107, 60, 17, 0.28);
+      transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+    }
+
+    #reset:hover,
+    #reset:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(107, 60, 17, 0.34);
+      filter: brightness(1.04);
+      outline: none;
+    }
+
+    #reset:active {
+      transform: translateY(0);
+    }
+
+    .rules-card p {
+      margin: 0;
+      color: rgba(36, 23, 12, 0.78);
+      line-height: 1.45;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 860px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      .info-panel {
+        order: -1;
+      }
+
+      :root {
+        --board-size: min(92vw, 70vh, 520px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="board-panel" aria-label="Go board panel">
+      <div id="board" class="board" role="grid" aria-label="9 by 9 Go board"></div>
+    </section>
+
+    <aside class="info-panel">
+      <div>
+        <h1>9×9 Go</h1>
+        <p class="subtitle">A compact, fully playable board with captures and suicide prevention.</p>
+      </div>
+
+      <section class="status-card" aria-live="polite">
+        <div class="turn-row">
+          <div id="turn-indicator" class="turn-indicator black" aria-hidden="true"></div>
+          <div>
+            <div class="capture-label">Current turn</div>
+            <div id="turn-text" class="turn-text">Black to play</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="capture-card">
+        <div class="capture-label" style="margin-bottom: 10px; font-weight: 700;">Captured stones</div>
+        <div class="capture-grid">
+          <div class="capture-item">
+            <span class="capture-label">Black</span>
+            <span id="captured-black" class="capture-value">0</span>
+          </div>
+          <div class="capture-item">
+            <span class="capture-label">White</span>
+            <span id="captured-white" class="capture-value">0</span>
+          </div>
+        </div>
+      </section>
+
+      <button id="reset" type="button">Reset Board</button>
+
+      <section class="rules-card">
+        <p>
+          Black plays first. Stones with no liberties are captured. Suicide is not allowed unless your move captures opposing stones and creates liberties.
+        </p>
+      </section>
+    </aside>
+  </main>
+
+  <script>
+    (() => {
+      const SIZE = 9;
+      const boardElement = document.getElementById('board');
+      const turnTextElement = document.getElementById('turn-text');
+      const turnIndicatorElement = document.getElementById('turn-indicator');
+      const capturedBlackElement = document.getElementById('captured-black');
+      const capturedWhiteElement = document.getElementById('captured-white');
+      const resetButton = document.getElementById('reset');
+
+      let board = createEmptyBoard();
+      let currentPlayer = 'black';
+      let captured = { black: 0, white: 0 };
+
+      function createEmptyBoard() {
+        return Array.from({ length: SIZE }, () => Array(SIZE).fill(null));
+      }
+
+      function cloneBoard(source) {
+        return source.map(row => row.slice());
+      }
+
+      function isOnBoard(x, y) {
+        return x >= 0 && x < SIZE && y >= 0 && y < SIZE;
+      }
+
+      function getNeighbors(x, y) {
+        return [
+          [x, y - 1],
+          [x + 1, y],
+          [x, y + 1],
+          [x - 1, y]
+        ].filter(([nx, ny]) => isOnBoard(nx, ny));
+      }
+
+      function groupKey(x, y) {
+        return `${x},${y}`;
+      }
+
+      function getGroupAndLiberties(targetBoard, startX, startY) {
+        const color = targetBoard[startY][startX];
+        if (!color) {
+          return { stones: [], liberties: 0 };
+        }
+
+        const stack = [[startX, startY]];
+        const visited = new Set();
+        const liberties = new Set();
+        const stones = [];
+
+        while (stack.length > 0) {
+          const [x, y] = stack.pop();
+          const key = groupKey(x, y);
+          if (visited.has(key)) {
+            continue;
+          }
+          visited.add(key);
+          stones.push([x, y]);
+
+          for (const [nx, ny] of getNeighbors(x, y)) {
+            const neighbor = targetBoard[ny][nx];
+            if (neighbor === null) {
+              liberties.add(groupKey(nx, ny));
+            } else if (neighbor === color && !visited.has(groupKey(nx, ny))) {
+              stack.push([nx, ny]);
+            }
+          }
+        }
+
+        return { stones, liberties: liberties.size };
+      }
+
+      function removeGroup(targetBoard, stones) {
+        for (const [x, y] of stones) {
+          targetBoard[y][x] = null;
+        }
+      }
+
+      function otherPlayer(player) {
+        return player === 'black' ? 'white' : 'black';
+      }
+
+      function attemptMove(x, y) {
+        if (!isOnBoard(x, y)) {
+          return false;
+        }
+
+        if (board[y][x] !== null) {
+          return false;
+        }
+
+        const nextBoard = cloneBoard(board);
+        nextBoard[y][x] = currentPlayer;
+        const opponent = otherPlayer(currentPlayer);
+        const checkedGroups = new Set();
+        let totalCaptured = 0;
+
+        for (const [nx, ny] of getNeighbors(x, y)) {
+          if (nextBoard[ny][nx] !== opponent) {
+            continue;
+          }
+
+          const key = groupKey(nx, ny);
+          if (checkedGroups.has(key)) {
+            continue;
+          }
+
+          const group = getGroupAndLiberties(nextBoard, nx, ny);
+          for (const [gx, gy] of group.stones) {
+            checkedGroups.add(groupKey(gx, gy));
+          }
+
+          if (group.liberties === 0) {
+            totalCaptured += group.stones.length;
+            removeGroup(nextBoard, group.stones);
+          }
+        }
+
+        const ownGroup = getGroupAndLiberties(nextBoard, x, y);
+        if (ownGroup.liberties === 0) {
+          return false;
+        }
+
+        board = nextBoard;
+        if (totalCaptured > 0) {
+          captured[currentPlayer] += totalCaptured;
+        }
+        currentPlayer = opponent;
+        render();
+        return true;
+      }
+
+      function resetGame() {
+        board = createEmptyBoard();
+        currentPlayer = 'black';
+        captured = { black: 0, white: 0 };
+        render();
+      }
+
+      function renderBoard() {
+        const cells = boardElement.querySelectorAll('.cell');
+        cells.forEach(cell => {
+          const x = Number(cell.dataset.x);
+          const y = Number(cell.dataset.y);
+          const value = board[y][x];
+          cell.innerHTML = value ? `<span class="stone ${value}" aria-hidden="true"></span>` : '';
+          cell.setAttribute('aria-label', `${x},${y} ${value ? value + ' stone' : 'empty'}`);
+          cell.setAttribute('aria-pressed', value ? 'true' : 'false');
+        });
+      }
+
+      function renderStatus() {
+        turnTextElement.textContent = `${currentPlayer === 'black' ? 'Black' : 'White'} to play`;
+        turnIndicatorElement.className = `turn-indicator ${currentPlayer}`;
+        capturedBlackElement.textContent = String(captured.black);
+        capturedWhiteElement.textContent = String(captured.white);
+      }
+
+      function render() {
+        renderBoard();
+        renderStatus();
+      }
+
+      function placeStarPoints() {
+        const starCoordinates = [
+          [2, 2], [6, 2], [4, 4], [2, 6], [6, 6]
+        ];
+
+        for (const [x, y] of starCoordinates) {
+          const dot = document.createElement('div');
+          dot.className = 'star-point';
+          dot.style.left = `calc(${((x + 0.5) / SIZE) * 100}% )`;
+          dot.style.top = `calc(${((y + 0.5) / SIZE) * 100}% )`;
+          boardElement.appendChild(dot);
+        }
+      }
+
+      function initializeBoard() {
+        boardElement.innerHTML = '';
+        for (let y = 0; y < SIZE; y += 1) {
+          for (let x = 0; x < SIZE; x += 1) {
+            const cell = document.createElement('button');
+            cell.type = 'button';
+            cell.className = 'cell';
+            cell.dataset.cell = `${x},${y}`;
+            cell.dataset.x = String(x);
+            cell.dataset.y = String(y);
+            cell.setAttribute('role', 'gridcell');
+            cell.addEventListener('click', () => {
+              attemptMove(x, y);
+            });
+            boardElement.appendChild(cell);
+          }
+        }
+        placeStarPoints();
+        render();
+      }
+
+      window.__goGame__ = {
+        getState() {
+          return {
+            size: SIZE,
+            currentPlayer,
+            board: cloneBoard(board),
+            captured: {
+              black: captured.black,
+              white: captured.white
+            }
+          };
+        }
+      };
+
+      resetButton.addEventListener('click', resetGame);
+      initializeBoard();
+    })();
+  </script>
+</body>
+</html>

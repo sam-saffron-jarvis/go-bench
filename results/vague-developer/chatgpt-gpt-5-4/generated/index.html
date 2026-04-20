@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9x9 Go Board</title>
+  <style>
+    :root {
+      --board-size: min(88vw, 88vh, 720px);
+      --line-color: #4b2f17;
+      --wood-light: #e8bf77;
+      --wood-dark: #c99043;
+      --shadow: rgba(0, 0, 0, 0.22);
+      --panel: rgba(255, 248, 235, 0.92);
+      --accent: #7b4a12;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, #f8e4ba 0%, #ebc985 36%, #d6a55f 72%, #b9803a 100%);
+      color: #20150b;
+      padding: 24px;
+    }
+
+    .app {
+      width: min(1100px, 100%);
+      display: grid;
+      grid-template-columns: minmax(320px, 1fr) minmax(240px, 320px);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .board-shell {
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.22), rgba(112, 62, 14, 0.1));
+      box-shadow: 0 16px 36px rgba(79, 44, 8, 0.22);
+      backdrop-filter: blur(4px);
+    }
+
+    canvas {
+      width: var(--board-size);
+      height: var(--board-size);
+      max-width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 14px 28px var(--shadow);
+      touch-action: none;
+      cursor: pointer;
+    }
+
+    .panel {
+      background: var(--panel);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(66, 38, 8, 0.14);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      margin: 0 0 18px;
+      color: #5a4228;
+      line-height: 1.45;
+    }
+
+    .status {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .status-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .stone-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .stone-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      box-shadow: inset -2px -2px 4px rgba(255,255,255,0.16), inset 2px 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .stone-dot.black {
+      background: radial-gradient(circle at 30% 28%, #585858, #1e1e1e 58%, #090909 100%);
+    }
+
+    .stone-dot.white {
+      background: radial-gradient(circle at 30% 28%, #ffffff, #efefef 58%, #cfcfcf 100%);
+      border: 1px solid rgba(0,0,0,0.18);
+      box-shadow: inset -1px -1px 3px rgba(255,255,255,0.85), inset 1px 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      background: linear-gradient(180deg, #8e5617, #6f4311);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 14px rgba(93, 57, 15, 0.22);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(93, 57, 15, 0.26);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    button.secondary {
+      background: linear-gradient(180deg, #f4e0bf, #e6c78f);
+      color: #4d300f;
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .score-box {
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.72);
+    }
+
+    .score-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+      color: #5f4529;
+    }
+
+    .score-box span {
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+
+    .history {
+      background: rgba(255,255,255,0.7);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .history h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+
+    .history-log {
+      margin: 0;
+      padding-left: 18px;
+      max-height: 220px;
+      overflow: auto;
+      line-height: 1.45;
+    }
+
+    .rules {
+      margin-top: 16px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #563d22;
+    }
+
+    @media (max-width: 860px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      :root {
+        --board-size: min(92vw, 74vh, 640px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="board-shell">
+      <canvas id="board" aria-label="9 by 9 Go board"></canvas>
+    </section>
+
+    <aside class="panel">
+      <h1>9×9 Go</h1>
+      <p class="subtitle">
+        Standalone local Go board with captures, suicide prevention, ko, pass, undo, and area scoring.
+      </p>
+
+      <div class="status">
+        <div class="status-card">
+          <span>Current turn</span>
+          <span class="stone-indicator"><span id="turnDot" class="stone-dot black"></span><span id="turnText">Black</span></span>
+        </div>
+        <div class="status-card">
+          <span>Game state</span>
+          <strong id="gameState">Playing</strong>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="passBtn">Pass</button>
+        <button id="undoBtn" class="secondary">Undo</button>
+        <button id="resetBtn">Reset</button>
+        <button id="scoreBtn" class="secondary">Score now</button>
+      </div>
+
+      <div class="score-grid">
+        <div class="score-box">
+          <strong>Black</strong>
+          <span id="blackScore">0</span>
+        </div>
+        <div class="score-box">
+          <strong>White</strong>
+          <span id="whiteScore">0</span>
+        </div>
+      </div>
+
+      <section class="history">
+        <h2>Move history</h2>
+        <ol id="historyLog" class="history-log"></ol>
+      </section>
+
+      <p class="rules">
+        Click an intersection to place a stone. The board ends after two consecutive passes. Scoring uses simple area scoring: stones on the board plus surrounded empty intersections.
+      </p>
+    </aside>
+  </main>
+
+  <script>
+    const SIZE = 9;
+    const EMPTY = 0;
+    const BLACK = 1;
+    const WHITE = 2;
+    const STAR_POINTS = [[2, 2], [2, 6], [4, 4], [6, 2], [6, 6]];
+
+    const canvas = document.getElementById('board');
+    const ctx = canvas.getContext('2d');
+    const turnDot = document.getElementById('turnDot');
+    const turnText = document.getElementById('turnText');
+    const gameState = document.getElementById('gameState');
+    const blackScoreEl = document.getElementById('blackScore');
+    const whiteScoreEl = document.getElementById('whiteScore');
+    const historyLog = document.getElementById('historyLog');
+    const passBtn = document.getElementById('passBtn');
+    const undoBtn = document.getElementById('undoBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const scoreBtn = document.getElementById('scoreBtn');
+
+    let board = createBoard();
+    let currentPlayer = BLACK;
+    let history = [];
+    let passCount = 0;
+    let gameOver = false;
+    let lastMove = null;
+    let boardHash = serializeBoard(board);
+
+    function createBoard() {
+      return Array.from({ length: SIZE }, () => Array(SIZE).fill(EMPTY));
+    }
+
+    function cloneBoard(source) {
+      return source.map(row => [...row]);
+    }
+
+    function serializeBoard(source) {
+      return source.map(row => row.join('')).join('|');
+    }
+
+    function opponentOf(player) {
+      return player === BLACK ? WHITE : BLACK;
+    }
+
+    function inBounds(x, y) {
+      return x >= 0 && x < SIZE && y >= 0 && y < SIZE;
+    }
+
+    function getNeighbors(x, y) {
+      return [
+        [x - 1, y],
+        [x + 1, y],
+        [x, y - 1],
+        [x, y + 1]
+      ].filter(([nx, ny]) => inBounds(nx, ny));
+    }
+
+    function collectGroup(source, x, y) {
+      const color = source[y][x];
+      const stack = [[x, y]];
+      const stones = [];
+      const liberties = new Set();
+      const seen = new Set();
+
+      while (stack.length) {
+        const [cx, cy] = stack.pop();
+        const key = `${cx},${cy}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        stones.push([cx, cy]);
+
+        for (const [nx, ny] of getNeighbors(cx, cy)) {
+          const cell = source[ny][nx];
+          if (cell === EMPTY) {
+            liberties.add(`${nx},${ny}`);
+          } else if (cell === color) {
+            stack.push([nx, ny]);
+          }
+        }
+      }
+
+      return { color, stones, liberties };
+    }
+
+    function removeGroup(source, group) {
+      for (const [x, y] of group.stones) {
+        source[y][x] = EMPTY;
+      }
+    }
+
+    function scoreBoard(source) {
+      let black = 0;
+      let white = 0;
+      const visited = new Set();
+
+      for (let y = 0; y < SIZE; y++) {
+        for (let x = 0; x < SIZE; x++) {
+          const cell = source[y][x];
+          if (cell === BLACK) {
+            black++;
+            continue;
+          }
+          if (cell === WHITE) {
+            white++;
+            continue;
+          }
+
+          const key = `${x},${y}`;
+          if (visited.has(key)) continue;
+
+          const stack = [[x, y]];
+          const region = [];
+          const bordering = new Set();
+
+          while (stack.length) {
+            const [cx, cy] = stack.pop();
+            const regionKey = `${cx},${cy}`;
+            if (visited.has(regionKey)) continue;
+            visited.add(regionKey);
+            region.push([cx, cy]);
+
+            for (const [nx, ny] of getNeighbors(cx, cy)) {
+              const neighbor = source[ny][nx];
+              if (neighbor === EMPTY) {
+                const neighborKey = `${nx},${ny}`;
+                if (!visited.has(neighborKey)) stack.push([nx, ny]);
+              } else {
+                bordering.add(neighbor);
+              }
+            }
+          }
+
+          if (bordering.size === 1) {
+            if (bordering.has(BLACK)) black += region.length;
+            if (bordering.has(WHITE)) white += region.length;
+          }
+        }
+      }
+
+      return { black, white };
+    }
+
+    function boardCoordsFromEvent(event) {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const px = (event.clientX - rect.left) * scaleX;
+      const py = (event.clientY - rect.top) * scaleY;
+      const margin = canvas.width * 0.09;
+      const spacing = (canvas.width - margin * 2) / (SIZE - 1);
+      const x = Math.round((px - margin) / spacing);
+      const y = Math.round((py - margin) / spacing);
+      return { x, y, margin, spacing, px, py };
+    }
+
+    function placeStone(x, y) {
+      if (gameOver || !inBounds(x, y) || board[y][x] !== EMPTY) return false;
+
+      const nextBoard = cloneBoard(board);
+      nextBoard[y][x] = currentPlayer;
+      let captured = 0;
+
+      for (const [nx, ny] of getNeighbors(x, y)) {
+        if (nextBoard[ny][nx] !== opponentOf(currentPlayer)) continue;
+        const group = collectGroup(nextBoard, nx, ny);
+        if (group.liberties.size === 0) {
+          captured += group.stones.length;
+          removeGroup(nextBoard, group);
+        }
+      }
+
+      const ownGroup = collectGroup(nextBoard, x, y);
+      if (ownGroup.liberties.size === 0) return false;
+
+      const nextHash = serializeBoard(nextBoard);
+      const previousHash = history.length ? history[history.length - 1].previousHash : null;
+      if (nextHash === previousHash) return false;
+
+      history.push({
+        board: cloneBoard(board),
+        previousHash: boardHash,
+        player: currentPlayer,
+        move: { x, y },
+        captured,
+        passCount,
+        gameOver,
+        lastMove
+      });
+
+      board = nextBoard;
+      boardHash = nextHash;
+      lastMove = { x, y, player: currentPlayer };
+      passCount = 0;
+      currentPlayer = opponentOf(currentPlayer);
+      render();
+      return true;
+    }
+
+    function passTurn() {
+      if (gameOver) return;
+      history.push({
+        board: cloneBoard(board),
+        previousHash: boardHash,
+        player: currentPlayer,
+        move: null,
+        captured: 0,
+        passCount,
+        gameOver,
+        lastMove
+      });
+      passCount += 1;
+      lastMove = null;
+      if (passCount >= 2) {
+        gameOver = true;
+      } else {
+        currentPlayer = opponentOf(currentPlayer);
+      }
+      render();
+    }
+
+    function undoMove() {
+      const previous = history.pop();
+      if (!previous) return;
+      board = cloneBoard(previous.board);
+      boardHash = serializeBoard(board);
+      currentPlayer = previous.player;
+      passCount = previous.passCount;
+      gameOver = previous.gameOver;
+      lastMove = previous.lastMove;
+      render();
+    }
+
+    function resetGame() {
+      board = createBoard();
+      currentPlayer = BLACK;
+      history = [];
+      passCount = 0;
+      gameOver = false;
+      lastMove = null;
+      boardHash = serializeBoard(board);
+      render();
+    }
+
+    function moveLabel(entry, index) {
+      if (!entry.move) return `${index + 1}. ${entry.player === BLACK ? 'Black' : 'White'} passed`;
+      const col = String.fromCharCode(65 + entry.move.x + (entry.move.x >= 8 ? 1 : 0));
+      return `${index + 1}. ${entry.player === BLACK ? 'Black' : 'White'} ${col}${SIZE - entry.move.y}${entry.captured ? ` ×${entry.captured}` : ''}`;
+    }
+
+    function resizeCanvas() {
+      const displaySize = Math.min(window.innerWidth * 0.88, window.innerHeight * 0.88, 720);
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(displaySize * ratio);
+      canvas.height = Math.floor(displaySize * ratio);
+      canvas.style.width = `${displaySize}px`;
+      canvas.style.height = `${displaySize}px`;
+      render();
+    }
+
+    function drawBoard() {
+      const width = canvas.width;
+      const height = canvas.height;
+      const margin = width * 0.09;
+      const spacing = (width - margin * 2) / (SIZE - 1);
+
+      const wood = ctx.createLinearGradient(0, 0, width, height);
+      wood.addColorStop(0, getComputedStyle(document.documentElement).getPropertyValue('--wood-light').trim());
+      wood.addColorStop(1, getComputedStyle(document.documentElement).getPropertyValue('--wood-dark').trim());
+      ctx.fillStyle = wood;
+      ctx.fillRect(0, 0, width, height);
+
+      for (let i = 0; i < 18; i++) {
+        ctx.fillStyle = `rgba(120, 70, 22, ${0.018 + (i % 4) * 0.01})`;
+        ctx.fillRect((width / 18) * i, 0, width / 40, height);
+      }
+
+      ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--line-color').trim();
+      ctx.lineWidth = Math.max(1.2, width * 0.003);
+
+      for (let i = 0; i < SIZE; i++) {
+        const pos = margin + i * spacing;
+        ctx.beginPath();
+        ctx.moveTo(margin, pos);
+        ctx.lineTo(width - margin, pos);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(pos, margin);
+        ctx.lineTo(pos, height - margin);
+        ctx.stroke();
+      }
+
+      ctx.fillStyle = ctx.strokeStyle;
+      const starRadius = Math.max(3, width * 0.0065);
+      for (const [sx, sy] of STAR_POINTS) {
+        ctx.beginPath();
+        ctx.arc(margin + sx * spacing, margin + sy * spacing, starRadius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function drawStone(x, y, color, isLastMove) {
+      const width = canvas.width;
+      const margin = width * 0.09;
+      const spacing = (width - margin * 2) / (SIZE - 1);
+      const cx = margin + x * spacing;
+      const cy = margin + y * spacing;
+      const radius = spacing * 0.43;
+
+      const gradient = ctx.createRadialGradient(
+        cx - radius * 0.38,
+        cy - radius * 0.42,
+        radius * 0.15,
+        cx,
+        cy,
+        radius
+      );
+
+      if (color === BLACK) {
+        gradient.addColorStop(0, '#5a5a5a');
+        gradient.addColorStop(0.45, '#222');
+        gradient.addColorStop(1, '#050505');
+      } else {
+        gradient.addColorStop(0, '#ffffff');
+        gradient.addColorStop(0.6, '#eeeeee');
+        gradient.addColorStop(1, '#cecece');
+      }
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
+      ctx.shadowColor = 'rgba(0,0,0,0.28)';
+      ctx.shadowBlur = radius * 0.28;
+      ctx.shadowOffsetY = radius * 0.12;
+      ctx.fill();
+      ctx.shadowColor = 'transparent';
+
+      if (color === WHITE) {
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(0,0,0,0.18)';
+        ctx.stroke();
+      }
+
+      if (isLastMove) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius * 0.22, 0, Math.PI * 2);
+        ctx.fillStyle = color === BLACK ? 'rgba(255,255,255,0.92)' : 'rgba(0,0,0,0.72)';
+        ctx.fill();
+      }
+    }
+
+    function render() {
+      if (!canvas.width || !canvas.height) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBoard();
+
+      for (let y = 0; y < SIZE; y++) {
+        for (let x = 0; x < SIZE; x++) {
+          const color = board[y][x];
+          if (!color) continue;
+          const isLast = lastMove && lastMove.x === x && lastMove.y === y && lastMove.player === color;
+          drawStone(x, y, color, isLast);
+        }
+      }
+
+      const score = scoreBoard(board);
+      blackScoreEl.textContent = score.black;
+      whiteScoreEl.textContent = score.white;
+
+      const playerName = currentPlayer === BLACK ? 'Black' : 'White';
+      turnText.textContent = playerName;
+      turnDot.className = `stone-dot ${currentPlayer === BLACK ? 'black' : 'white'}`;
+      gameState.textContent = gameOver ? `Finished — ${score.black === score.white ? 'Tie' : score.black > score.white ? 'Black leads' : 'White leads'}` : `Playing${passCount ? ` — ${passCount} pass` + (passCount > 1 ? 'es' : '') : ''}`;
+      passBtn.disabled = gameOver;
+
+      historyLog.innerHTML = '';
+      history.forEach((entry, index) => {
+        const item = document.createElement('li');
+        item.textContent = moveLabel(entry, index);
+        historyLog.appendChild(item);
+      });
+      if (gameOver) {
+        const item = document.createElement('li');
+        item.textContent = 'Game ended after two consecutive passes';
+        historyLog.appendChild(item);
+      }
+      undoBtn.disabled = history.length === 0;
+    }
+
+    canvas.addEventListener('click', (event) => {
+      const { x, y, margin, spacing, px, py } = boardCoordsFromEvent(event);
+      const ix = margin + x * spacing;
+      const iy = margin + y * spacing;
+      const distance = Math.hypot(px - ix, py - iy);
+      if (distance > spacing * 0.48) return;
+      placeStone(x, y);
+    });
+
+    canvas.addEventListener('touchstart', (event) => {
+      event.preventDefault();
+      const touch = event.touches[0];
+      if (!touch) return;
+      const fakeEvent = { clientX: touch.clientX, clientY: touch.clientY };
+      const { x, y, margin, spacing, px, py } = boardCoordsFromEvent(fakeEvent);
+      const ix = margin + x * spacing;
+      const iy = margin + y * spacing;
+      const distance = Math.hypot(px - ix, py - iy);
+      if (distance > spacing * 0.55) return;
+      placeStone(x, y);
+    }, { passive: false });
+
+    passBtn.addEventListener('click', passTurn);
+    undoBtn.addEventListener('click', undoMove);
+    resetBtn.addEventListener('click', resetGame);
+    scoreBtn.addEventListener('click', render);
+    window.addEventListener('resize', resizeCanvas);
+
+    resizeCanvas();
+  </script>
+</body>
+</html>

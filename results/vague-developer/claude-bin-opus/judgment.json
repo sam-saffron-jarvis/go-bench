@@ -1,0 +1,23 @@
+{
+  "score": 16,
+  "band": "playable",
+  "subscores": {
+    "board": 2,
+    "interaction": 4,
+    "move_handling": 3,
+    "rules": 3,
+    "completeness": 4
+  },
+  "confidence": "medium",
+  "summary": "Well-built canvas Go board with confirmed turn alternation, occupied-point rejection, and explicit suicide detection, but only the center tengen hoshi is visible and no direct stone-capture evidence was observed.",
+  "evidence_highlights": [
+    "Status text toggles Black/White to play on every click with ~2000-pixel board diffs confirming stones land at intersections",
+    "Occupied-point click produces 'Illegal move' message with zero pixel diff, confirming rejection",
+    "Placing White into a corner surrounded by Black produces 'Illegal: suicide' message, proving liberty-counting logic exists",
+    "Pass, Undo, New Game buttons present; capture counters displayed; no external requests or console errors"
+  ],
+  "evidence_gaps": [
+    "Only the center tengen (P44) shows a dark hoshi dot; the four corner hoshi points (P22, P26, P62, P66) show no contrast against the board background",
+    "Capture scenario does not complete a capture \u2014 no stone removal or counter increment is observed, leaving actual capture behavior unconfirmed"
+  ]
+}

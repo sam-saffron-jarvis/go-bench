@@ -1,0 +1,12 @@
+name: go-board-bench
+description: "Build a working 9x9 Go board in workspace/board.html and use verify_board until it passes."
+max_turns: 30
+read:
+  dirs: ["."]
+tools:
+  enabled: [read_file, write_file, edit_file, glob, grep]
+  custom:
+    - name: verify_board
+      description: "Run the acceptance tests for workspace/board.html. Tests: 81 intersections, black starts, occupied points rejected, capture works, suicide is illegal, reset works. Ignore favicon noise."
+      script: scripts/verify-board.mjs
+      timeout_seconds: 60

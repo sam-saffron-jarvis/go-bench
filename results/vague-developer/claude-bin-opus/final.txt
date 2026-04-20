@@ -1,0 +1,11 @@
+I'll build a standalone 9x9 Go board with proper game logic (turns, captures, suicide prevention, ko rule, pass, undo, score).Done. Created `index.html` — a standalone 9×9 Go board (single file, no dependencies).
+
+**Features**
+- Canvas-rendered board with grid, 5 star points, and shaded stones with shadow
+- Alternating Black/White turns with a side panel showing whose move it is
+- Legal-move logic: captures opponent groups with zero liberties; blocks suicide moves; enforces simple ko
+- Pass button (two passes → game over, area-scoring result shown)
+- Undo (full history) and New game
+- Last-move marker, capture counts, and inline status messages ("Illegal: ko", "Illegal: suicide")
+
+Open the file directly in any browser — no server needed.

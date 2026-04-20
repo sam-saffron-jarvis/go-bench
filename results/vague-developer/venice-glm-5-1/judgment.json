@@ -1,0 +1,24 @@
+{
+  "score": 13,
+  "band": "playable",
+  "subscores": {
+    "board": 3,
+    "interaction": 3,
+    "move_handling": 2,
+    "rules": 2,
+    "completeness": 3
+  },
+  "confidence": "medium",
+  "summary": "Solid canvas Go board with stones correctly placed on intersections and visible hoshi dots, good controls and turn alternation, but capture counter never increments and move counter stays at 0 throughout all scenarios.",
+  "evidence_highlights": [
+    "Stone centering probe shows placed stone brightness 40 at intersection vs 170 at midpoints, confirming stones render on intersections not cell centers",
+    "P44 (center hoshi) shows brightness 44 vs 145 reference (delta 101) on empty board, confirming hoshi dots are drawn",
+    "Occupied-point rejection confirmed: second click on P00 produces 0 changed pixels and status stays unchanged",
+    "Turn alternation verified across all scenarios: status correctly flips between 'Black to play' and 'White to play'"
+  ],
+  "evidence_gaps": [
+    "Capture counter never increments from 0 in any scenario, including the dedicated capture sequence \u2014 no capture evidence",
+    "Move counter remains at 'Move 0' throughout all scenarios, suggesting move tracking is non-functional or display is broken",
+    "Suicide rejection at P00 shows only 112 changed pixels with ambiguous pixel color (brightness 180), not conclusive"
+  ]
+}

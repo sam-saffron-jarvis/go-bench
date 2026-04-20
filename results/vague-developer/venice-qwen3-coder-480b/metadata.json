@@ -100,5 +100,35 @@
   "output": {
     "expected_file": "index.html",
     "exists": false
+  },
+  "judgment": {
+    "judge_provider": null,
+    "timestamp_utc": "2026-04-19T21:41:44.869226+00:00",
+    "score": 0,
+    "band": "broken",
+    "subscores": {
+      "board": 0,
+      "interaction": 0,
+      "move_handling": 0,
+      "rules": 0,
+      "completeness": 0
+    },
+    "confidence": "high",
+    "summary": "No usable index.html was produced.",
+    "evidence_highlights": [
+      "Expected output file is missing."
+    ],
+    "evidence_gaps": [
+      "No rendered board could be inspected."
+    ],
+    "run": null,
+    "artifacts": {
+      "evidence_json": "judge_evidence.json",
+      "judgment_json": "judgment.json",
+      "judge_artifacts_dir": "judge-artifacts",
+      "judge_events_jsonl": null,
+      "judge_final_text": null,
+      "judge_stderr_log": null
+    }
   }
 }

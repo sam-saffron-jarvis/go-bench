@@ -1,5 +1,8 @@
 node_modules/
 .runs/
+.bg-runs/
 *.pyc
 __pycache__/
 .DS_Store
+bench-run.log
+bench-pid.txt

@@ -1,0 +1,26 @@
+```json
+{
+  "score": 11,
+  "band": "partial",
+  "subscores": {
+    "board": 2,
+    "interaction": 3,
+    "move_handling": 2,
+    "rules": 1,
+    "completeness": 3
+  },
+  "confidence": "medium",
+  "summary": "Canvas-based 9×9 Go board with alternating black/white play and solid controls, but capture logic is undemonstrated and the top-left corner intersection is never clickable.",
+  "evidence_highlights": [
+    "Turn alternation confirmed across all scenarios: black stones (brightness ~14–86) and white stones (~190–197) place in strict alternation, and turn is retained after the rejected P00 click",
+    "Center hoshi at P44 clearly present from the first frame (brightness 39 vs. board ~155–166) and stable throughout every scenario",
+    "Four controls rendered and functional: Pass, Undo, New Game, Score; per-player capture counters displayed"
+  ],
+  "evidence_gaps": [
+    "P00 (top-left corner intersection) produces 0 changed pixels on every click in every scenario — consistent click-detection failure, not occupied-point rejection",
+    "Capture sequence with white group at P11/P21/P12 shows Black Captures: 0 throughout; no capture evidence anywhere in the evidence",
+    "Corner hoshi positions P22, P26, P62, P66 show only 1 brightness-unit contrast against neighbors — no convincing hoshi dots beyond the tengen",
+    "No evidence of suicide prevention or ko detection"
+  ]
+}
+```
