@@ -1,0 +1,141 @@
+{
+  "bench": "vague-developer",
+  "slug": "chatgpt-gpt-5-4-mini-xhigh",
+  "display": "ChatGPT GPT-5.4 Mini xhigh",
+  "provider": "chatgpt:gpt-5.4-mini-xhigh",
+  "requested": null,
+  "note": null,
+  "timestamp_utc": "2026-04-20T00:45:32.591135+00:00",
+  "term_llm_version": "term-llm version v0.0.172 (commit: c6929c4, built: 2026-04-19T23:15:49Z)",
+  "command": [
+    "term-llm",
+    "ask",
+    "--no-session",
+    "--json",
+    "--yolo",
+    "--provider",
+    "chatgpt:gpt-5.4-mini-xhigh",
+    "--agent",
+    "./agent",
+    "--read-dir",
+    ".",
+    "--write-dir",
+    ".",
+    "build a standalone 9x9 fully functioning go board in index.html"
+  ],
+  "command_text": "term-llm ask --no-session --json --yolo --provider chatgpt:gpt-5.4-mini-xhigh --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+  "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+  "timeout_seconds": 1500,
+  "run": {
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 646.342,
+    "stats": {
+      "cache_write_tokens": 0,
+      "cached_input_tokens": 1967616,
+      "duration_ms": 646316,
+      "input_tokens": 72913,
+      "llm_calls": 40,
+      "llm_ms": 634337,
+      "output_tokens": 48756,
+      "seq": 344,
+      "tool_calls": 56,
+      "tool_ms": 11821,
+      "ts": "2026-04-20T00:45:32.455465587Z",
+      "type": "stats"
+    },
+    "event_count": 346,
+    "event_counts": {
+      "session.started": 1,
+      "tool.started": 56,
+      "usage": 40,
+      "tool.completed": 56,
+      "diff": 9,
+      "text.delta": 182,
+      "stats": 1,
+      "done": 1
+    },
+    "tool_counts": {
+      "glob": 2,
+      "shell": 22,
+      "read_file": 15,
+      "grep": 7,
+      "edit_file": 10
+    },
+    "tool_outcomes": {
+      "glob:success": 2,
+      "shell:success": 22,
+      "read_file:success": 15,
+      "grep:success": 7,
+      "edit_file:success": 10
+    },
+    "json_parse_errors": [],
+    "session_started": {
+      "agent": "developer",
+      "mcp": "",
+      "model": "gpt-5.4-mini-xhigh",
+      "provider": "ChatGPT (gpt-5.4-mini, effort=xhigh)",
+      "resuming": false,
+      "search": true,
+      "seq": 0,
+      "session_id": "20260420-103446-2d9d7b5fc65526ba",
+      "tools": "read_file,write_file,edit_file,glob,grep,shell",
+      "ts": "2026-04-20T00:34:46.138696188Z",
+      "type": "session.started",
+      "yolo": true
+    },
+    "done": {
+      "seq": 345,
+      "tokens": 1145,
+      "ts": "2026-04-20T00:45:32.45546896Z",
+      "type": "done"
+    }
+  },
+  "verification": {
+    "passed": false,
+    "exit_code": 1,
+    "output": "FAIL: /root/source/go-bench/.runs/vague-developer/chatgpt-gpt-5-4-mini-xhigh/index.html does not exist"
+  },
+  "artifacts": {
+    "events_jsonl": "events.jsonl",
+    "stderr_log": null,
+    "final_text": "final.txt",
+    "verify_log": "verify.log",
+    "generated_dir": "generated",
+    "screenshot": null
+  },
+  "output": {
+    "expected_file": "index.html",
+    "exists": false
+  },
+  "judgment": {
+    "judge_provider": null,
+    "timestamp_utc": "2026-04-20T00:45:32.635035+00:00",
+    "score": 0,
+    "band": "broken",
+    "subscores": {
+      "board": 0,
+      "interaction": 0,
+      "move_handling": 0,
+      "rules": 0,
+      "completeness": 0
+    },
+    "confidence": "high",
+    "summary": "No usable index.html was produced.",
+    "evidence_highlights": [
+      "Expected output file is missing."
+    ],
+    "evidence_gaps": [
+      "No rendered board could be inspected."
+    ],
+    "run": null,
+    "artifacts": {
+      "evidence_json": "judge_evidence.json",
+      "judgment_json": "judgment.json",
+      "judge_artifacts_dir": "judge-artifacts",
+      "judge_events_jsonl": null,
+      "judge_final_text": null,
+      "judge_stderr_log": null
+    }
+  }
+}

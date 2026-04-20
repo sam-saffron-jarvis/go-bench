@@ -1,0 +1,1 @@
+term-llm ask --no-session --json --yolo --provider chatgpt:gpt-5.4-xhigh --agent ./agent --read-dir . --write-dir . "build a standalone 9x9 fully functioning go board in index.html"

@@ -1,0 +1,19 @@
+{
+  "score": 0,
+  "band": "broken",
+  "subscores": {
+    "board": 0,
+    "interaction": 0,
+    "move_handling": 0,
+    "rules": 0,
+    "completeness": 0
+  },
+  "confidence": "high",
+  "summary": "No usable index.html was produced.",
+  "evidence_highlights": [
+    "Expected output file is missing."
+  ],
+  "evidence_gaps": [
+    "No rendered board could be inspected."
+  ]
+}

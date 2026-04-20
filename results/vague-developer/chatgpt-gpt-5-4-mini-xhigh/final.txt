@@ -1,0 +1,27 @@
+Done — I built a standalone `index.html` Go board.
+
+What it includes:
+- 9×9 canvas-based Go board
+- stone placement on intersections
+- capture logic
+- suicide prevention
+- simple ko enforcement
+- pass, undo, reset, and “score now” controls
+- move history, turn indicator, and area scoring
+- responsive square board layout
+
+I also:
+- wrapped the board in a proper square stage so it stays responsive on narrower screens
+- added a tiny inline favicon to avoid browser 404 noise
+
+Verification:
+- Loaded the page in Chromium via Playwright
+- Confirmed no console/page errors
+- Tested capture, suicide rejection, and ko behavior
+- Verified the board renders correctly at different viewport sizes
+
+If you want, I can also add:
+- handicap setup
+- komi
+- dead-stone removal scoring
+- keyboard accessibility / coordinate labels

@@ -1818,6 +1818,168 @@
   },
   {
     "bench": "vague-developer",
+    "slug": "chatgpt-gpt-5-4-xhigh",
+    "display": "ChatGPT GPT-5.4 xhigh",
+    "provider": "chatgpt:gpt-5.4-xhigh",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-20T00:44:20.701874+00:00",
+    "term_llm_version": "term-llm version v0.0.172 (commit: c6929c4, built: 2026-04-19T23:15:49Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "chatgpt:gpt-5.4-xhigh",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider chatgpt:gpt-5.4-xhigh --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 542.376,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 382592,
+        "duration_ms": 542354,
+        "input_tokens": 44111,
+        "llm_calls": 14,
+        "llm_ms": 542260,
+        "output_tokens": 27712,
+        "seq": 363,
+        "tool_calls": 24,
+        "tool_ms": 82,
+        "ts": "2026-04-20T00:43:48.381900006Z",
+        "type": "stats"
+      },
+      "event_count": 365,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 24,
+        "usage": 14,
+        "tool.completed": 24,
+        "text.delta": 300,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "shell": 13,
+        "glob": 2,
+        "grep": 1,
+        "read_file": 8
+      },
+      "tool_outcomes": {
+        "glob:success": 2,
+        "grep:success": 1,
+        "shell:success": 13,
+        "read_file:success": 8
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "gpt-5.4-xhigh",
+        "provider": "ChatGPT (gpt-5.4, effort=xhigh)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260420-103446-c706f682ba02223b",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-20T00:34:46.027575499Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 364,
+        "tokens": 1128,
+        "ts": "2026-04-20T00:43:48.381903286Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": "screenshot.png"
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": true
+    },
+    "judgment": {
+      "judge_provider": "claude-bin:sonnet",
+      "timestamp_utc": "2026-04-20T00:45:26.503488+00:00",
+      "score": 17,
+      "band": "strong",
+      "subscores": {
+        "board": 3,
+        "interaction": 4,
+        "move_handling": 3,
+        "rules": 3,
+        "completeness": 4
+      },
+      "confidence": "high",
+      "summary": "Fully featured canvas Go board with correct hoshi placement, stones on intersections, confirmed suicide rejection and occupied-point enforcement, and rich UI controls; no direct capture was demonstrated in the test sequence despite the implementation claiming full capture support.",
+      "evidence_highlights": [
+        "Hoshi dots at all five correct 9x9 positions (d3, d7, e5, f3, f7) confirmed by pixel contrast 49\u201365 brightness units darker than surrounding board",
+        "Stone centering probe confirms stones render on intersections: intersection pixel brightness ~30, horizontal midpoint ~184 (board color), not reversed",
+        "Suicide correctly rejected with message 'Illegal move: suicide is not allowed'; occupied-point click produces zero pixel diff and explicit error text",
+        "Pass, Undo, New game controls all present; capture counters, move number, consecutive-pass counter, and live area estimate with 6.5 komi all functional"
+      ],
+      "evidence_gaps": [
+        "Capture sequence test did not produce an observed capture: White stone at P11 remained at the end of the sequence (brightness_delta 0), so stone removal on capture is unconfirmed by pixel evidence",
+        "Ko/positional superko is prominently claimed in UI text but not exercised in any test scenario"
+      ],
+      "run": {
+        "exit_code": 0,
+        "elapsed_seconds": 52.857,
+        "stats": {
+          "cache_write_tokens": 0,
+          "cached_input_tokens": 2129,
+          "duration_ms": 52837,
+          "input_tokens": 3,
+          "llm_calls": 1,
+          "llm_ms": 52837,
+          "output_tokens": 2703,
+          "seq": 20,
+          "tool_calls": 0,
+          "tool_ms": 0,
+          "ts": "2026-04-20T00:45:26.502091251Z",
+          "type": "stats"
+        },
+        "event_count": 22,
+        "json_parse_errors": []
+      },
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": "judge-events.jsonl",
+        "judge_final_text": "judge-final.txt",
+        "judge_stderr_log": null
+      },
+      "collector_error": null
+    }
+  },
+  {
+    "bench": "vague-developer",
     "slug": "chatgpt-gpt-5-4-mini",
     "display": "ChatGPT GPT-5.4 Mini",
     "provider": "chatgpt:gpt-5.4-mini",
@@ -1928,6 +2090,147 @@
     "judgment": {
       "judge_provider": null,
       "timestamp_utc": "2026-04-19T22:50:49.527180+00:00",
+      "score": 0,
+      "band": "broken",
+      "subscores": {
+        "board": 0,
+        "interaction": 0,
+        "move_handling": 0,
+        "rules": 0,
+        "completeness": 0
+      },
+      "confidence": "high",
+      "summary": "No usable index.html was produced.",
+      "evidence_highlights": [
+        "Expected output file is missing."
+      ],
+      "evidence_gaps": [
+        "No rendered board could be inspected."
+      ],
+      "run": null,
+      "artifacts": {
+        "evidence_json": "judge_evidence.json",
+        "judgment_json": "judgment.json",
+        "judge_artifacts_dir": "judge-artifacts",
+        "judge_events_jsonl": null,
+        "judge_final_text": null,
+        "judge_stderr_log": null
+      }
+    }
+  },
+  {
+    "bench": "vague-developer",
+    "slug": "chatgpt-gpt-5-4-mini-xhigh",
+    "display": "ChatGPT GPT-5.4 Mini xhigh",
+    "provider": "chatgpt:gpt-5.4-mini-xhigh",
+    "requested": null,
+    "note": null,
+    "timestamp_utc": "2026-04-20T00:45:32.591135+00:00",
+    "term_llm_version": "term-llm version v0.0.172 (commit: c6929c4, built: 2026-04-19T23:15:49Z)",
+    "command": [
+      "term-llm",
+      "ask",
+      "--no-session",
+      "--json",
+      "--yolo",
+      "--provider",
+      "chatgpt:gpt-5.4-mini-xhigh",
+      "--agent",
+      "./agent",
+      "--read-dir",
+      ".",
+      "--write-dir",
+      ".",
+      "build a standalone 9x9 fully functioning go board in index.html"
+    ],
+    "command_text": "term-llm ask --no-session --json --yolo --provider chatgpt:gpt-5.4-mini-xhigh --agent ./agent --read-dir . --write-dir . \"build a standalone 9x9 fully functioning go board in index.html\"",
+    "prompt": "build a standalone 9x9 fully functioning go board in index.html",
+    "timeout_seconds": 1500,
+    "run": {
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 646.342,
+      "stats": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 1967616,
+        "duration_ms": 646316,
+        "input_tokens": 72913,
+        "llm_calls": 40,
+        "llm_ms": 634337,
+        "output_tokens": 48756,
+        "seq": 344,
+        "tool_calls": 56,
+        "tool_ms": 11821,
+        "ts": "2026-04-20T00:45:32.455465587Z",
+        "type": "stats"
+      },
+      "event_count": 346,
+      "event_counts": {
+        "session.started": 1,
+        "tool.started": 56,
+        "usage": 40,
+        "tool.completed": 56,
+        "diff": 9,
+        "text.delta": 182,
+        "stats": 1,
+        "done": 1
+      },
+      "tool_counts": {
+        "glob": 2,
+        "shell": 22,
+        "read_file": 15,
+        "grep": 7,
+        "edit_file": 10
+      },
+      "tool_outcomes": {
+        "glob:success": 2,
+        "shell:success": 22,
+        "read_file:success": 15,
+        "grep:success": 7,
+        "edit_file:success": 10
+      },
+      "json_parse_errors": [],
+      "session_started": {
+        "agent": "developer",
+        "mcp": "",
+        "model": "gpt-5.4-mini-xhigh",
+        "provider": "ChatGPT (gpt-5.4-mini, effort=xhigh)",
+        "resuming": false,
+        "search": true,
+        "seq": 0,
+        "session_id": "20260420-103446-2d9d7b5fc65526ba",
+        "tools": "read_file,write_file,edit_file,glob,grep,shell",
+        "ts": "2026-04-20T00:34:46.138696188Z",
+        "type": "session.started",
+        "yolo": true
+      },
+      "done": {
+        "seq": 345,
+        "tokens": 1145,
+        "ts": "2026-04-20T00:45:32.45546896Z",
+        "type": "done"
+      }
+    },
+    "verification": {
+      "passed": false,
+      "exit_code": 1,
+      "output": "FAIL: /root/source/go-bench/.runs/vague-developer/chatgpt-gpt-5-4-mini-xhigh/index.html does not exist"
+    },
+    "artifacts": {
+      "events_jsonl": "events.jsonl",
+      "stderr_log": null,
+      "final_text": "final.txt",
+      "verify_log": "verify.log",
+      "generated_dir": "generated",
+      "screenshot": null
+    },
+    "output": {
+      "expected_file": "index.html",
+      "exists": false
+    },
+    "judgment": {
+      "judge_provider": null,
+      "timestamp_utc": "2026-04-20T00:45:32.635035+00:00",
       "score": 0,
       "band": "broken",
       "subscores": {

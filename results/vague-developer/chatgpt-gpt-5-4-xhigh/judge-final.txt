@@ -1,0 +1,25 @@
+```json
+{
+  "score": 17,
+  "band": "strong",
+  "subscores": {
+    "board": 3,
+    "interaction": 4,
+    "move_handling": 3,
+    "rules": 3,
+    "completeness": 4
+  },
+  "confidence": "high",
+  "summary": "Fully featured canvas Go board with correct hoshi placement, stones on intersections, confirmed suicide rejection and occupied-point enforcement, and rich UI controls; no direct capture was demonstrated in the test sequence despite the implementation claiming full capture support.",
+  "evidence_highlights": [
+    "Hoshi dots at all five correct 9x9 positions (d3, d7, e5, f3, f7) confirmed by pixel contrast 49–65 brightness units darker than surrounding board",
+    "Stone centering probe confirms stones render on intersections: intersection pixel brightness ~30, horizontal midpoint ~184 (board color), not reversed",
+    "Suicide correctly rejected with message 'Illegal move: suicide is not allowed'; occupied-point click produces zero pixel diff and explicit error text",
+    "Pass, Undo, New game controls all present; capture counters, move number, consecutive-pass counter, and live area estimate with 6.5 komi all functional"
+  ],
+  "evidence_gaps": [
+    "Capture sequence test did not produce an observed capture: White stone at P11 remained at the end of the sequence (brightness_delta 0), so stone removal on capture is unconfirmed by pixel evidence",
+    "Ko/positional superko is prominently claimed in UI text but not exercised in any test scenario"
+  ]
+}
+```

@@ -1,0 +1,42 @@
+Done — I added a standalone `index.html` with an in-browser 9×9 Go board.
+
+What I changed
+- Built a single-file HTML/CSS/JS app with no external dependencies.
+- Implemented:
+  - 9×9 interactive Go board
+  - alternating black/white turns
+  - captures
+  - suicide prevention
+  - ko/repetition prevention via positional superko
+  - pass
+  - undo
+  - new game reset
+  - move/pass/capture status UI
+  - coordinate labels
+  - live area estimate with 6.5 komi for White
+- Added a polished responsive canvas-based board UI with hover preview and last-move marker.
+
+Assumption
+- I interpreted “fully functioning go board” as a local 2-player playable board with rules enforcement, not an AI opponent.
+
+How I verified it
+- Ran a Node-based verification harness against the embedded JS logic.
+- Checked:
+  - legal opening move
+  - occupied-point rejection
+  - capture behavior
+  - suicide rejection
+  - ko/repetition rejection
+  - two-pass game end
+  - undo after passes
+- Review command used:
+  - `git diff --no-index -- /dev/null index.html`
+
+Verification result
+- All Go board checks passed.
+
+If you want, I can next add:
+- dead-stone marking for more accurate end scoring
+- SGF import/export
+- move history list
+- AI opponent
